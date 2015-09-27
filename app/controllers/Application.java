@@ -6,6 +6,7 @@ import play.mvc.*;
 
 import views.html.*;
 
+
 public class Application extends Controller {
 
     public Result index() {
@@ -19,7 +20,16 @@ public class Application extends Controller {
         user2.name = "Mike1";
         user2.insert();
         user2.remove();
-        return ok(index.render("Your new application is ready."));
+
+
+        String listUsers = "";
+        Iterable<User> allUsers = User.users().find().as(User.class);
+
+        for(User u : allUsers){
+            listUsers = listUsers + ", " + u.name;
+        }
+        return ok(listUsers);
+        //return ok(index.render("Your new application is ready."));
 
 
     }
