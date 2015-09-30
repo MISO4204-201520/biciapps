@@ -28,8 +28,8 @@ public class Application extends Controller {
         for(User u : allUsers){
             listUsers = listUsers + ", " + u.name;
         }
-        return ok(listUsers);
-        //return ok(index.render("Your new application is ready."));
+        //return ok(listUsers);
+        return ok(index.render(listUsers));
 
 
     }
