@@ -16,8 +16,9 @@ public class User {
     @JsonProperty("_id")
     public ObjectId id;
 
-    public String name;
+    public String email;
 
+    public String pwd;
 
     public void insert() {
         users().save(this);
@@ -27,7 +28,7 @@ public class User {
         users().remove(this.id);
     }
 
-    public static User findByName(String name) {
-        return users().findOne("{name: #}", name).as(User.class);
+    public static User findByEmail(String email) {
+        return users().findOne("{email: #}", email).as(User.class);
     }
 }

@@ -12,12 +12,12 @@ public class Application extends Controller {
     public Result index() {
 
         User user = new User();
-        user.name = "Mike1";
+        user.email = "Mike1";
         user.insert();
 
         //Inserta y luego quita
         User user2 = new User();
-        user2.name = "Mike1";
+        user2.email = "Mike1";
         user2.insert();
         user2.remove();
 
@@ -26,7 +26,7 @@ public class Application extends Controller {
         Iterable<User> allUsers = User.users().find().as(User.class);
 
         for(User u : allUsers){
-            listUsers = listUsers + ", " + u.name;
+            listUsers = listUsers + ", " + u.email;
         }
         //return ok(listUsers);
         return ok(index.render(listUsers));
