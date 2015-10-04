@@ -14,18 +14,9 @@ public class Application extends Controller {
         return ok(index.render());
     }
 
+
+    @Security.Authenticated(MySecureAuth.class)
     public Result deletePage() {
-
-        User user = new User();
-        user.email = "Mike1";
-        user.insert();
-
-        //Inserta y luego quita
-        User user2 = new User();
-        user2.email = "Mike1";
-        user2.insert();
-        user2.remove();
-
 
         String listUsers = "";
         Iterable<User> allUsers = User.users().find().as(User.class);

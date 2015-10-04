@@ -31,4 +31,9 @@ public class User {
     public static User findByEmail(String email) {
         return users().findOne("{email: #}", email).as(User.class);
     }
+
+    public static User findByEmailAndPwd(String email, String pwd) {
+        return users().findOne("{email: #, pwd: #}", email, pwd).as(User.class);
+    }
+
 }

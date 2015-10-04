@@ -9,7 +9,7 @@ GET     /account/registerPage           controllers.Account.registerPage()
 POST    /account/register               controllers.Account.register()
 GET     /account/loginPage              controllers.Account.loginPage()
 POST    /account/login                  controllers.Account.login()
-
+GET     /account/logout                  controllers.Account.logout()
 
 GET     /deletePage              controllers.Application.deletePage()
 
