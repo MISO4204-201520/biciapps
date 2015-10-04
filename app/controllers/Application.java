@@ -11,6 +11,11 @@ public class Application extends Controller {
 
     public Result index() {
 
+        return ok(index.render());
+    }
+
+    public Result deletePage() {
+
         User user = new User();
         user.email = "Mike1";
         user.insert();
@@ -29,7 +34,7 @@ public class Application extends Controller {
             listUsers = listUsers + ", " + u.email;
         }
         //return ok(listUsers);
-        return ok(index.render(listUsers));
+        return ok(views.html.deletePage.render(listUsers));
 
 
     }
