@@ -11,7 +11,8 @@ libraryDependencies ++= Seq(
   cache,
   javaWs,
   //Jongo
-  "uk.co.panaxiom" %% "play-jongo" % "0.8.0-jongo1.0"
+  "org.jongo" % "jongo" % "1.2",
+  "org.mongodb" % "mongo-java-driver" % "3.0.4"
 )
 
 
@@ -20,3 +21,6 @@ libraryDependencies <+= scalaVersion("org.scala-lang" % "scala-compiler" % _ )
 // Play provides two styles of routers, one expects its actions to be injected, the
 // other, legacy style, accesses its actions statically.
 routesGenerator := InjectedRoutesGenerator
+
+// Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
+EclipseKeys.preTasks := Seq(compile in Compile)

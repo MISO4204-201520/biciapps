@@ -57,7 +57,8 @@ public class Account extends Controller {
             return redirect(controllers.routes.Application.deletePage());
         }
         else{
-            return ok("No se pudo logear");
+        	flash("error", "Credenciales no validas");
+            return redirect(controllers.routes.Account.loginPage());
         }
     }
 

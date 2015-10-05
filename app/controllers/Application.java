@@ -1,16 +1,25 @@
 package controllers;
 
+import java.net.UnknownHostException;
+
+import org.jongo.Jongo;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+
 import models.User;
 import play.*;
 import play.mvc.*;
-
 import views.html.*;
 
 
 public class Application extends Controller {
 
     public Result index() {
-
+    	System.out.println(Play.application().configuration().getString("playjongo.uri"));
         return ok(index.render());
     }
 

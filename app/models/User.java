@@ -1,16 +1,17 @@
 package models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import models.dao.MongoManager;
 import org.bson.types.ObjectId;
 import org.jongo.MongoCollection;
-import uk.co.panaxiom.playjongo.PlayJongo;
 
 /**
  * Created by l on 27/09/15.
  */
 public class User {
     public static MongoCollection users() {
-        return PlayJongo.getCollection("users");
+        //return PlayJongo.getCollection("users");
+        return MongoManager.jongo.getCollection("users");
     }
 
     @JsonProperty("_id")

@@ -14,6 +14,7 @@
     @unloggedNavbar()
 
     <div class="container">
+	
 
         <form class="form-signin" action="@routes.Account.login()" method="POST">
             <h2 class="form-signin-heading">Please sign in</h2>
@@ -26,6 +27,9 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
+            @if(flash.containsKey("error")) {
+  				<p class="bg-danger">@flash.get("error")</p>
+			} 
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             <a href="@routes.Account.registerPage">Register</a>
         </form>
