@@ -35,8 +35,7 @@ public class Account extends Controller {
         boolean loggedIn = loginTask(email, pwd);
         if(loggedIn){
             return redirect(controllers.routes.Application.deletePage());
-        }
-        else{
+        }else{
             return ok("No se pudo logear");
         }
 

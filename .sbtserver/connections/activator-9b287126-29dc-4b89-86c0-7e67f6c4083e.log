@@ -1874,3 +1874,19 @@ Sending msg to client activator-9b287126-29dc-4b89-86c0-7e67f6c4083e: DetachedLo
 Sending msg to client activator-9b287126-29dc-4b89-86c0-7e67f6c4083e: DetachedLogEvent(LogMessage(debug,> server-post-command-cleanup))
 Sending msg to client activator-9b287126-29dc-4b89-86c0-7e67f6c4083e: ExecutionSuccess(9)
 Sending msg to client activator-9b287126-29dc-4b89-86c0-7e67f6c4083e: DetachedLogEvent(LogMessage(debug,> server-handle-next-server-request))
+Got request: UnlistenToEvents()
+Reading next message from client.
+Sending msg to client activator-9b287126-29dc-4b89-86c0-7e67f6c4083e: (26,ReceivedResponse())
+Got request: UnlistenToValue(AttributeKey[scala.collection.Seq[java.lang.String]]("discoveredMainClasses") in Scope(Build: file:/Users/Ger/Documents/Ger%20Repos/biciapp/, , Project: ProjectReference(file:/Users/Ger/Documents/Ger%20Repos/biciapp/,root), Config: compile))
+Reading next message from client.
+Got request: UnlistenToValue(AttributeKey[scala.Option[java.lang.String]]("mainClass") in Scope(Build: file:/Users/Ger/Documents/Ger%20Repos/biciapp/, , Project: ProjectReference(file:/Users/Ger/Documents/Ger%20Repos/biciapp/,root), Config: compile))
+Reading next message from client.
+Got request: UnlistenToBuildChange()
+Reading next message from client.
+Client activator-9b287126-29dc-4b89-86c0-7e67f6c4083e closed, java.net.SocketException: Connection reset, shutting down
+Stopping client.
+Client activator-9b287126-29dc-4b89-86c0-7e67f6c4083e thread exiting.
+Dropping message (27,ReceivedResponse()) to dead client activator-9b287126-29dc-4b89-86c0-7e67f6c4083e
+Dropping message (28,ReceivedResponse()) to dead client activator-9b287126-29dc-4b89-86c0-7e67f6c4083e
+Dropping message (29,ReceivedResponse()) to dead client activator-9b287126-29dc-4b89-86c0-7e67f6c4083e
+Dropping message (0,ReceivedResponse()) to dead client activator-9b287126-29dc-4b89-86c0-7e67f6c4083e
