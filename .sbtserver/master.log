@@ -1,5 +1,5 @@
-New log file opened at Mon Oct 05 23:36:08 COT 2015 by 48404@MacBook-Pro-German.local
-jvm 48404@MacBook-Pro-German.local
+New log file opened at Tue Oct 06 17:15:21 COT 2015 by 68231@MBP-German.uniandes.edu.co
+jvm 68231@MBP-German.uniandes.edu.co
 jvm vmName=Java HotSpot(TM) 64-Bit Server VM vmVendor=Oracle Corporation vmVersion=25.60-b23
 jvm specName=Java Virtual Machine Specification specVendor=Oracle Corporation specVersion=1.8
 jvm arguments: [-Xms256m, -Xmx1024m, -XX:MetaspaceSize=64m, -XX:MaxMetaspaceSize=256m]
@@ -27,7 +27,7 @@ sorting: ns: List(sbt.plugins.CorePlugin, sbt.plugins.IvyPlugin, sbt.plugins.Jvm
   :: sorted deduced result: List(sbt.plugins.CorePlugin, sbt.plugins.IvyPlugin, sbt.plugins.JvmPlugin, sbt.plugins.JUnitXmlReportPlugin)
 [Loading] Done in /Users/Ger/Documents/Ger Repos/biciapp/project, returning: (biciapp-build)
 Loading project definition from /Users/Ger/Documents/Ger Repos/biciapp/project
-Running task... Cancel: sbt.TaskCancellationStrategy$Null$@5c43f63, check cycles: false
+Running task... Cancel: sbt.TaskCancellationStrategy$Null$@575f31db, check cycles: false
 
 Initial source changes: 
 	removed:Set()
@@ -69,116 +69,280 @@ Set current project to biciapps (in build file:/Users/Ger/Documents/Ger%20Repos/
 > server-handle-next-server-request
 > {file:/Users/Ger/Documents/Ger%20Repos/biciapp/}root/compile:discoveredMainClasses
 Evaluating tasks: compile:discoveredMainClasses
-Running task... Cancel: sbt.server.ServerTaskCancellation@f433141, check cycles: false
+Running task... Cancel: sbt.server.ServerTaskCancellation@68ab8860, check cycles: false
 
 Initial source changes: 
 	removed:Set()
-	added: Set()
-	modified: Set()
+	added: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala)
+	modified: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/RoutesPrefix.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java, /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java)
 Removed products: Set()
 External API changes: API Changes: Set()
 Modified binary dependencies: Set()
-Initial directly invalidated sources: Set()
+Initial directly invalidated sources: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/RoutesPrefix.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java, /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java)
 
 Sources indirectly invalidated by:
 	product: Set()
 	binary dep: Set()
 	external source: Set()
-All initially invalidated sources: Set()
+All initially invalidated sources: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/RoutesPrefix.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java, /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java)
 
-Total time: 2 s, completed Oct 5, 2015 11:36:16 PM
+Recompiling all 20 sources: invalidated sources (12) exceeded 50.0% of all sources
+Read from stdout: Compiling 12 Scala sources and 8 Java sources to /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/classes...
+Compiling 12 Scala sources and 8 Java sources to /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/classes...
+Getting compiler-interface from component compiler for Scala 2.11.6
+Other repositories:
+Default repositories:
+Getting compiler-interface from component compiler for Scala 2.11.6
+Other repositories:
+Default repositories:
+Running cached compiler 49fe0a17, interfacing (CompilerInterface) with Scala compiler version 2.11.6
+Calling Scala compiler with arguments  (CompilerInterface):
+	-deprecation
+	-unchecked
+	-encoding
+	utf8
+	-bootclasspath
+	/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/classes:/Users/Ger/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar
+	-classpath
+	/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/classes:/Users/Ger/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.11.6.jar:/Users/Ger/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.6.jar:/Users/Ger/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.3.jar:/Users/Ger/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/twirl-api_2.11/jars/twirl-api_2.11-1.1.1.jar:/Users/Ger/.ivy2/cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.4.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-enhancer/jars/play-enhancer-1.1.0.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-server_2.11/jars/play-server_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play_2.11/jars/play_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/build-link/jars/build-link-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-exceptions/jars/play-exceptions-2.4.3.jar:/Users/Ger/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.19.0-GA.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-iteratees_2.11/jars/play-iteratees_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/org.scala-stm/scala-stm_2.11/jars/scala-stm_2.11-0.7.jar:/Users/Ger/.ivy2/cache/com.typesafe/config/bundles/config-1.3.0.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-json_2.11/jars/play-json_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-functional_2.11/jars/play-functional_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-datacommons_2.11/jars/play-datacommons_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.8.1.jar:/Users/Ger/.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.7.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.5.4.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-netty-utils/jars/play-netty-utils-2.4.3.jar:/Users/Ger/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.12.jar:/Users/Ger/.ivy2/cache/org.slf4j/jul-to-slf4j/jars/jul-to-slf4j-1.7.12.jar:/Users/Ger/.ivy2/cache/org.slf4j/jcl-over-slf4j/jars/jcl-over-slf4j-1.7.12.jar:/Users/Ger/.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.1.3.jar:/Users/Ger/.ivy2/cache/ch.qos.logback/logback-classic/jars/logback-classic-1.1.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.3.13.jar:/Users/Ger/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.11/jars/akka-slf4j_2.11-2.3.13.jar:/Users/Ger/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.10.jar:/Users/Ger/.ivy2/cache/xerces/xercesImpl/jars/xercesImpl-2.11.0.jar:/Users/Ger/.ivy2/cache/xml-apis/xml-apis/jars/xml-apis-1.4.01.jar:/Users/Ger/.ivy2/cache/javax.transaction/jta/jars/jta-1.1.jar:/Users/Ger/.ivy2/cache/com.google.inject/guice/jars/guice-4.0.jar:/Users/Ger/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar:/Users/Ger/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar:/Users/Ger/.ivy2/cache/com.google.inject.extensions/guice-assistedinject/jars/guice-assistedinject-4.0.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-java_2.11/jars/play-java_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/org.scala-lang.modules/scala-java8-compat_2.11/bundles/scala-java8-compat_2.11-0.3.0.jar:/Users/Ger/.ivy2/cache/org.yaml/snakeyaml/bundles/snakeyaml-1.15.jar:/Users/Ger/.ivy2/cache/org.hibernate/hibernate-validator/jars/hibernate-validator-5.0.3.Final.jar:/Users/Ger/.ivy2/cache/javax.validation/validation-api/jars/validation-api-1.1.0.Final.jar:/Users/Ger/.ivy2/cache/com.fasterxml/classmate/bundles/classmate-1.0.0.jar:/Users/Ger/.ivy2/cache/org.jboss.logging/jboss-logging/jars/jboss-logging-3.2.1.Final.jar:/Users/Ger/.ivy2/cache/org.springframework/spring-context/jars/spring-context-4.1.6.RELEASE.jar:/Users/Ger/.ivy2/cache/org.springframework/spring-core/jars/spring-core-4.1.6.RELEASE.jar:/Users/Ger/.ivy2/cache/org.springframework/spring-beans/jars/spring-beans-4.1.6.RELEASE.jar:/Users/Ger/.ivy2/cache/org.reflections/reflections/jars/reflections-0.9.9.jar:/Users/Ger/.ivy2/cache/com.google.guava/guava/bundles/guava-18.0.jar:/Users/Ger/.ivy2/cache/com.google.code.findbugs/annotations/jars/annotations-2.0.1.jar:/Users/Ger/.ivy2/cache/net.jodah/typetools/bundles/typetools-0.4.1.jar:/Users/Ger/.ivy2/cache/com.google.code.findbugs/jsr305/jars/jsr305-2.0.3.jar:/Users/Ger/.ivy2/cache/org.apache.tomcat/tomcat-servlet-api/jars/tomcat-servlet-api-8.0.21.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-netty-server_2.11/jars/play-netty-server_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/io.netty/netty/bundles/netty-3.10.4.Final.jar:/Users/Ger/.ivy2/cache/com.typesafe.netty/netty-http-pipelining/jars/netty-http-pipelining-1.1.4.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-java-jdbc_2.11/jars/play-java-jdbc_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-jdbc_2.11/jars/play-jdbc_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-jdbc-api_2.11/jars/play-jdbc-api_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.jolbox/bonecp/bundles/bonecp-0.8.0.RELEASE.jar:/Users/Ger/.ivy2/cache/com.zaxxer/HikariCP/bundles/HikariCP-2.3.7.jar:/Users/Ger/.ivy2/cache/com.h2database/h2/jars/h2-1.4.187.jar:/Users/Ger/.ivy2/cache/tyrex/tyrex/jars/tyrex-1.0.1.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-cache_2.11/jars/play-cache_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.6.11.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-java-ws_2.11/jars/play-java-ws_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-ws_2.11/jars/play-ws_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.ning/async-http-client/jars/async-http-client-1.9.21.jar:/Users/Ger/.ivy2/cache/oauth.signpost/signpost-core/jars/signpost-core-1.2.1.2.jar:/Users/Ger/.ivy2/cache/oauth.signpost/signpost-commonshttp4/jars/signpost-commonshttp4-1.2.1.2.jar:/Users/Ger/.ivy2/cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.0.1.jar:/Users/Ger/.ivy2/cache/org.apache.httpcomponents/httpclient/jars/httpclient-4.0.1.jar:/Users/Ger/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar:/Users/Ger/.ivy2/cache/org.jongo/jongo/jars/jongo-1.2.jar:/Users/Ger/.ivy2/cache/de.undercouch/bson4jackson/jars/bson4jackson-2.4.0.jar:/Users/Ger/.ivy2/cache/org.mongodb/mongo-java-driver/jars/mongo-java-driver-3.0.4.jar
+Scala compilation took 14.297786627 s
+Attempting to call com.sun.tools.javac.api.JavacTool@4fefd28a directly...
+Read from stdout: /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java:30: variable name is already defined in class models.User
+/Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java:30: variable name is already defined in class models.User
+Read from stdout: private String name;
+private String name;
+Read from stdout: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java uses or overrides a deprecated API.
+/Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java uses or overrides a deprecated API.
+Read from stdout: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: Recompile with -Xlint:deprecation for details.
+/Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: Recompile with -Xlint:deprecation for details.
+Read from stdout: (compile:compileIncremental) javac returned nonzero exit code
+(compile:compileIncremental) javac returned nonzero exit code
+Total time: 19 s, completed Oct 6, 2015 5:15:48 PM
+> server-post-command-error-handler
 > server-post-command-cleanup
 > server-handle-next-server-request
 > {file:/Users/Ger/Documents/Ger%20Repos/biciapp/}root/compile:mainClass
 Evaluating tasks: compile:mainClass
-Running task... Cancel: sbt.server.ServerTaskCancellation@6a5c87c0, check cycles: false
-Total time: 0 s, completed Oct 5, 2015 11:36:16 PM
+Running task... Cancel: sbt.server.ServerTaskCancellation@489ca99b, check cycles: false
+Total time: 0 s, completed Oct 6, 2015 5:15:48 PM
 > server-post-command-cleanup
 > server-handle-next-server-request
 > {file:/Users/Ger/Documents/Ger%20Repos/biciapp/}root/compile:discoveredMainClasses
 Evaluating tasks: compile:discoveredMainClasses
-Running task... Cancel: sbt.server.ServerTaskCancellation@1f8f7f36, check cycles: false
+Running task... Cancel: sbt.server.ServerTaskCancellation@1845a6ee, check cycles: false
 
 Initial source changes: 
 	removed:Set()
-	added: Set()
-	modified: Set()
+	added: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala)
+	modified: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/RoutesPrefix.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java, /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java)
 Removed products: Set()
 External API changes: API Changes: Set()
 Modified binary dependencies: Set()
-Initial directly invalidated sources: Set()
+Initial directly invalidated sources: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/RoutesPrefix.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java, /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java)
 
 Sources indirectly invalidated by:
 	product: Set()
 	binary dep: Set()
 	external source: Set()
-All initially invalidated sources: Set()
+All initially invalidated sources: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/RoutesPrefix.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java, /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java)
 
-Total time: 1 s, completed Oct 5, 2015 11:36:17 PM
+Recompiling all 20 sources: invalidated sources (12) exceeded 50.0% of all sources
+Read from stdout: Compiling 12 Scala sources and 8 Java sources to /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/classes...
+Compiling 12 Scala sources and 8 Java sources to /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/classes...
+Getting compiler-interface from component compiler for Scala 2.11.6
+Other repositories:
+Default repositories:
+Getting compiler-interface from component compiler for Scala 2.11.6
+Other repositories:
+Default repositories:
+Running cached compiler 79615b81, interfacing (CompilerInterface) with Scala compiler version 2.11.6
+Calling Scala compiler with arguments  (CompilerInterface):
+	-deprecation
+	-unchecked
+	-encoding
+	utf8
+	-bootclasspath
+	/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/classes:/Users/Ger/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar
+	-classpath
+	/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/classes:/Users/Ger/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.11.6.jar:/Users/Ger/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.6.jar:/Users/Ger/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.3.jar:/Users/Ger/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/twirl-api_2.11/jars/twirl-api_2.11-1.1.1.jar:/Users/Ger/.ivy2/cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.4.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-enhancer/jars/play-enhancer-1.1.0.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-server_2.11/jars/play-server_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play_2.11/jars/play_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/build-link/jars/build-link-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-exceptions/jars/play-exceptions-2.4.3.jar:/Users/Ger/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.19.0-GA.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-iteratees_2.11/jars/play-iteratees_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/org.scala-stm/scala-stm_2.11/jars/scala-stm_2.11-0.7.jar:/Users/Ger/.ivy2/cache/com.typesafe/config/bundles/config-1.3.0.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-json_2.11/jars/play-json_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-functional_2.11/jars/play-functional_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-datacommons_2.11/jars/play-datacommons_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.8.1.jar:/Users/Ger/.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.7.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.5.4.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-netty-utils/jars/play-netty-utils-2.4.3.jar:/Users/Ger/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.12.jar:/Users/Ger/.ivy2/cache/org.slf4j/jul-to-slf4j/jars/jul-to-slf4j-1.7.12.jar:/Users/Ger/.ivy2/cache/org.slf4j/jcl-over-slf4j/jars/jcl-over-slf4j-1.7.12.jar:/Users/Ger/.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.1.3.jar:/Users/Ger/.ivy2/cache/ch.qos.logback/logback-classic/jars/logback-classic-1.1.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.3.13.jar:/Users/Ger/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.11/jars/akka-slf4j_2.11-2.3.13.jar:/Users/Ger/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.10.jar:/Users/Ger/.ivy2/cache/xerces/xercesImpl/jars/xercesImpl-2.11.0.jar:/Users/Ger/.ivy2/cache/xml-apis/xml-apis/jars/xml-apis-1.4.01.jar:/Users/Ger/.ivy2/cache/javax.transaction/jta/jars/jta-1.1.jar:/Users/Ger/.ivy2/cache/com.google.inject/guice/jars/guice-4.0.jar:/Users/Ger/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar:/Users/Ger/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar:/Users/Ger/.ivy2/cache/com.google.inject.extensions/guice-assistedinject/jars/guice-assistedinject-4.0.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-java_2.11/jars/play-java_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/org.scala-lang.modules/scala-java8-compat_2.11/bundles/scala-java8-compat_2.11-0.3.0.jar:/Users/Ger/.ivy2/cache/org.yaml/snakeyaml/bundles/snakeyaml-1.15.jar:/Users/Ger/.ivy2/cache/org.hibernate/hibernate-validator/jars/hibernate-validator-5.0.3.Final.jar:/Users/Ger/.ivy2/cache/javax.validation/validation-api/jars/validation-api-1.1.0.Final.jar:/Users/Ger/.ivy2/cache/com.fasterxml/classmate/bundles/classmate-1.0.0.jar:/Users/Ger/.ivy2/cache/org.jboss.logging/jboss-logging/jars/jboss-logging-3.2.1.Final.jar:/Users/Ger/.ivy2/cache/org.springframework/spring-context/jars/spring-context-4.1.6.RELEASE.jar:/Users/Ger/.ivy2/cache/org.springframework/spring-core/jars/spring-core-4.1.6.RELEASE.jar:/Users/Ger/.ivy2/cache/org.springframework/spring-beans/jars/spring-beans-4.1.6.RELEASE.jar:/Users/Ger/.ivy2/cache/org.reflections/reflections/jars/reflections-0.9.9.jar:/Users/Ger/.ivy2/cache/com.google.guava/guava/bundles/guava-18.0.jar:/Users/Ger/.ivy2/cache/com.google.code.findbugs/annotations/jars/annotations-2.0.1.jar:/Users/Ger/.ivy2/cache/net.jodah/typetools/bundles/typetools-0.4.1.jar:/Users/Ger/.ivy2/cache/com.google.code.findbugs/jsr305/jars/jsr305-2.0.3.jar:/Users/Ger/.ivy2/cache/org.apache.tomcat/tomcat-servlet-api/jars/tomcat-servlet-api-8.0.21.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-netty-server_2.11/jars/play-netty-server_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/io.netty/netty/bundles/netty-3.10.4.Final.jar:/Users/Ger/.ivy2/cache/com.typesafe.netty/netty-http-pipelining/jars/netty-http-pipelining-1.1.4.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-java-jdbc_2.11/jars/play-java-jdbc_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-jdbc_2.11/jars/play-jdbc_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-jdbc-api_2.11/jars/play-jdbc-api_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.jolbox/bonecp/bundles/bonecp-0.8.0.RELEASE.jar:/Users/Ger/.ivy2/cache/com.zaxxer/HikariCP/bundles/HikariCP-2.3.7.jar:/Users/Ger/.ivy2/cache/com.h2database/h2/jars/h2-1.4.187.jar:/Users/Ger/.ivy2/cache/tyrex/tyrex/jars/tyrex-1.0.1.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-cache_2.11/jars/play-cache_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.6.11.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-java-ws_2.11/jars/play-java-ws_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-ws_2.11/jars/play-ws_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.ning/async-http-client/jars/async-http-client-1.9.21.jar:/Users/Ger/.ivy2/cache/oauth.signpost/signpost-core/jars/signpost-core-1.2.1.2.jar:/Users/Ger/.ivy2/cache/oauth.signpost/signpost-commonshttp4/jars/signpost-commonshttp4-1.2.1.2.jar:/Users/Ger/.ivy2/cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.0.1.jar:/Users/Ger/.ivy2/cache/org.apache.httpcomponents/httpclient/jars/httpclient-4.0.1.jar:/Users/Ger/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar:/Users/Ger/.ivy2/cache/org.jongo/jongo/jars/jongo-1.2.jar:/Users/Ger/.ivy2/cache/de.undercouch/bson4jackson/jars/bson4jackson-2.4.0.jar:/Users/Ger/.ivy2/cache/org.mongodb/mongo-java-driver/jars/mongo-java-driver-3.0.4.jar
+Scala compilation took 6.063588269 s
+Attempting to call com.sun.tools.javac.api.JavacTool@54be3a3e directly...
+Read from stdout: /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java:30: variable name is already defined in class models.User
+/Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java:30: variable name is already defined in class models.User
+Read from stdout: private String name;
+private String name;
+Read from stdout: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java uses or overrides a deprecated API.
+/Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java uses or overrides a deprecated API.
+Read from stdout: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: Recompile with -Xlint:deprecation for details.
+/Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: Recompile with -Xlint:deprecation for details.
+Read from stdout: (compile:compileIncremental) javac returned nonzero exit code
+(compile:compileIncremental) javac returned nonzero exit code
+Total time: 8 s, completed Oct 6, 2015 5:15:56 PM
+> server-post-command-error-handler
 > server-post-command-cleanup
 > server-handle-next-server-request
 > {file:/Users/Ger/Documents/Ger%20Repos/biciapp/}root/compile:mainClass
 Evaluating tasks: compile:mainClass
-Running task... Cancel: sbt.server.ServerTaskCancellation@6f31598f, check cycles: false
-Total time: 0 s, completed Oct 5, 2015 11:36:17 PM
+Running task... Cancel: sbt.server.ServerTaskCancellation@50c04d98, check cycles: false
+Total time: 0 s, completed Oct 6, 2015 5:15:56 PM
 > server-post-command-cleanup
 > server-handle-next-server-request
 > compile
 Evaluating tasks: compile:compile
-Running task... Cancel: sbt.server.ServerTaskCancellation@7890f4f0, check cycles: false
+Running task... Cancel: sbt.server.ServerTaskCancellation@6f7bdcd1, check cycles: false
 
 Initial source changes: 
 	removed:Set()
-	added: Set()
-	modified: Set()
+	added: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala)
+	modified: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/RoutesPrefix.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java, /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java)
 Removed products: Set()
 External API changes: API Changes: Set()
 Modified binary dependencies: Set()
-Initial directly invalidated sources: Set()
+Initial directly invalidated sources: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/RoutesPrefix.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java, /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java)
 
 Sources indirectly invalidated by:
 	product: Set()
 	binary dep: Set()
 	external source: Set()
-All initially invalidated sources: Set()
+All initially invalidated sources: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala, /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/RoutesPrefix.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java, /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java)
 
-Total time: 1 s, completed Oct 5, 2015 11:36:20 PM
+Recompiling all 20 sources: invalidated sources (12) exceeded 50.0% of all sources
+Read from stdout: Compiling 12 Scala sources and 8 Java sources to /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/classes...
+Compiling 12 Scala sources and 8 Java sources to /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/classes...
+Getting compiler-interface from component compiler for Scala 2.11.6
+Other repositories:
+Default repositories:
+Getting compiler-interface from component compiler for Scala 2.11.6
+Other repositories:
+Default repositories:
+Running cached compiler 613bc27d, interfacing (CompilerInterface) with Scala compiler version 2.11.6
+Calling Scala compiler with arguments  (CompilerInterface):
+	-deprecation
+	-unchecked
+	-encoding
+	utf8
+	-bootclasspath
+	/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/classes:/Users/Ger/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.6.jar
+	-classpath
+	/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/classes:/Users/Ger/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.11.6.jar:/Users/Ger/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.6.jar:/Users/Ger/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.3.jar:/Users/Ger/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/twirl-api_2.11/jars/twirl-api_2.11-1.1.1.jar:/Users/Ger/.ivy2/cache/org.apache.commons/commons-lang3/jars/commons-lang3-3.4.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-enhancer/jars/play-enhancer-1.1.0.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-server_2.11/jars/play-server_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play_2.11/jars/play_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/build-link/jars/build-link-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-exceptions/jars/play-exceptions-2.4.3.jar:/Users/Ger/.ivy2/cache/org.javassist/javassist/bundles/javassist-3.19.0-GA.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-iteratees_2.11/jars/play-iteratees_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/org.scala-stm/scala-stm_2.11/jars/scala-stm_2.11-0.7.jar:/Users/Ger/.ivy2/cache/com.typesafe/config/bundles/config-1.3.0.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-json_2.11/jars/play-json_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-functional_2.11/jars/play-functional_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-datacommons_2.11/jars/play-datacommons_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.8.1.jar:/Users/Ger/.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.7.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.core/jackson-core/bundles/jackson-core-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.core/jackson-annotations/bundles/jackson-annotations-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.core/jackson-databind/bundles/jackson-databind-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jdk8/bundles/jackson-datatype-jdk8-2.5.4.jar:/Users/Ger/.ivy2/cache/com.fasterxml.jackson.datatype/jackson-datatype-jsr310/bundles/jackson-datatype-jsr310-2.5.4.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-netty-utils/jars/play-netty-utils-2.4.3.jar:/Users/Ger/.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.7.12.jar:/Users/Ger/.ivy2/cache/org.slf4j/jul-to-slf4j/jars/jul-to-slf4j-1.7.12.jar:/Users/Ger/.ivy2/cache/org.slf4j/jcl-over-slf4j/jars/jcl-over-slf4j-1.7.12.jar:/Users/Ger/.ivy2/cache/ch.qos.logback/logback-core/jars/logback-core-1.1.3.jar:/Users/Ger/.ivy2/cache/ch.qos.logback/logback-classic/jars/logback-classic-1.1.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.akka/akka-actor_2.11/jars/akka-actor_2.11-2.3.13.jar:/Users/Ger/.ivy2/cache/com.typesafe.akka/akka-slf4j_2.11/jars/akka-slf4j_2.11-2.3.13.jar:/Users/Ger/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.10.jar:/Users/Ger/.ivy2/cache/xerces/xercesImpl/jars/xercesImpl-2.11.0.jar:/Users/Ger/.ivy2/cache/xml-apis/xml-apis/jars/xml-apis-1.4.01.jar:/Users/Ger/.ivy2/cache/javax.transaction/jta/jars/jta-1.1.jar:/Users/Ger/.ivy2/cache/com.google.inject/guice/jars/guice-4.0.jar:/Users/Ger/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar:/Users/Ger/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar:/Users/Ger/.ivy2/cache/com.google.inject.extensions/guice-assistedinject/jars/guice-assistedinject-4.0.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-java_2.11/jars/play-java_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/org.scala-lang.modules/scala-java8-compat_2.11/bundles/scala-java8-compat_2.11-0.3.0.jar:/Users/Ger/.ivy2/cache/org.yaml/snakeyaml/bundles/snakeyaml-1.15.jar:/Users/Ger/.ivy2/cache/org.hibernate/hibernate-validator/jars/hibernate-validator-5.0.3.Final.jar:/Users/Ger/.ivy2/cache/javax.validation/validation-api/jars/validation-api-1.1.0.Final.jar:/Users/Ger/.ivy2/cache/com.fasterxml/classmate/bundles/classmate-1.0.0.jar:/Users/Ger/.ivy2/cache/org.jboss.logging/jboss-logging/jars/jboss-logging-3.2.1.Final.jar:/Users/Ger/.ivy2/cache/org.springframework/spring-context/jars/spring-context-4.1.6.RELEASE.jar:/Users/Ger/.ivy2/cache/org.springframework/spring-core/jars/spring-core-4.1.6.RELEASE.jar:/Users/Ger/.ivy2/cache/org.springframework/spring-beans/jars/spring-beans-4.1.6.RELEASE.jar:/Users/Ger/.ivy2/cache/org.reflections/reflections/jars/reflections-0.9.9.jar:/Users/Ger/.ivy2/cache/com.google.guava/guava/bundles/guava-18.0.jar:/Users/Ger/.ivy2/cache/com.google.code.findbugs/annotations/jars/annotations-2.0.1.jar:/Users/Ger/.ivy2/cache/net.jodah/typetools/bundles/typetools-0.4.1.jar:/Users/Ger/.ivy2/cache/com.google.code.findbugs/jsr305/jars/jsr305-2.0.3.jar:/Users/Ger/.ivy2/cache/org.apache.tomcat/tomcat-servlet-api/jars/tomcat-servlet-api-8.0.21.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-netty-server_2.11/jars/play-netty-server_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/io.netty/netty/bundles/netty-3.10.4.Final.jar:/Users/Ger/.ivy2/cache/com.typesafe.netty/netty-http-pipelining/jars/netty-http-pipelining-1.1.4.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-java-jdbc_2.11/jars/play-java-jdbc_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-jdbc_2.11/jars/play-jdbc_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-jdbc-api_2.11/jars/play-jdbc-api_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.jolbox/bonecp/bundles/bonecp-0.8.0.RELEASE.jar:/Users/Ger/.ivy2/cache/com.zaxxer/HikariCP/bundles/HikariCP-2.3.7.jar:/Users/Ger/.ivy2/cache/com.h2database/h2/jars/h2-1.4.187.jar:/Users/Ger/.ivy2/cache/tyrex/tyrex/jars/tyrex-1.0.1.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-cache_2.11/jars/play-cache_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/net.sf.ehcache/ehcache-core/jars/ehcache-core-2.6.11.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-java-ws_2.11/jars/play-java-ws_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.typesafe.play/play-ws_2.11/jars/play-ws_2.11-2.4.3.jar:/Users/Ger/.ivy2/cache/com.ning/async-http-client/jars/async-http-client-1.9.21.jar:/Users/Ger/.ivy2/cache/oauth.signpost/signpost-core/jars/signpost-core-1.2.1.2.jar:/Users/Ger/.ivy2/cache/oauth.signpost/signpost-commonshttp4/jars/signpost-commonshttp4-1.2.1.2.jar:/Users/Ger/.ivy2/cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.0.1.jar:/Users/Ger/.ivy2/cache/org.apache.httpcomponents/httpclient/jars/httpclient-4.0.1.jar:/Users/Ger/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar:/Users/Ger/.ivy2/cache/org.jongo/jongo/jars/jongo-1.2.jar:/Users/Ger/.ivy2/cache/de.undercouch/bson4jackson/jars/bson4jackson-2.4.0.jar:/Users/Ger/.ivy2/cache/org.mongodb/mongo-java-driver/jars/mongo-java-driver-3.0.4.jar
+Scala compilation took 4.124921732 s
+Attempting to call com.sun.tools.javac.api.JavacTool@7ba50a8f directly...
+Read from stdout: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java uses or overrides a deprecated API.
+/Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java uses or overrides a deprecated API.
+Read from stdout: /Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: Recompile with -Xlint:deprecation for details.
+/Users/Ger/Documents/Ger Repos/biciapp/app/models/dao/MongoManager.java: Recompile with -Xlint:deprecation for details.
+Java compilation took 0.404676515 s
+Java analysis took 0.504360068 s
+Java compile + analysis took 0.924192863 s
+Invalidating /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala...
+Invalidating (transitively) by inheritance from /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala...
+Initial set of included nodes: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala)
+Invalidated by transitive inheritance dependency: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala)
+The /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala source file has the following regular definitions changed:
+	controllers_Application_deletePage7_route, controllers_Account_loginFacebook6_invoker, controllers_Assets_versioned7_invoker, controllers_Application_deletePage8_route, controllers_Application_deletePage6_route, controllers_Application_deletePage8_invoker, controllers_api_UsuarioController_UsuarioPorCorreo10_route, controllers_Assets_versioned11_route, controllers_Application_deletePage7_invoker, controllers_api_UsuarioController_UsuarioPorCorreo10_invoker, <init>, controllers_Assets_versioned7_route, controllers_Application_deletePage6_invoker, controllers_api_UsuarioController_Usuarios9_invoker, controllers_api_UsuarioController_Usuarios9_route, controllers_Account_loginFacebook6_route, controllers_Assets_versioned11_invoker.
+All member reference dependencies will be considered within this context.
+Invalidating /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java...
+Invalidating (transitively) by inheritance from /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java...
+Initial set of included nodes: Set(/Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java)
+Invalidated by transitive inheritance dependency: Set(/Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java)
+The /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java source file has the following regular definitions changed:
+	enumerator, notify, FROM, movedPermanently, CONTENT_LANGUAGE, CREATED, temporaryRedirect, Results$StringChunks$WhenReadyStringChunks, WARNING, CONTINUE, SET_COOKIE2, CONTENT_DISPOSITION, wrappedStatus, channel, CONTENT_TYPE, Results$Redirect, badRequest, wait, ACCESS_CONTROL_ALLOW_METHODS, USER_AGENT, ctx, HOST, CONTENT_MD5, request, X_FORWARDED_PORT, paymentRequired, BAD_REQUEST, logger, MAX_FORWARDS, X_FORWARDED_HOST, redirect, TRAILER, PROXY_AUTHENTICATE, AUTHORIZATION, CACHE_CONTROL, NOT_IMPLEMENTED, equals, PAYMENT_REQUIRED, RETRY_AFTER, PRECONDITION_FAILED, CONFLICT, ACCEPT_CHARSET, Results$ByteChunks$WhenReadyByteChunks, onReady, VIA, REQUEST_TIMEOUT, MULTIPLE_CHOICES, redirectLocation, notFound, MOVED_PERMANENTLY, TE, CONTENT_LOCATION, PARTIAL_CONTENT, ETAG, LENGTH_REQUIRED, UNAUTHORIZED, UNSUPPORTED_MEDIA_TYPE, REFERER, REQUEST_ENTITY_TOO_LARGE, ORIGIN, ACCEPT_LANGUAGE, NOT_MODIFIED, as, Results$StringChunks, Results$Todo, HTTP_VERSION_NOT_SUPPORTED, ACCESS_CONTROL_ALLOW_ORIGIN, Results$Status, IF_RANGE, IF_UNMODIFIED_SINCE, toScala, SWITCHING_PROTOCOLS, callback, TEMPORARY_REDIRECT, CONTENT_LENGTH, SET_COOKIE, notifyAll, AGE, BAD_GATEWAY, EXPECTATION_FAILED, CONNECTION, FORWARDED, Results$ByteChunks, Results$Chunks$Out, OK, cookies, ACCESS_CONTROL_ALLOW_HEADERS, found, unauthorized, response, FOUND, <init>, DATE, CONTENT_RANGE, sendResource, TRANSFER_ENCODING, contentType, PROXY_AUTHORIZATION, GONE, ACCESS_CONTROL_ALLOW_CREDENTIALS, clearLang, cookie, NOT_ACCEPTABLE, charset, status, EXPECT, LOCATION, VARY, WWW_AUTHENTICATE, TODO, forbidden, X_FORWARDED_FOR, access$000, ACCEPTED, NO_CONTENT, disconnected, INTERNAL_SERVER_ERROR, onDisconnected, lambda$new$1, Usuarios, UPGRADE, NOT_FOUND, session, ACCEPT_ENCODING, EXPIRES, seeOther, REQUESTED_RANGE_NOT_SATISFIABLE, header, toString, wrappedResult, lambda$onDisconnected$2, ACCEPT, changeLang, GATEWAY_TIMEOUT, whenReady, SERVER, ACCESS_CONTROL_REQUEST_METHOD, ACCESS_CONTROL_MAX_AGE, sendPath, LAST_MODIFIED, ACCESS_CONTROL_EXPOSE_HEADERS, ACCESS_CONTROL_REQUEST_HEADERS, flash, internalServerError, ok, ALLOW, COOKIE, IF_MODIFIED_SINCE, getClass, CONTENT_TRANSFER_ENCODING, lang, headers, Results$StatusHeader, NON_AUTHORITATIVE_INFORMATION, close, PRAGMA, IF_MATCH, PROXY_AUTHENTICATION_REQUIRED, RESET_CONTENT, SEE_OTHER, CONTENT_ENCODING, RANGE, USE_PROXY, Results$Chunks, REQUEST_URI_TOO_LONG, writable, UsuarioPorCorreo, UsuarioController, FORBIDDEN, METHOD_NOT_ALLOWED, write, IF_NONE_MATCH, ACCEPT_RANGES, noContent, X_REQUESTED_WITH, X_FORWARDED_PROTO, SERVICE_UNAVAILABLE, created, hashCode.
+All member reference dependencies will be considered within this context.
+The following modified names cause invalidation of /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala: Set(<init>, Usuarios, getClass, UsuarioPorCorreo, UsuarioController)
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java
+Invalidating /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala...
+Invalidating (transitively) by inheritance from /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala...
+Initial set of included nodes: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala)
+Invalidated by transitive inheritance dependency: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala)
+The /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/ReverseRoutes.scala source file has the following regular definitions changed:
+	loginFacebook.
+All member reference dependencies will be considered within this context.
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java
+None of the modified names appears in /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala. This dependency is not being considered for invalidation.
+None of the modified names appears in /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/registerPage.template.scala. This dependency is not being considered for invalidation.
+None of the modified names appears in /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/navbar/unloggedNavbar.template.scala. This dependency is not being considered for invalidation.
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/MySecureAuth.java
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java
+None of the modified names appears in /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/deletePage.template.scala. This dependency is not being considered for invalidation.
+Invalidating /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala...
+Invalidating (transitively) by inheritance from /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala...
+Initial set of included nodes: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala)
+Invalidated by transitive inheritance dependency: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala)
+The /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/javascript/JavaScriptReverseRoutes.scala source file has the following regular definitions changed:
+	loginFacebook.
+All member reference dependencies will be considered within this context.
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java
+Invalidating /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala...
+Invalidating (transitively) by inheritance from /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala...
+Initial set of included nodes: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala)
+Invalidated by transitive inheritance dependency: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala)
+The /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/javascript/JavaScriptReverseRoutes.scala source file has the following regular definitions changed:
+	notify, _defaultPrefix, wait, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, notifyAll, isInstanceOf, <init>, ==, clone, Usuarios, toString, ReverseUsuarioController, !=, getClass, ne, UsuarioPorCorreo, eq, ##, finalize, hashCode.
+All member reference dependencies will be considered within this context.
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java
+Invalidating /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java...
+Invalidating (transitively) by inheritance from /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java...
+Initial set of included nodes: Set(/Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java)
+Invalidated by transitive inheritance dependency: Set(/Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java)
+The /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java source file has the following regular definitions changed:
+	name, setName, findByFBId, findAll, getName, id, token, update, fbid.
+All member reference dependencies will be considered within this context.
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/api/UsuarioController.java
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Application.java
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/app/models/User.java
+Invalidating /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java...
+Invalidating (transitively) by inheritance from /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java...
+Initial set of included nodes: Set(/Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java)
+Invalidated by transitive inheritance dependency: Set(/Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java)
+The /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java source file has the following regular definitions changed:
+	loginFacebook.
+All member reference dependencies will be considered within this context.
+The following modified names cause invalidation of /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala: Set(loginFacebook)
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java
+Invalidating /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala...
+Invalidating (transitively) by inheritance from /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala...
+Initial set of included nodes: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala)
+Invalidated by transitive inheritance dependency: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala)
+The /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/ReverseRoutes.scala source file has the following regular definitions changed:
+	notify, _defaultPrefix, wait, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, notifyAll, isInstanceOf, <init>, ==, clone, Usuarios, toString, ReverseUsuarioController, !=, getClass, ne, UsuarioPorCorreo, eq, ##, finalize, hashCode.
+All member reference dependencies will be considered within this context.
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java
+Invalidating /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java...
+Invalidating (transitively) by inheritance from /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java...
+Initial set of included nodes: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java)
+Invalidated by transitive inheritance dependency: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java)
+The /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java source file has the following regular definitions changed:
+	notify, wait, routes, equals, routes$javascript, notifyAll, <init>, toString, getClass, UsuarioController, hashCode.
+All member reference dependencies will be considered within this context.
+Name hashing optimization doesn't apply to non-Scala dependency: /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/api/routes.java
+New invalidations:
+	Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Application.java, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/MySecureAuth.java)
+Initial set of included nodes: Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Application.java, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/MySecureAuth.java)
+Including /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala by /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java
+Including /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java by /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/loginPage.template.scala
+Including /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala by /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java
+Including /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/login/registerPage.template.scala by /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java
+Including /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/navbar/unloggedNavbar.template.scala by /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java
+Including /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/index.template.scala by /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/navbar/unloggedNavbar.template.scala
+Including /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Application.java by /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/index.template.scala
+Including /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/MySecureAuth.java by /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java
+Including /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/twirl/main/views/html/deletePage.template.scala by /Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/controllers/routes.java
+Previously invalidated, but (transitively) depend on new invalidations:
+	Set(/Users/Ger/Documents/Ger Repos/biciapp/target/scala-2.11/routes/main/router/Routes.scala, /Users/Ger/Documents/Ger Repos/biciapp/app/controllers/Account.java)
+All newly invalidated sources after taking into account (previously) recompiled sources:Set()
+Total time: 7 s, completed Oct 6, 2015 5:16:32 PM
 > server-post-command-cleanup
 > server-handle-next-server-request
 > backgroundRun
 Evaluating tasks: compile:backgroundRun
-Running task... Cancel: sbt.server.ServerTaskCancellation@4bd2916b, check cycles: false
-Total time: 0 s, completed Oct 5, 2015 11:36:20 PM
+Running task... Cancel: sbt.server.ServerTaskCancellation@3e92cb43, check cycles: false
+Total time: 0 s, completed Oct 6, 2015 5:16:32 PM
 > server-post-command-cleanup
 > server-handle-next-server-request
 > {file:/Users/Ger/Documents/Ger%20Repos/biciapp/}root/*:playForkConfig
 Evaluating tasks: *:playForkConfig
-Running task... Cancel: sbt.server.ServerTaskCancellation@55c91cb8, check cycles: false
-Total time: 0 s, completed Oct 5, 2015 11:36:24 PM
+Running task... Cancel: sbt.server.ServerTaskCancellation@211277ed, check cycles: false
+Total time: 1 s, completed Oct 6, 2015 5:16:39 PM
 > server-post-command-cleanup
 > server-handle-next-server-request
-> jobStop 1
-Evaluating tasks: *:jobStop
-Running task... Cancel: sbt.server.ServerTaskCancellation@18841ff4, check cycles: false
-Total time: 0 s, completed Oct 5, 2015 11:36:39 PM
-> server-post-command-cleanup
-> server-handle-next-server-request
-> backgroundRun
-Evaluating tasks: compile:backgroundRun
-Running task... Cancel: sbt.server.ServerTaskCancellation@7dc497cf, check cycles: false
-Total time: 0 s, completed Oct 5, 2015 11:39:12 PM
-> server-post-command-cleanup
-> server-handle-next-server-request
-> {file:/Users/Ger/Documents/Ger%20Repos/biciapp/}root/*:playForkConfig
-Evaluating tasks: *:playForkConfig
-Running task... Cancel: sbt.server.ServerTaskCancellation@1374275b, check cycles: false
-Total time: 0 s, completed Oct 5, 2015 11:39:15 PM
-> server-post-command-cleanup
-> server-handle-next-server-request
-Done executing sbt server engine, result Right(Exit(0))
-Closing listening server socket
-Waiting for socket thread
-Waiting for request processor thread
-Waiting for command engine result
-Returning control to sbt launcher with result Exit(0)
-Closing the 48404@MacBook-Pro-German.local logs at Tue Oct 06 09:14:12 COT 2015, goodbye.

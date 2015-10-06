@@ -26,8 +26,6 @@ public class User {
     public String email;
 
     public String pwd;
-
-    private String name;
     
     public String getName()
     {
