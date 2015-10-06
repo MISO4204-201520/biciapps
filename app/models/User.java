@@ -27,6 +27,18 @@ public class User {
 
     public String pwd;
 
+    private String name;
+    
+    public String getName()
+    {
+         return name;
+    }
+    
+    public void setName(String name)
+    {
+         this.name = name;
+    }
+    
     public void insert() {
         users().save(this);
     }
@@ -61,4 +73,8 @@ public class User {
         return users().findOne("{email: #, pwd: #}", email, pwd).as(User.class);
     }
 
+    public static  Iterable<User> findAll() {
+    	Iterable<User> usuarios = users().find().as(User.class);
+    	return usuarios; 		
+    }
 }
