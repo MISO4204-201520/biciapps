@@ -10,7 +10,7 @@ POST    /account/register               controllers.Account.register()
 GET     /account/loginPage              controllers.Account.loginPage()
 POST    /account/login                  controllers.Account.login()
 GET     /account/logout                 controllers.Account.logout()
-POST    /loginFacebook                  controllers.Account.loginFacebook()
+GET    /loginFacebook                  controllers.Account.loginFacebook()
 
 GET     /deletePage              controllers.Application.deletePage()
 

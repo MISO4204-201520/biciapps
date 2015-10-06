@@ -116,7 +116,7 @@
           console.log('Successful login for: ' + response.name);
           document.getElementById('status').innerHTML =
             'Thanks for logging in, ' + response.name + '!';
-          window.location.href = "/loginFacebook?token=" + token + "&name=" + response.name + "&fbid=" + response.id + "&email=" + response.email;
+          window.location.href = "/loginFacebook?token=" + encodeURI(token) + "&name=" + encodeURI(response.name) + "&fbid=" + encodeURI(response.id) + "&email=" + encodeURI(response.email);
         });
       }
     </script>
