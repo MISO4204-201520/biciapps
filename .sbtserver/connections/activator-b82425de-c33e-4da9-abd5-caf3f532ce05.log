@@ -1694,3 +1694,19 @@ Sending msg to client activator-b82425de-c33e-4da9-abd5-caf3f532ce05: Background
 Sending msg to client activator-b82425de-c33e-4da9-abd5-caf3f532ce05: BackgroundJobLogEvent(2,LogMessage(error,	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)))
 Sending msg to client activator-b82425de-c33e-4da9-abd5-caf3f532ce05: BackgroundJobLogEvent(2,LogMessage(error,	at java.lang.Thread.run(Thread.java:745)))
 Sending msg to client activator-b82425de-c33e-4da9-abd5-caf3f532ce05: BackgroundJobLogEvent(2,LogMessage(info,Stopping Play fork run ...))
+Got request: UnlistenToEvents()
+Reading next message from client.
+Sending msg to client activator-b82425de-c33e-4da9-abd5-caf3f532ce05: (26,ReceivedResponse())
+Got request: UnlistenToValue(AttributeKey[scala.collection.Seq[java.lang.String]]("discoveredMainClasses") in Scope(Build: file:/Users/Ger/Documents/Ger%20Repos/biciapp/, , Project: ProjectReference(file:/Users/Ger/Documents/Ger%20Repos/biciapp/,root), Config: compile))
+Reading next message from client.
+Got request: UnlistenToValue(AttributeKey[scala.Option[java.lang.String]]("mainClass") in Scope(Build: file:/Users/Ger/Documents/Ger%20Repos/biciapp/, , Project: ProjectReference(file:/Users/Ger/Documents/Ger%20Repos/biciapp/,root), Config: compile))
+Reading next message from client.
+Got request: UnlistenToBuildChange()
+Reading next message from client.
+Client activator-b82425de-c33e-4da9-abd5-caf3f532ce05 closed, java.net.SocketException: Connection reset, shutting down
+Stopping client.
+Client activator-b82425de-c33e-4da9-abd5-caf3f532ce05 thread exiting.
+Dropping message (27,ReceivedResponse()) to dead client activator-b82425de-c33e-4da9-abd5-caf3f532ce05
+Dropping message (28,ReceivedResponse()) to dead client activator-b82425de-c33e-4da9-abd5-caf3f532ce05
+Dropping message (29,ReceivedResponse()) to dead client activator-b82425de-c33e-4da9-abd5-caf3f532ce05
+Dropping message (0,ReceivedResponse()) to dead client activator-b82425de-c33e-4da9-abd5-caf3f532ce05

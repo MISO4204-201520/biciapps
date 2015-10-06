@@ -46,13 +46,13 @@ public class User {
     public void update() {
         User user = users().findOne("{email: #}", email).as(User.class);
         if (this.token != null){
-            user.token = this.token
+            user.token = this.token;
         }
         if (this.name != null){
-            user.name = this.name
+            user.name = this.name;
         }
         if (this.fbid != null){
-            user.fbid = this.fbid
+            user.fbid = this.fbid;
         }
         users().update("{email: '#'}", this.email).with(user);
     }
