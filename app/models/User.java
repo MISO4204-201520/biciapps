@@ -17,6 +17,12 @@ public class User {
     @JsonProperty("_id")
     public ObjectId id;
 
+    public String token;
+    
+    public String name;
+
+    public String fbid;
+
     public String email;
 
     public String pwd;
@@ -25,10 +31,28 @@ public class User {
         users().save(this);
     }
 
+    public void update() {
+        User user = users().findOne("{email: #}", email).as(User.class);
+        if (this.token != null){
+            user.token = this.token
+        }
+        if (this.name != null){
+            user.name = this.name
+        }
+        if (this.fbid != null){
+            user.fbid = this.fbid
+        }
+        users().update("{email: '#'}", this.email).with(user);
+    }
+
     public void remove() {
         users().remove(this.id);
     }
 
+    
+    public static User findByFBId(String fbid) {
+        return users().findOne("{fbid: #}", fbid).as(User.class);
+    }
     public static User findByEmail(String email) {
         return users().findOne("{email: #}", email).as(User.class);
     }

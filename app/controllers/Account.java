@@ -57,9 +57,36 @@ public class Account extends Controller {
             return redirect(controllers.routes.Application.deletePage());
         }
         else{
-        	flash("error", "Credenciales no validas");
+            flash("error", "Credenciales no validas");
             return redirect(controllers.routes.Account.loginPage());
         }
+    }
+    public Result loginFacebook() {
+        DynamicForm f = Form.form().bindFromRequest();
+        String token = f.get("token");
+        String name = f.get("name");
+        String fbid = f.get("id");
+        String email = f.get("email");
+
+        User userInfo = new User();
+        userInfo.token = token;
+        userInfo.name = name;
+        userInfo.fbid = fbid;
+        
+        
+        User existingUserFB = User.findByFBId(fbid);
+        User existingUser = User.findByEmail(email);
+        
+        if (existingUser != null){
+            userInfo.insert();
+        }else{
+            if (existingUserFB != null){
+                userInfo.update();
+            }
+        }
+        
+
+        return redirect(controllers.routes.Application.deletePage());
     }
 
     public Result logout() {
