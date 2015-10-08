@@ -11,3 +11,6 @@ bin/
 .cache-main
 .cache-tests
 .env
+
+.sbtserver
+project/.sbtserver
