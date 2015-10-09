@@ -60,6 +60,59 @@ public class Account extends Controller {
             return redirect(controllers.routes.Account.loginPage());
         }
     }
+
+    public Result storeRegisterPage() {
+        return ok(views.html.login.storeRegisterPage.render());
+    }
+
+    public Result storeRegister() {
+
+        DynamicForm f = Form.form().bindFromRequest();
+        String email = f.get("email");
+        String pwd = f.get("pwd");
+
+        User formUser = new User();
+        formUser.email = email;
+        formUser.pwd = pwd;
+        User existingUser = User.findByEmail(email);
+        if(existingUser != null){
+            flash("error", "Ya existe ese usuario");
+            return redirect(controllers.routes.Account.registerPage());
+        }
+
+        System.out.println("Se creo el usuario: " + email);
+        formUser.insert();
+        boolean loggedIn = loginTask(email, pwd);
+        if(loggedIn){
+            return redirect(controllers.routes.Application.deletePage());
+        }else{
+            return ok("No se pudo logear");
+        }
+
+
+    }
+
+    public Result storeLoginPage() {
+
+        return ok(views.html.login.storeLoginPage.render());
+    }
+
+    public Result storeLogin() {
+        DynamicForm f = Form.form().bindFromRequest();
+        String email = f.get("email");
+        String pwd = f.get("pwd");
+        boolean loggedIn = loginTask(email, pwd);
+        if(loggedIn){
+            return redirect(controllers.routes.Application.deletePage());
+        }
+        else{
+            flash("error", "Credenciales no validas");
+            return redirect(controllers.routes.Account.loginPage());
+        }
+    }
+
+
+
     public Result loginFacebook() {
         DynamicForm f = Form.form().bindFromRequest();
         String token = f.get("token");
