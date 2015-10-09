@@ -16,6 +16,9 @@
     <div class="container">
         <h2>Register</h2>
         <form class="form-horizontal" role="form" action="@routes.Account.register()" method="POST">
+            @if(flash.containsKey("error")) {
+                <div class="alert alert-danger" role="alert">@flash.get("error")</div>
+            }
             <div class="form-group">
                 <label class="control-label col-sm-2" for="email">Email:</label>
                 <div class="col-sm-10">

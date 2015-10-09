@@ -26,8 +26,8 @@ public class Account extends Controller {
         formUser.pwd = pwd;
         User existingUser = User.findByEmail(email);
         if(existingUser != null){
-            formUser.insert();
-            return ok("Already exists");
+            flash("error", "Ya existe ese usuario");
+            return redirect(controllers.routes.Account.registerPage());
         }
 
         System.out.println("Se creo el usuario: " + email);
