@@ -1,6 +1,7 @@
 package controllers;
 
-import models.User;
+import models.Business.UserBusiness;
+import models.entities.User;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
@@ -24,14 +25,14 @@ public class Account extends Controller {
         User formUser = new User();
         formUser.email = email;
         formUser.pwd = pwd;
-        User existingUser = User.findByEmail(email);
+        User existingUser = UserBusiness.findByEmail(email);
         if(existingUser != null){
             flash("error", "Ya existe ese usuario");
             return redirect(controllers.routes.Account.registerPage());
         }
 
         System.out.println("Se creo el usuario: " + email);
-        formUser.insert();
+        UserBusiness.insert(formUser);
         boolean loggedIn = loginTask(email, pwd);
         if(loggedIn){
             return redirect(controllers.routes.Application.deletePage());
@@ -74,22 +75,20 @@ public class Account extends Controller {
         User formUser = new User();
         formUser.email = email;
         formUser.pwd = pwd;
-        User existingUser = User.findByEmail(email);
+        User existingUser = UserBusiness.findByEmail(email);
         if(existingUser != null){
             flash("error", "Ya existe ese usuario");
             return redirect(controllers.routes.Account.registerPage());
         }
 
         System.out.println("Se creo el usuario: " + email);
-        formUser.insert();
+        UserBusiness.insert(formUser);
         boolean loggedIn = loginTask(email, pwd);
         if(loggedIn){
             return redirect(controllers.routes.Application.deletePage());
         }else{
             return ok("No se pudo logear");
         }
-
-
     }
 
     public Result storeLoginPage() {
@@ -126,14 +125,14 @@ public class Account extends Controller {
         userInfo.fbid = fbid;
         
         
-        User existingUserFB = User.findByFBId(fbid);
-        User existingUser = User.findByEmail(email);
+        User existingUserFB = UserBusiness.findByFBId(fbid);
+        User existingUser = UserBusiness.findByEmail(email);
         
         if (existingUser != null){
-            userInfo.insert();
+            UserBusiness.insert(userInfo);
         }else{
             if (existingUserFB != null){
-                userInfo.update();
+                UserBusiness.update(userInfo);
             }
         }
         
@@ -150,7 +149,7 @@ public class Account extends Controller {
 
     private boolean loginTask(String email, String pwd) {
         boolean loggedIn = false;
-        User user = User.findByEmailAndPwd(email, pwd);
+        User user = UserBusiness.findByEmailAndPwd(email, pwd);
         if(user != null){
             //Login consiste en agregar cookie:
             session(MySecureAuth.SESSION_ID, email);

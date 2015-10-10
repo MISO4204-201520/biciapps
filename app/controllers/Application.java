@@ -1,16 +1,7 @@
 package controllers;
 
-import java.net.UnknownHostException;
-
-import org.jongo.Jongo;
-
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientURI;
-
-import models.User;
+import models.Business.UserBusiness;
+import models.entities.User;
 import play.*;
 import play.mvc.*;
 import views.html.*;
@@ -28,7 +19,7 @@ public class Application extends Controller {
     public Result deletePage() {
 
         String listUsers = "";
-        Iterable<User> allUsers = User.users().find().as(User.class);
+        Iterable<User> allUsers = UserBusiness.users().find().as(User.class);
 
         for(User u : allUsers){
             listUsers = listUsers + ", " + u.email;

@@ -1,22 +1,22 @@
 package controllers.api;
-import java.util.List;
 
-import models.User;
+import models.Business.UserBusiness;
+import models.entities.User;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 public class UsuarioController extends Controller {
 
-	 public Result Usuarios()
+	 public Result users()
      {
-		 Iterable<User> usuarios = User.findAll();
-         return ok(Json.toJson(usuarios));
+		 Iterable<User> foundUsers = UserBusiness.findAll();
+         return ok(Json.toJson(foundUsers));
      }
 	
-	 public Result UsuarioPorCorreo(String correo)
+	 public Result userByEmail(String email)
      {
-		 User usuarios = User.findByEmail(correo);
-         return ok(Json.toJson(usuarios));
+		 User foundUser = UserBusiness.findByEmail(email);
+         return ok(Json.toJson(foundUser));
      }
 }

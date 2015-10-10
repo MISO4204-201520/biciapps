@@ -30,8 +30,8 @@ GET     /account/storeLoginPage			    controllers.Account.storeLoginPage()
 #-----------------------------------------
 # Services
 #-----------------------------------------
-GET     /api/usuarios                       controllers.api.UsuarioController.Usuarios()
-GET     /api/usuarios/:correo               controllers.api.UsuarioController.UsuarioPorCorreo(correo)
+GET     /api/usuarios                       controllers.api.UsuarioController.users()
+GET     /api/usuarios/:correo               controllers.api.UsuarioController.userByEmail(correo)
 
 
 # Map static resources from the /public folder to the /assets URL path
