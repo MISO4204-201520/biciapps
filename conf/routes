@@ -6,22 +6,19 @@
 # Users
 #-----------------------------------------
 # Home page
-GET     /                           	controllers.Application.index()
+GET     /                           	    controllers.Application.index()
 
-GET     /account/registerPage			controllers.Account.registerPage()
-POST    /account/register               controllers.Account.register()
-GET     /account/loginPage              controllers.Account.loginPage()
-POST    /account/login                  controllers.Account.login()
-GET     /account/logout                 controllers.Account.logout()
-GET    /loginFacebook                  controllers.Account.loginFacebook()
+GET     /account/registerPage			    controllers.Account.registerPage()
+POST    /account/register                   controllers.Account.register()
+GET     /account/loginPage                  controllers.Account.loginPage()
+POST    /account/login                      controllers.Account.login()
+GET     /account/logout                     controllers.Account.logout()
+GET     /loginFacebook                      controllers.Account.loginFacebook()
 
-GET     /deletePage              controllers.Application.deletePage()
+GET     /deletePage                         controllers.Application.deletePage()
 
 
-GET     /deletePage                     controllers.Application.deletePage()
-GET     /api/usuarios                   controllers.api.UsuarioController.Usuarios()
-GET     /api/usuarios/:correo           controllers.api.UsuarioController.UsuarioPorCorreo(correo)
-
+GET     /deletePage                         controllers.Application.deletePage()
 
 #-----------------------------------------
 # Store
@@ -29,6 +26,12 @@ GET     /api/usuarios/:correo           controllers.api.UsuarioController.Usuari
 GET     /store                              controllers.Store.homePage()
 GET     /account/storeRegisterPage			controllers.Account.storeRegisterPage()
 GET     /account/storeLoginPage			    controllers.Account.storeLoginPage()
+
+#-----------------------------------------
+# Services
+#-----------------------------------------
+GET     /api/usuarios                       controllers.api.UsuarioController.Usuarios()
+GET     /api/usuarios/:correo               controllers.api.UsuarioController.UsuarioPorCorreo(correo)
 
 
 # Map static resources from the /public folder to the /assets URL path

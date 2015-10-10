@@ -26,17 +26,7 @@ public class User {
     public String email;
 
     public String pwd;
-    
-    public String getName()
-    {
-         return name;
-    }
-    
-    public void setName(String name)
-    {
-         this.name = name;
-    }
-    
+
     public void insert() {
         users().save(this);
     }
@@ -59,10 +49,10 @@ public class User {
         users().remove(this.id);
     }
 
-    
     public static User findByFBId(String fbid) {
         return users().findOne("{fbid: #}", fbid).as(User.class);
     }
+
     public static User findByEmail(String email) {
         return users().findOne("{email: #}", email).as(User.class);
     }
