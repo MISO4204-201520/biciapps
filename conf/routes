@@ -33,6 +33,11 @@ GET     /account/storeLoginPage			    controllers.Account.storeLoginPage()
 GET     /api/usuarios                       controllers.api.UsuarioController.users()
 GET     /api/usuarios/:correo               controllers.api.UsuarioController.userByEmail(correo)
 
+#-----------------------------------------
+# Configurador Bicicletas
+#-----------------------------------------
+GET		/confBicicletas				 		controllers.ConfBicicletasController.inicializar()
+POST    /confBicicletas                		controllers.ConfBicicletasController.registrar()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
