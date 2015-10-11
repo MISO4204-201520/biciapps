@@ -7,6 +7,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+
 /**
  * Created by l on 2/10/15.
  */
@@ -26,7 +27,7 @@ public class Account extends Controller {
         formUser.email = email;
         formUser.pwd = pwd;
         User existingUser = UserBusiness.findByEmail(email);
-        if(existingUser != null){
+        if (existingUser != null) {
             flash("error", "Ya existe ese usuario");
             return redirect(controllers.routes.Account.registerPage());
         }
@@ -34,13 +35,11 @@ public class Account extends Controller {
         System.out.println("Se creo el usuario: " + email);
         UserBusiness.insert(formUser);
         boolean loggedIn = loginTask(email, pwd);
-        if(loggedIn){
+        if (loggedIn) {
             return redirect(controllers.routes.Application.deletePage());
-        }else{
+        } else {
             return ok("No se pudo logear");
         }
-
-
     }
 
     public Result loginPage() {

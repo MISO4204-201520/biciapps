@@ -1,5 +1,6 @@
 package models.business;
 
+import utils.Mail;
 import utils.Utilities;
 import models.dao.MongoManager;
 import org.bson.types.ObjectId;
@@ -19,6 +20,13 @@ public class UserBusiness {
     public static void insert(User user) {
         user.pwd = Utilities.encryptPass(user.pwd);
         users().save(user);
+
+        // TODO: Revisar si se puede hacer con AspectJ
+        String[] to = {user.email};
+        String subject = "Usuario Registrado Correctamente";
+        String body = "Bienvenido " + user.email.substring(0, user.email.indexOf("@")) + " al sistema biciapps.";
+
+        Mail.sendMail(to, subject, body);
     }
 
     public static void update(User user) {
