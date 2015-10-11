@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Business.UserBusiness;
+import models.business.UserBusiness;
 import models.entities.User;
 import play.*;
 import play.mvc.*;

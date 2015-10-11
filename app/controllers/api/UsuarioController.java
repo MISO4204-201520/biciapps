@@ -1,6 +1,6 @@
 package controllers.api;
 
-import models.Business.UserBusiness;
+import models.business.UserBusiness;
 import models.entities.User;
 import play.libs.Json;
 import play.mvc.Controller;
