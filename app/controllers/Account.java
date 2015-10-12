@@ -14,7 +14,7 @@ import play.mvc.Result;
 public class Account extends Controller {
 
     public Result registerPage() {
-        return ok(views.html.login.registerPage.render(""));
+        return ok(views.html.login.registerPage.render());
     }
 
     public Result register() {
@@ -44,7 +44,7 @@ public class Account extends Controller {
 
     public Result loginPage() {
 
-        return ok(views.html.login.loginPage.render(""));
+        return ok(views.html.login.loginPage.render());
     }
 
     public Result login() {
@@ -74,20 +74,21 @@ public class Account extends Controller {
         User formUser = new User();
         formUser.email = email;
         formUser.pwd = pwd;
-        User existingUser = UserBusiness.findByEmail(email);
-        if(existingUser != null){
-            flash("error", "Ya existe ese usuario");
-            return redirect(controllers.routes.Account.registerPage());
-        }
-
-        System.out.println("Se creo el usuario: " + email);
-        UserBusiness.insert(formUser);
-        boolean loggedIn = loginTask(email, pwd);
-        if(loggedIn){
-            return redirect(controllers.routes.Application.deletePage());
-        }else{
-            return ok("No se pudo logear");
-        }
+//        User existingUser = UserBusiness.findByEmail(email);
+//        if(existingUser != null){
+//            flash("error", "Ya existe ese usuario");
+//            return redirect(controllers.routes.Account.registerPage());
+//        }
+//
+//        System.out.println("Se creo el usuario: " + email);
+//        UserBusiness.insert(formUser);
+//        boolean loggedIn = loginTask(email, pwd);
+//        if(loggedIn){
+//            return redirect(controllers.routes.Application.deletePage());
+//        }else{
+//            return ok("No se pudo logear");
+//        }
+        return ok("Falta impl");
     }
 
     public Result storeLoginPage() {
@@ -99,14 +100,15 @@ public class Account extends Controller {
         DynamicForm f = Form.form().bindFromRequest();
         String email = f.get("email");
         String pwd = f.get("pwd");
-        boolean loggedIn = loginTask(email, pwd);
-        if(loggedIn){
-            return redirect(controllers.routes.Application.deletePage());
-        }
-        else{
-            flash("error", "Credenciales no validas");
-            return redirect(controllers.routes.Account.loginPage());
-        }
+//        boolean loggedIn = loginTask(email, pwd);
+//        if(loggedIn){
+//            return redirect(controllers.routes.Application.deletePage());
+//        }
+//        else{
+//            flash("error", "Credenciales no validas");
+//            return redirect(controllers.routes.Account.loginPage());
+//        }
+        return ok("Falta implementar");
     }
 
 

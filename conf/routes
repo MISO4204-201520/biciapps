@@ -26,6 +26,9 @@ GET     /deletePage                         controllers.Application.deletePage()
 GET     /store                              controllers.Store.homePage()
 GET     /account/storeRegisterPage			controllers.Account.storeRegisterPage()
 GET     /account/storeLoginPage			    controllers.Account.storeLoginPage()
+POST    /account/storeLogin                 controllers.Account.storeLogin()
+POST    /account/storeRegister              controllers.Account.storeRegister()
+
 
 #-----------------------------------------
 # Services

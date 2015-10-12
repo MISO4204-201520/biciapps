@@ -2,4 +2,6 @@
 
 @import navbar.baseUnloggedNavbar
 
-@baseUnloggedNavbar(routes.Account.registerPage().toString())(routes.Account.loginPage().toString())
+@baseUnloggedNavbar{
+    <a class="navbar-brand" href="/">Biciapps</a>
+}(routes.Account.registerPage().toString())(routes.Account.loginPage().toString())

@@ -1,11 +1,48 @@
 @()
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
- store register
-</body>
-</html>
+@import navbar._
+
+@basicEmptyBootstrap{
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BiciApps</title>
+    <link href="@routes.Assets.versioned("stylesheets/signin.css")" rel="stylesheet">
+
+} {
+
+    @storeUnloggedNavbar()
+
+    <div class="container">
+        <h2>Register</h2>
+        <form class="form-horizontal" role="form" action="@routes.Account.storeRegister()" method="POST">
+            @if(flash.containsKey("error")) {
+            <div class="alert alert-danger" role="alert">@flash.get("error")</div>
+            }
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="email">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label><input type="checkbox"> Remember me</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <input type="submit" value="Submit" class="btn btn-default">
+                </div>
+            </div>
+        </form>
+    </div> <!-- /container -->
+
+}
