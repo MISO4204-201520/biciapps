@@ -9,7 +9,7 @@ import play.mvc.Result;
 
 /**
  * Created by Jhon Gutierrez
- * Modulo Configuración de Bicicletas
+ * Modulo Configuracin de Bicicletas
  */
 public class ConfBicicletasController extends Controller {
 	

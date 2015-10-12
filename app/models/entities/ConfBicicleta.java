@@ -5,7 +5,7 @@ import org.bson.types.ObjectId;
 
 /**
  * Created by Jhon Gutierrez
- * Modulo Configuración de Bicicletas
+ * Modulo ConfiguraciÃ³n de Bicicletas
  */
 public class ConfBicicleta {
 

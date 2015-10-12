@@ -8,7 +8,7 @@ import org.jongo.MongoCollection;
 
 /**
  * Created by Jhon Gutierrez
- * Modulo Configuración de Bicicletas
+ * Modulo ConfiguraciÃ³n de Bicicletas
  */
 public class ConfBicicletasBusiness {
 
