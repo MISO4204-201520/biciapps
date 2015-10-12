@@ -10,7 +10,11 @@ import play.mvc.Result;
 public class Store extends Controller {
 
     public Result homePage() {
-//        String url = routes.Store.homePage().toString()l
+//        String url = routes.Store.homePage().toString();
         return ok(views.html.store.homePage.render());
+    }
+
+    public Result deleteStorePage() {
+        return ok(views.html.store.deleteStorePage.render());
     }
 }

@@ -29,6 +29,7 @@ GET     /account/storeLoginPage			    controllers.Account.storeLoginPage()
 POST    /account/storeLogin                 controllers.Account.storeLogin()
 POST    /account/storeRegister              controllers.Account.storeRegister()
 
+GET     /deleteStorePage                    controllers.Store.deleteStorePage()
 
 #-----------------------------------------
 # Services
