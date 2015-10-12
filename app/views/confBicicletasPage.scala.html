@@ -12,38 +12,68 @@
 } {
 
     @clientUnloggedNavbar()
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Configurar Bicicleta</h2>
+        </div>
+    </div>
 
     <div class="container">
-        <h2>Configurar Bicicleta</h2>
         <form class="form-horizontal" role="form" 
         	action="@routes.ConfBicicletasController.registrar()" method="POST">
-        
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="nombre">Tienda</label>
+        	
+        	
+        	<div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Tienda de Preferencia: </label>
                 <div class="col-sm-10">
-                    <input id="tienda"
-                    name="tienda"
-                    class="form-control"                  
-                    placeholder="Nombre de Tienda">
+                    <select name="opciones" size="1">	
+						<option value="1">Cannondale</option> 
+						<option value="2">Bike House Bogota</option> 
+						<option value="3">Bicicletas Strongman</option> 
+					</select> 
                 </div>
             </div>
             
             <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Descripcion</label>
+                <label class="control-label col-sm-2" for="pwd">Nombre Personalizado</label>
                 <div class="col-sm-10">
-                    <input id="descripcion" 
-                    name="descripcion" 
+                    <input id="nombrePersonalizado" 
+                    name="nombrePersonalizado" 
                     class="form-control" 
-                    placeholder="Tipo de Permiso">
+                    placeholder="Nombre Personalizado para su Bicicleta">
+                </div>
+            </div>
+      
+       		<div class="form-group">
+                <label class="control-label col-sm-2" for="pwd">Partes a Incluir:</label>
+                <div class="col-sm-10">
+            
+                 	<table id="tablaPartes">
+					  <tr>
+					    <td>Row1 cell1</td>
+					  </tr>
+					</table>
+					<br>
+					
+					<button onclick="myFunction()">Incluir Parte</button>
+					
+					<script>
+					function myFunction() {
+					    var table = document.getElementById("tablaPartes");
+					    var row = table.insertRow(0);
+					    var cell1 = row.insertCell(0);
+					    var cell2 = row.insertCell(1);
+					    cell1.innerHTML = "Item";
+					}
+					</script>
                 </div>
             </div>
     
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <input type="submit" value="Crear" class="btn btn-default">
+                    <input type="submit" value="Crear y Enviar" class="btn btn-default">
                 </div>
-            </div>
+            </div>   
         </form>
     </div> 
-
 }

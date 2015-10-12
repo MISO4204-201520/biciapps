@@ -11,7 +11,7 @@ public class ConfBicicleta {
 
     @JsonProperty("_id")
     private ObjectId id;
-    private String tienda;    
+	private Tienda tienda;    
     private String descripcionConf;
 	private String nombrePersonalizado;
 
@@ -21,10 +21,10 @@ public class ConfBicicleta {
 	public void setId(ObjectId id) {
 		this.id = id;
 	}
-	public String getTienda() {
+    public Tienda getTienda() {
 		return tienda;
 	}
-	public void setTienda(String tienda) {
+	public void setTienda(Tienda tienda) {
 		this.tienda = tienda;
 	}
 	public String getDescripcionConf() {
