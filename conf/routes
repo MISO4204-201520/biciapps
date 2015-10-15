@@ -37,9 +37,7 @@ GET     /deleteStorePage                    controllers.Store.deleteStorePage()
 GET     /context                            controllers.Store.contextTestPage()
 
 #REST
-POST    /contexto/usuario                    controllers.Store.crearUsuario()
-PUT     /contexto/usuario/:idUsuario         controllers.Store.actualizarUsuario(idUsuario: String)
-GET     /contexto/promocion                  controllers.Store.darPromociones(idUsuario: String)
+POST    /contexto/promocion                  controllers.Store.darPromociones()
 
 #-----------------------------------------
 # Services

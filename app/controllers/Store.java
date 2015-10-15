@@ -1,7 +1,12 @@
 package controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import models.dao.DAOContexto;
-import models.entities.UsuarioContexto;
+import models.dao.DAOContexto.InfoUsuario;
+import models.entities.PromocionContexto;
+import models.form.PromocionV;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -33,66 +38,55 @@ public class Store extends Controller {
         return ok(views.html.store.contextTestPage.render());
     }
 
-
     @BodyParser.Of(BodyParser.Json.class)
-    public Result crearUsuario() {
-        JsonNode json = request().body().asJson();
-        UsuarioContexto usuario = DAOContexto.darUsuarioDadoJson(json);
-        if(usuario == null){
+    public Result darPromociones() {
+    	JsonNode json = request().body().asJson();
+    	System.out.println("Called: " + json);
+    	InfoUsuario infoUsuario = darInfoUsuarioDadoJson(json);
+        if(infoUsuario == null){
         	return badRequest("Invalid");        	
         }
+    	
+        List<PromocionContexto> promociones = DAOContexto.getPromocionesUsuario(infoUsuario);
+        List<PromocionV> promocionesV = toPromocionesV(promociones);
         
-        usuario = DAOContexto.guardarUsuario(usuario);
-        String idUsuario = usuario.getIdUsuario();
-        ObjectNode newUserId = Json.newObject();
-        newUserId.put("idUsuario", idUsuario);
-        return ok(newUserId);
+        return ok(Json.toJson(promocionesV));
     }
 
-    @BodyParser.Of(BodyParser.Json.class)
-    public Result actualizarUsuario(String idUsuario) {
+    //-------------------------------
+    //Helpers
+    //------------------------------
+    public static InfoUsuario darInfoUsuarioDadoJson(JsonNode json){
 
-        JsonNode json = request().body().asJson();
-        System.out.println("Called: " + json +", "+ idUsuario);
-//        String name = json.findPath("lat").textValue();
-//        if(name == null) {
-//            return badRequest("Missing parameter [name]");
-//        } else {
-//            return ok("Hello " + name);
-//        }
-
-//        result.put("a", "bbbbbbbb");
-        return ok();
+    	double latitud = json.findPath("latitud").asDouble();
+    	double longitud = json.findPath("longitud").asDouble();
+    	System.out.println(latitud + "," + longitud);
+    	//      if(name == null) {
+    	//          return badRequest("Missing parameter [name]");
+    	//      } else {
+    	//          return ok("Hello " + name);
+    	//      }
+    	InfoUsuario usuario = new InfoUsuario();
+    	usuario.setLongitud(longitud);
+    	usuario.setLatitud(latitud);
+    	return usuario;
     }
-
-    public Result darPromociones(String idUsuario) {
-        System.out.println("Called: " + idUsuario);
-        ArrayNode result = getPromocionesUsuario(idUsuario);
-        return ok(result);
+    
+    public List<PromocionV> toPromocionesV(List<PromocionContexto> promociones){
+    	List<PromocionV> promocionesV = new ArrayList();
+		
+    	for(PromocionContexto promocion: promociones){
+    		PromocionV p = new PromocionV();
+        	p.setTitulo(promocion.getTitulo());
+        	p.setDescripcion(promocion.getDescripcion());
+        	p.setId(promocion.getId());
+        	p.setTienda(promocion.getTienda());
+        	p.setLatitud(promocion.getLatitud());
+        	p.setLongitud(promocion.getLongitud());
+        	promocionesV.add(p);
+    	}
+        return promocionesV;
+    
     }
-
-    private ArrayNode getPromocionesUsuario(String idUsuario) {
-        ArrayNode result = Json.newArray();
-        ObjectNode promotion = Json.newObject();
-
-        promotion.put("titulo", "promotion");
-        promotion.put("descripcion", "desc");
-        promotion.put("tienda", "tienda");
-        promotion.put("longitud", 10);
-        promotion.put("latitud", 10);
-        promotion.put("idPromocion", 101);
-        result.insert(0, promotion);
-
-        ObjectNode promotion2 = Json.newObject();
-        promotion2.put("titulo", "promotion2");
-        promotion2.put("descripcion", "desc2");
-        promotion2.put("tienda", "tienda2");
-        promotion2.put("longitud", 20);
-        promotion2.put("latitud", 20);
-        promotion2.put("idPromocion", 102);
-        result.insert(1, promotion2);
-        return result;
-    }
-
 
 }
