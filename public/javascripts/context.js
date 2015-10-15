@@ -24,7 +24,7 @@ function buscarPromociones(){
 function restGetPromociones(data){
     var url = "/contexto/promocion";
     $.ajax({
-          type: "POST",
+          type: "GET",
           url: url,
           contentType: 'application/json',
           data: JSON.stringify(data),

@@ -37,7 +37,7 @@ GET     /deleteStorePage                    controllers.Store.deleteStorePage()
 GET     /context                            controllers.Store.contextTestPage()
 
 #REST
-POST    /contexto/promocion                  controllers.Store.darPromociones()
+GET 	/contexto/promocion                  controllers.Store.darPromociones()
 GET		/contexto/test						 controllers.Store.test()
 
 #-----------------------------------------

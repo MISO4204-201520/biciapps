@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import models.dao.DAOContexto;
 import models.dao.DAOContexto.QueryParametersPromocion;
@@ -61,10 +62,16 @@ public class Store extends Controller {
     	DAOContexto.savePromocion(p2);
         return ok("Test");
     }
-    
-    @BodyParser.Of(BodyParser.Json.class)
+
+//POST    
+//    @BodyParser.Of(BodyParser.Json.class)
     public Result darPromociones() {
-    	JsonNode json = request().body().asJson();
+    	Map<String, String[]> queryString = request().queryString();
+    	String jString = queryString.keySet().iterator().next();
+    	
+    	JsonNode json = play.libs.Json.parse(jString);
+    	System.out.println("JSON" +json);
+//    	JsonNode json = request().body().asJson(); //POST
     	System.out.println("Called: " + json);
     	QueryParametersPromocion infoUsuario = darInfoUsuarioDadoJson(json);
         if(infoUsuario == null){
