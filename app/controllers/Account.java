@@ -20,12 +20,20 @@ public class Account extends Controller {
     public Result register() {
 
         DynamicForm f = Form.form().bindFromRequest();
+        String nombres = f.get("nombres");
+        String apellidos = f.get("apellidos");
+        String sexo = f.get("sexo");
         String email = f.get("email");
         String pwd = f.get("pwd");
 
+
         User formUser = new User();
+        formUser.nombres = nombres;
+        formUser.apellidos = apellidos;
+        formUser.sexo = sexo;
         formUser.email = email;
         formUser.pwd = pwd;
+
         User existingUser = UserBusiness.findByEmail(email);
         if (existingUser != null) {
             flash("error", "Ya existe ese usuario");
@@ -120,7 +128,7 @@ public class Account extends Controller {
 
         User userInfo = new User();
         userInfo.token = token;
-        userInfo.name = name;
+        userInfo.nombres = name;
         userInfo.fbid = fbid;
         
         

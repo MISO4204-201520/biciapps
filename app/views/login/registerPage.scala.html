@@ -1,49 +1,82 @@
-@()
+    @()
 
-@import navbar._
+    @import navbar._
 
-@basicEmptyBootstrap{
+    @basicEmptyBootstrap{
 
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>BiciApps</title>
-    <link href="@routes.Assets.versioned("stylesheets/signin.css")" rel="stylesheet">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>BiciApps</title>
+        <link href="@routes.Assets.versioned("stylesheets/signin.css")" rel="stylesheet">
 
-} {
+    } {
 
-    @clientUnloggedNavbar()
+        @clientUnloggedNavbar()
 
-    <div class="container">
-        <h2>Register</h2>
-        <form class="form-horizontal" role="form" action="@routes.Account.register()" method="POST">
-            @if(flash.containsKey("error")) {
-                <div class="alert alert-danger" role="alert">@flash.get("error")</div>
-            }
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="email">Email:</label>
-                <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Password:</label>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                        <label><input type="checkbox"> Remember me</label>
+        <br>
+
+        <div class="container">
+            <h2>Reg&#237;strate</h2>
+            <br>
+            <form class="form-horizontal" role="form" action="@routes.Account.register()" method="POST">
+                @if(flash.containsKey("error")) {
+                    <div class="alert alert-danger" role="alert">@flash.get("error")</div>
+                }
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nombres">Nombres:</label>
+                        <div class="col-md-4">
+                        <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres" required>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <input type="submit" value="Submit" class="btn btn-default">
-                </div>
-            </div>
-        </form>
-    </div> <!-- /container -->
 
-}
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="apellidos">Sexo:</label>
+                    <div class="col-md-4">
+                        <input type="radio" name="sexo" value="masculino" checked>Masculino
+                        <br>
+                        <input type="radio" name="sexo" value="femenino">Femenino
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="email">Usuario:</label>
+                    <div class="col-md-4">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Correo electr&#243;nico" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Contrase&#241;a:</label>
+                    <div class="col-md-4">
+                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Contrase&#241;a" required onchange="validarContrasena();">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd1">Confirmar contrase&#241;a:</label>
+                    <div class="col-md-4">
+                        <input type="password" class="form-control" id="pwd1" name="pwd1" placeholder="Confirmar contrase&#241;a" required onkeyup="validarContrasena();">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label><input type="checkbox"> No cerrar sesi&#243;n</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" value="Abrir cuenta" class="btn btn-default">
+                    </div>
+                </div>
+            </form>
+        </div> <!-- /container -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="@routes.Assets.versioned("javascripts/inicioSesion.js")"></script>
+    }

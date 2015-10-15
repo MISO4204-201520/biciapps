@@ -8,15 +8,18 @@ import org.bson.types.ObjectId;
  */
 public class User {
 
-
     @JsonProperty("_id")
     public ObjectId id;
 
     public String token;
-    
-    public String name;
 
     public String fbid;
+
+    public String nombres;
+
+    public String apellidos;
+
+    public String sexo;
 
     public String email;
 

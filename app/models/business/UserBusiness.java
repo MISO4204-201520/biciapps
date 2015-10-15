@@ -34,8 +34,8 @@ public class UserBusiness {
         if (user.token != null){
             userDb.token = user.token;
         }
-        if (user.name != null){
-            userDb.name = user.name;
+        if (user.nombres != null){
+            userDb.nombres = user.nombres;
         }
         if (user.fbid != null){
             userDb.fbid = user.fbid;
