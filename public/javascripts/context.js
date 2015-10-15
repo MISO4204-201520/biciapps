@@ -1,56 +1,116 @@
 $(document).ready(function () {
-    console.log("Hello2");
-    $( "#sendBtn" ).click(sendData);
-    $( "#findBtn" ).click(findPromotion);
+    console.log("Ready");
+    $( "#createUserBtn" ).click(crearUsuario);
+    $( "#updateUserBtn" ).click(actualizarUsuario);
+    $( "#findPromotionsBtn" ).click(buscarPromociones);
 });
 
-function sendData(){
+/**Create User ---------------------*/
+function crearUsuario(){
     var data = {};
     data.longitude = $("#lat").val();
     data.latitude = $("#lon").val();
-    postNewData(data);
+    restPostUsuario(data);
+}
+function restPostUsuario(data){
+    var url = "/contexto/usuario";
+    $.ajax({
+          contentType: 'application/json',
+          type: "POST",
+          url: url,
+          data: JSON.stringify(data),
+          success: successPostUsuario,
+          failure: failureCall,
+          dataType: "json",
+          statusCode: {
+                400:badRequestPostUsuario
+            },
+        });
 }
 
-function findPromotion(){
-    getPromotions();
+function successPostUsuario( data, textStatus, jqXHR ){
+    console.log("userId: " + data.userId);
 }
 
-function getPromotions(){
-    var url = "/context/promotion";
-    var data = {id:"1at"};
+function badRequestPostUsuario( data, textStatus, jqXHR ){
+    console.log("Invalid " + data);
+}
+
+
+/**Update User ---------------------*/
+function actualizarUsuario(){
+    var data = {};
+    data.longitude = $("#lat").val();
+    data.latitude = $("#lon").val();
+    restPutUsuario(10, data);
+}
+function restPutUsuario(userId, data){
+    var url = "/contexto/usuario/" + userId;
+    $.ajax({
+          contentType: 'application/json',
+          type: "PUT",
+          url: url,
+          data: JSON.stringify(data),
+          success: successPutUsuario,
+          processData: false,
+          failure: failureCall,
+          dataType: "json",
+          statusCode: {
+                400:badRequestPutUsuario,
+                404:notFoundPutUsuario
+            },
+        });
+}
+
+function successPutUsuario( data, textStatus, jqXHR ){
+    console.log("userId: " + data.userId);
+}
+
+function badRequestPutUsuario( data, textStatus, jqXHR ){
+    console.log("Invalid " + data);
+}
+
+function notFoundPutUsuario( data, textStatus, jqXHR ){
+    console.log("Not Found " + data);
+}
+
+
+/**Get Promotion ---------------------*/
+
+function buscarPromociones(){
+    restGetPromociones();
+}
+
+function restGetPromociones(){
+    var url = "/contexto/promocion";
+    var data = {idUsuario:"1at"};
     $.ajax({
           type: "GET",
           url: url,
           data: data,
-          success: successCall,
+          success: successGetPromociones,
           failure: failureCall,
+          statusCode: {
+                404:notFoundGetPromociones
+            },
         });
 }
 
 
-function successCall( data, textStatus, jqXHR ){
-    for(var i = 0; i < data.length; i ++){
-        console.log("title: " + data[i].title);
-    }
+function successGetPromociones( data, textStatus, jqXHR ){
+     var items = [];
+        $.each(data, function(i, item) {
+              items.push('<li>' + '<b>' + item.titulo + '('+item.tienda+'): '+ '</b>' + item.descripcion + '</li>');
+       });  // close each()
+       $('#listaPromociones li').remove();
+       $('#listaPromociones').append( items.join('') );
 }
+
+function notFoundGetPromociones( data, textStatus, jqXHR ){
+    console.log("Not Found " + data);
+}
+
 
 function failureCall(errMsg){
     console.log("Err:" + errMsg);
 }
-
-function postNewData(data){
-    var url = "/context/promotion/data" + "?id=";
-    var x = {foundation: "Mozilla", model: "box", week: 45, transport: "car", month: 7};
-    $.ajax({
-          contentType: 'application/json',
-          type: "POST",
-          url: url+3,
-          data: JSON.stringify(data),
-          success: function(){
-                       console.log("Success ");
-                   },
-          failure: failureCall,
-          //dataType: "json"
-        });
-}
-

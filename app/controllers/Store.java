@@ -29,26 +29,31 @@ public class Store extends Controller {
         return ok(views.html.store.contextTestPage.render());
     }
 
-    //@BodyParser.Of(BodyParser.Json.class)
-    public Result getPromotion(String id) {
-        System.out.println("Called: " + id);
-        ArrayNode result = Json.newArray();
-        ObjectNode promotion = Json.newObject();
-        promotion.put("title", "promotion");
-        result.insert(0, promotion);
 
-        ObjectNode promotion2 = Json.newObject();
-        promotion2.put("title", "title 2");
-        result.insert(1, promotion2);
+    @BodyParser.Of(BodyParser.Json.class)
+    public Result crearUsuario() {
 
-        return ok(result);
+        JsonNode json = request().body().asJson();
+        System.out.println("Called: " + json);
+//        String name = json.findPath("lat").textValue();
+//        if(name == null) {
+//            return badRequest("Missing parameter [name]");
+//        } else {
+//            return ok("Hello " + name);
+//        }
+
+        String userId = "id1";
+        ObjectNode newUserId = Json.newObject();
+        newUserId.put("userId", userId);
+//        return ok(newUserId);
+        return badRequest("Invalid");
     }
 
     @BodyParser.Of(BodyParser.Json.class)
-    public Result sendData(String id) {
+    public Result actualizarUsuario(String userId) {
 
         JsonNode json = request().body().asJson();
-        System.out.println("Called: " + json +", "+ id);
+        System.out.println("Called: " + json +", "+ userId);
 //        String name = json.findPath("lat").textValue();
 //        if(name == null) {
 //            return badRequest("Missing parameter [name]");
@@ -59,4 +64,35 @@ public class Store extends Controller {
 //        result.put("a", "bbbbbbbb");
         return ok();
     }
+
+    public Result darPromociones(String userId) {
+        System.out.println("Called: " + userId);
+        ArrayNode result = getPromocionesUsuario(userId);
+        return ok(result);
+    }
+
+    private ArrayNode getPromocionesUsuario(String idUsuario) {
+        ArrayNode result = Json.newArray();
+        ObjectNode promotion = Json.newObject();
+
+        promotion.put("titulo", "promotion");
+        promotion.put("descripcion", "desc");
+        promotion.put("tienda", "tienda");
+        promotion.put("longitud", 10);
+        promotion.put("latitud", 10);
+        promotion.put("idPromocion", 101);
+        result.insert(0, promotion);
+
+        ObjectNode promotion2 = Json.newObject();
+        promotion2.put("titulo", "promotion2");
+        promotion2.put("descripcion", "desc2");
+        promotion2.put("tienda", "tienda2");
+        promotion2.put("longitud", 20);
+        promotion2.put("latitud", 20);
+        promotion2.put("idPromocion", 102);
+        result.insert(1, promotion2);
+        return result;
+    }
+
+
 }
