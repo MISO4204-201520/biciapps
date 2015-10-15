@@ -16,8 +16,7 @@ public class PromocionContexto {
 	private String tienda;
     private String tiendaId;
     
-    private double longitud;
-    private double latitud;
+    private double [] posicion;
     
     public PromocionContexto(){
     	
@@ -62,22 +61,15 @@ public class PromocionContexto {
 	public void setTiendaId(String tiendaId) {
 		this.tiendaId = tiendaId;
 	}
-
-	public double getLongitud() {
-		return longitud;
+	
+	public double[] getPosicion() {
+		return posicion;
 	}
 
-	public void setLongitud(double longitud) {
-		this.longitud = longitud;
+	public void setPosicion(double[] posicion) {
+		this.posicion = posicion;
 	}
-
-	public double getLatitud() {
-		return latitud;
-	}
-
-	public void setLatitud(double latitud) {
-		this.latitud = latitud;
-	}
+	
     
     
 }

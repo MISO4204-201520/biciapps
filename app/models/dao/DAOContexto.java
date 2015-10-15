@@ -21,6 +21,10 @@ public class DAOContexto {
 	private static MongoCollection promociones = 
 			MongoManager.jongo.getCollection(PROMOCIONES_CONTEXTO);
 	
+	static{
+		promociones.ensureIndex("{posicion: '2dsphere'}");
+	}
+	
 	public static void removeAll(){
 		promociones.remove("{}");
 	}
@@ -29,25 +33,41 @@ public class DAOContexto {
 		promociones.save(promocion);
 	}
 	
-	public static List<PromocionContexto> getPromocionesUsuario(InfoUsuario infoUsuario) {
+	public static List<PromocionContexto> getPromocionesUsuario(QueryParametersPromocion infoUsuario) {
 		
-		List<PromocionContexto> res = new ArrayList<>();
+		List<PromocionContexto> res = new ArrayList<>();	
+//		double longitud = -122.252696;
+//		double latitud = 37.900933;
 		
-		MongoCursor<PromocionContexto> cursor = promociones.find("{}").as(PromocionContexto.class);
+		double longitud = infoUsuario.getLongitud();
+		double latitud = infoUsuario.getLatitud();
+		double distanciaMaxima = infoUsuario.getMaxDistancia();
+		System.out.println("["+longitud + "," + latitud + "]" + distanciaMaxima);
+		
+		MongoCursor<PromocionContexto> cursor = promociones.find(
+				"{posicion: "+
+						"{$near : {$geometry : {type: 'Point', " + "coordinates: [#, #] },"+
+										" $maxDistance: # "+
+								"}"+
+						"}"+
+				"}",longitud, latitud, distanciaMaxima
+				).as(PromocionContexto.class);
 		
 		for(PromocionContexto pc: cursor){
 			res.add(pc);
 		}
+		System.out.println("NUM promociones: " + res.size());
 		return res;
     }
 
 	
 	
-	public static class InfoUsuario {
+	public static class QueryParametersPromocion {
 		private double latitud;
 		private double longitud;
+		private double maxDistancia;	//metros
 		
-		public InfoUsuario(){
+		public QueryParametersPromocion(){
 			
 		}
 
@@ -66,6 +86,15 @@ public class DAOContexto {
 		public void setLongitud(double longitud) {
 			this.longitud = longitud;
 		}
+
+		public double getMaxDistancia() {
+			return maxDistancia;
+		}
+
+		public void setMaxDistancia(double maxDistancia) {
+			this.maxDistancia = maxDistancia;
+		}
+		
 		
 	}
 

@@ -15,8 +15,9 @@ function darIdUsuario(){
 
 function buscarPromociones(){
 	var data = {};
-    data.longitud = $("#lat").val();
-    data.latitud = $("#lon").val();
+    data.longitud = $("#lon").val();
+    data.latitud = $("#lat").val();
+    data.maxDistancia = $("#maxDistancia").val();
 	restGetPromociones(data);
 }
 
