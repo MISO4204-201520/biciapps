@@ -38,6 +38,30 @@ public class Store extends Controller {
         return ok(views.html.store.contextTestPage.render());
     }
 
+    public Result test() {
+    	
+    	DAOContexto.removeAll();
+    	
+    	PromocionContexto p1 = new PromocionContexto();
+		p1.setTitulo("titulo1");
+    	p1.setDescripcion("descripcion1");
+    	p1.setTienda("Tienda1");
+    	p1.setTiendaId("idtienda1");
+    	p1.setLatitud(11);
+    	p1.setLongitud(21);
+    	DAOContexto.savePromocion(p1);
+    	
+    	PromocionContexto p2 = new PromocionContexto();
+		p2.setTitulo("titulo2");
+    	p2.setDescripcion("descripcion2");
+    	p2.setTienda("Tienda2");
+    	p2.setTiendaId("idtienda2");
+    	p2.setLatitud(12);
+    	p2.setLongitud(22);
+    	DAOContexto.savePromocion(p2);
+        return ok("Test");
+    }
+    
     @BodyParser.Of(BodyParser.Json.class)
     public Result darPromociones() {
     	JsonNode json = request().body().asJson();

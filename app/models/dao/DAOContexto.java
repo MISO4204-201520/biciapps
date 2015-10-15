@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jongo.MongoCollection;
+import org.jongo.MongoCursor;
 
 import play.libs.Json;
 
@@ -20,36 +21,24 @@ public class DAOContexto {
 	private static MongoCollection promociones = 
 			MongoManager.jongo.getCollection(PROMOCIONES_CONTEXTO);
 	
-//	public static PromocionContexto guardarUsuario(PromocionContexto usuario){
-//		usuarios.save(usuario);
-//		return usuario;
-//	}
+	public static void removeAll(){
+		promociones.remove("{}");
+	}
+	
+	public static void savePromocion(PromocionContexto promocion){
+		promociones.save(promocion);
+	}
 	
 	public static List<PromocionContexto> getPromocionesUsuario(InfoUsuario infoUsuario) {
 		
-		List<PromocionContexto> promociones = new ArrayList<>();
+		List<PromocionContexto> res = new ArrayList<>();
 		
-		PromocionContexto p1 = new PromocionContexto();
-		p1.setTitulo("titulo1");
-    	p1.setDescripcion("descripcion1");
-    	p1.setId("id");
-    	p1.setTienda("Tienda1");
-    	p1.setTiendaId("idtienda1");
-    	p1.setLatitud(11);
-    	p1.setLongitud(21);
-    	promociones.add(p1);
-    	
-    	PromocionContexto p2 = new PromocionContexto();
-		p2.setTitulo("titulo2");
-    	p2.setDescripcion("descripcion2");
-    	p2.setId("id2");
-    	p2.setTienda("Tienda2");
-    	p2.setTiendaId("idtienda2");
-    	p2.setLatitud(12);
-    	p2.setLongitud(22);
-    	promociones.add(p2);
-        
-        return promociones;
+		MongoCursor<PromocionContexto> cursor = promociones.find("{}").as(PromocionContexto.class);
+		
+		for(PromocionContexto pc: cursor){
+			res.add(pc);
+		}
+		return res;
     }
 
 	
