@@ -1,8 +1,12 @@
 package controllers;
 
+import models.dao.DAOContexto;
+import models.entities.UsuarioContexto;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import play.Play;
 import play.libs.Json;
 import play.mvc.BodyParser;
@@ -32,21 +36,17 @@ public class Store extends Controller {
 
     @BodyParser.Of(BodyParser.Json.class)
     public Result crearUsuario() {
-
         JsonNode json = request().body().asJson();
-        System.out.println("Called: " + json);
-//        String name = json.findPath("lat").textValue();
-//        if(name == null) {
-//            return badRequest("Missing parameter [name]");
-//        } else {
-//            return ok("Hello " + name);
-//        }
-
-        String idUsuario = "id1";
+        UsuarioContexto usuario = DAOContexto.darUsuarioDadoJson(json);
+        if(usuario == null){
+        	return badRequest("Invalid");        	
+        }
+        
+        usuario = DAOContexto.guardarUsuario(usuario);
+        String idUsuario = usuario.getIdUsuario();
         ObjectNode newUserId = Json.newObject();
         newUserId.put("idUsuario", idUsuario);
         return ok(newUserId);
-//        return badRequest("Invalid");
     }
 
     @BodyParser.Of(BodyParser.Json.class)
