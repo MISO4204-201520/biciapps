@@ -1,0 +1,25 @@
+@()
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <h1>Test context</h1>
+    @**routes.Store.getPromotion()*@
+    <form action="">
+        <input id="lat" type="text" name="lat">
+        <input id="lon" type="text" name="lon">
+    </form>
+    <button id="sendBtn" >Send</button>
+    <button id="findBtn" >Find</button>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="@routes.Assets.versioned("javascripts/context.js")"></script>
+</body>
+</html>

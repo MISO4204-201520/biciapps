@@ -32,6 +32,14 @@ POST    /account/storeRegister              controllers.Account.storeRegister()
 GET     /deleteStorePage                    controllers.Store.deleteStorePage()
 
 #-----------------------------------------
+#Context
+#-----------------------------------------
+GET     /context                            controllers.Store.contextTestPage()
+GET     /context/promotion                  controllers.Store.getPromotion(id: String)
+POST    /context/promotion/data             controllers.Store.sendData(id: String)
+
+
+#-----------------------------------------
 # Services
 #-----------------------------------------
 GET     /api/usuarios                       controllers.api.UsuarioController.users()
