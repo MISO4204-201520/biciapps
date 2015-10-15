@@ -42,18 +42,18 @@ public class Store extends Controller {
 //            return ok("Hello " + name);
 //        }
 
-        String userId = "id1";
+        String idUsuario = "id1";
         ObjectNode newUserId = Json.newObject();
-        newUserId.put("userId", userId);
-//        return ok(newUserId);
-        return badRequest("Invalid");
+        newUserId.put("idUsuario", idUsuario);
+        return ok(newUserId);
+//        return badRequest("Invalid");
     }
 
     @BodyParser.Of(BodyParser.Json.class)
-    public Result actualizarUsuario(String userId) {
+    public Result actualizarUsuario(String idUsuario) {
 
         JsonNode json = request().body().asJson();
-        System.out.println("Called: " + json +", "+ userId);
+        System.out.println("Called: " + json +", "+ idUsuario);
 //        String name = json.findPath("lat").textValue();
 //        if(name == null) {
 //            return badRequest("Missing parameter [name]");
@@ -65,9 +65,9 @@ public class Store extends Controller {
         return ok();
     }
 
-    public Result darPromociones(String userId) {
-        System.out.println("Called: " + userId);
-        ArrayNode result = getPromocionesUsuario(userId);
+    public Result darPromociones(String idUsuario) {
+        System.out.println("Called: " + idUsuario);
+        ArrayNode result = getPromocionesUsuario(idUsuario);
         return ok(result);
     }
 

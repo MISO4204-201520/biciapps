@@ -5,6 +5,14 @@ $(document).ready(function () {
     $( "#findPromotionsBtn" ).click(buscarPromociones);
 });
 
+function ponerIdUsuario(idUsuario){
+    $('#idUsuario').val(idUsuario);
+}
+
+function darIdUsuario(){
+    return $('#idUsuario').val();
+}
+
 /**Create User ---------------------*/
 function crearUsuario(){
     var data = {};
@@ -29,7 +37,7 @@ function restPostUsuario(data){
 }
 
 function successPostUsuario( data, textStatus, jqXHR ){
-    console.log("userId: " + data.userId);
+    ponerIdUsuario(data.idUsuario);
 }
 
 function badRequestPostUsuario( data, textStatus, jqXHR ){
@@ -42,10 +50,11 @@ function actualizarUsuario(){
     var data = {};
     data.longitude = $("#lat").val();
     data.latitude = $("#lon").val();
-    restPutUsuario(10, data);
+    var idUsuario = darIdUsuario();
+    restPutUsuario(idUsuario, data);
 }
-function restPutUsuario(userId, data){
-    var url = "/contexto/usuario/" + userId;
+function restPutUsuario(idUsuario, data){
+    var url = "/contexto/usuario/" + idUsuario;
     $.ajax({
           contentType: 'application/json',
           type: "PUT",
@@ -63,7 +72,7 @@ function restPutUsuario(userId, data){
 }
 
 function successPutUsuario( data, textStatus, jqXHR ){
-    console.log("userId: " + data.userId);
+    console.log("userId: " + data.idUsuario);
 }
 
 function badRequestPutUsuario( data, textStatus, jqXHR ){
@@ -81,7 +90,7 @@ function buscarPromociones(){
     restGetPromociones();
 }
 
-function restGetPromociones(){
+function restGetPromociones(idUsuario){
     var url = "/contexto/promocion";
     var data = {idUsuario:"1at"};
     $.ajax({
