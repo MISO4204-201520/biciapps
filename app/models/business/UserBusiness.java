@@ -52,10 +52,10 @@ public class UserBusiness {
         }
 
         if (user.pwd != null){
-            userDb.pwd = user.pwd;
+            userDb.pwd = Utilities.encryptPass(user.pwd);
         }
 
-        users().update("{email: '#'}", user.email).with(userDb);
+        users().update("{email: #}", user.email).with(userDb);
     }
 
     public static void remove(ObjectId id) {
