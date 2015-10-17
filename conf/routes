@@ -10,6 +10,8 @@ GET     /                           	    controllers.Application.index()
 
 GET     /account/registerPage			    controllers.Account.registerPage()
 POST    /account/register                   controllers.Account.register()
+GET     /account/editarPerfil               controllers.Account.editarPerfilPage()
+POST    /account/editarUsuario              controllers.Account.editarUsuario()
 GET     /account/loginPage                  controllers.Account.loginPage()
 POST    /account/login                      controllers.Account.login()
 GET     /account/logout                     controllers.Account.logout()

@@ -166,7 +166,34 @@ public class Account extends Controller {
         return loggedIn;
     }
 
+    public Result editarPerfilPage() {
+        String email = session(MySecureAuth.SESSION_ID);
+        User usuario = UserBusiness.findByEmail(email);
+        Form<User> formData = Form.form(User.class).fill(usuario);
+        return ok(views.html.login.editarPerfilPage.render(formData));
+    }
 
+    public Result editarUsuario() {
+
+        DynamicForm f = Form.form().bindFromRequest();
+        String nombres = f.get("nombres");
+        String apellidos = f.get("apellidos");
+        String sexo = f.get("sexo");
+        String email = f.get("email");
+        String pwd = f.get("pwd");
+
+
+        User formUser = new User();
+        formUser.nombres = nombres;
+        formUser.apellidos = apellidos;
+        formUser.sexo = sexo;
+        formUser.email = email;
+        formUser.pwd = pwd;
+
+        UserBusiness.update(formUser);
+
+        return ok("actualizado");
+    }
 
 
 }

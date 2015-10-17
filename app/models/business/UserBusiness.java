@@ -34,12 +34,27 @@ public class UserBusiness {
         if (user.token != null){
             userDb.token = user.token;
         }
+
         if (user.nombres != null){
             userDb.nombres = user.nombres;
         }
+
         if (user.fbid != null){
             userDb.fbid = user.fbid;
         }
+
+        if (user.apellidos != null){
+            userDb.apellidos = user.apellidos;
+        }
+
+        if (user.sexo != null){
+            userDb.sexo = user.sexo;
+        }
+
+        if (user.pwd != null){
+            userDb.pwd = user.pwd;
+        }
+
         users().update("{email: '#'}", user.email).with(userDb);
     }
 
