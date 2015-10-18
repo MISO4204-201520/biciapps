@@ -35,6 +35,23 @@
     .gerfer-submit-btn {
 	    text-align: right;
 	}
+	.gerfer-static-label {
+	    border: none;
+	    padding-top: 7px;
+	    color: gray;
+	}
+	#ger-originSelect {
+	    margin-top: 7px;
+	    color: #7CC33C;
+	    background: none;
+    	border: none;
+	}
+	#ger-destinySelect {
+	    margin-top: 7px;
+	    color: #F76056;
+	    background: none;
+    	border: none;
+	}	
     </style>
 	@clientUnloggedNavbar()
     <div class="jumbotron">
@@ -49,41 +66,51 @@
 	                @if(flash.containsKey("error")) {
 	                    <div class="alert alert-danger" role="alert">@flash.get("error")</div>
 	                }
-				<div class="form-group">
-	                <label class="control-label col-sm-6" for="nombres">Fechade Salida</label>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="salida">Fechade Salida</label>
 	                <div class="col-md-6">
 	                    <input type="date" class="form-control" id="salida" name="salida" placeholder="" required>
 	                </div>
 	            </div>
 
 	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="apellidos">Grupo</label>
+	                <label class="control-label col-sm-6" for="grupo">Grupo</label>
 	                <div class="col-md-6">
 	                    <input type="text" class="form-control" id="grupo" name="grupo" placeholder="Agregar Personas" required>
 	                </div>
 	            </div>
 	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="apellidos">Punto de Salida</label>
+	                <label class="control-label col-sm-6" for="pinicio">Punto de Salida</label>
+	                <div class="col-md-3">
+	                    <input type="text" class="gerfer-static-label" id="pinicio" name="pinicio" disabled value="Punto Salida" require>
+	                </div>
+	                <div class="col-md-3">
+	                    <button id="ger-originSelect" type="button">
+					    	<span class="glyphicon glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+					    </button>
+					</div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="pfinal">Punto de Llegada </label>
+	                <div class="col-md-3">
+	                    <input type="text" class="gerfer-static-label" id="pfinal" name="pfinal" disabled value="Punto Llegada" required>
+	                </div>
+	                <div class="col-md-3">
+	                    <button id="ger-destinySelect" type="button">
+					    	<span class="glyphicon glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+					    </button>
+					</div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="distancia">Distanacia</label>
 	                <div class="col-md-6">
-	                    <input type="text" class="form-control" id="pinicio" name="pinicio" placeholder="Punto Salida" required>
+	                    <input type="text" class="gerfer-static-label" id="distancia" name="distancia" disabled value="Distancia" required>
 	                </div>
 	            </div>
 	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="apellidos">Punto de Llegada </label>
+	                <label class="control-label col-sm-6" for="tiempo">Tiempo Aprox</label>
 	                <div class="col-md-6">
-	                    <input type="text" class="form-control" id="pfinal" name="pfinal" placeholder="Punto Llegada" required>
-	                </div>
-	            </div>
-	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="pwd">Distanacia</label>
-	                <div class="col-md-6">
-	                    <input type="text" class="form-control" id="distancia" name="distancia" placeholder="Distancia" required>
-	                </div>
-	            </div>
-	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="pwd">Tiempo Aprox</label>
-	                <div class="col-md-6">
-	                    <input type="text" class="form-control" id="tiempo" name="tiempo" placeholder="Tiempo Aprox" required>
+	                    <input type="text" class="gerfer-static-label" id="tiempo" name="tiempo" value="Tiempo Aprox" required>
 	                </div>
 	            </div>
 	            <div class="form-group">
