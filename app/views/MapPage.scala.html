@@ -14,25 +14,27 @@
 
     <style>
     .ger-img-container img {
-    min-width : 30 % ;
-    width : 800 px ;
-    max-width : 90 % ;
+	    min-width : 30 % ;
+	    width : 800 px ;
+	    max-width : 90 % ;
     }
     .ger-img-container {
-    width : 100 % ;
-    text-align : center ;
+	    width : 100 % ;
+	    text-align : center ;
     }
     #formulario{
-    alignment: left;
-    width: 50%;
-    margin: auto;
+	    alignment: left;
+	    width: 50%;
+	    margin: auto;
     }
     #map {
-    width: 70%;
-    min-height: 400px;
-    margin: auto;
+	    width: 100%;
+	    min-height: 400px;
+	    margin: auto;
     }
-
+    .gerfer-submit-btn {
+	    text-align: right;
+	}
     </style>
 	@clientUnloggedNavbar()
     <div class="jumbotron">
@@ -40,63 +42,63 @@
             <h2>Mapa</h2>
         </div>
     </div>
-    <div id="container">
-        <form class="form-horizontal" role="form" action="" method="">
-                @if(flash.containsKey("error")) {
-                    <div class="alert alert-danger" role="alert">@flash.get("error")</div>
-                }
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="nombres">Fechade Salida</label>
-                <div class="col-md-4">
-                    <input type="date" class="form-control" id="salida" name="salida" placeholder="" required>
-                </div>
-            </div>
 
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="apellidos">Grupo</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" id="grupo" name="grupo" placeholder="Agregar Personas" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="apellidos">Punto de Salida</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" id="pinicio" name="pinicio" placeholder="Punto Salida" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="apellidos">Punto de Llegada </label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" id="pfinal" name="pfinal" placeholder="Punto Llegada" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Distanacia</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" id="distancia" name="distancia" placeholder="Distancia" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Tiempo Aprox</label>
-                <div class="col-md-4">
-                    <input type="text" class="form-control" id="tiempo" name="tiempo" placeholder="Tiempo Aprox" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                    <input type="submit" value="Crear Evento" class="btn btn-success">
-                </div>
-            </div>
-        </form>
+    <div id="container">
+    	<div class="col-md-5">
+	        <form class="form-horizontal" role="form" action="" method="">
+	                @if(flash.containsKey("error")) {
+	                    <div class="alert alert-danger" role="alert">@flash.get("error")</div>
+	                }
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="nombres">Fechade Salida</label>
+	                <div class="col-md-6">
+	                    <input type="date" class="form-control" id="salida" name="salida" placeholder="" required>
+	                </div>
+	            </div>
+
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="apellidos">Grupo</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="form-control" id="grupo" name="grupo" placeholder="Agregar Personas" required>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="apellidos">Punto de Salida</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="form-control" id="pinicio" name="pinicio" placeholder="Punto Salida" required>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="apellidos">Punto de Llegada </label>
+	                <div class="col-md-6">
+	                    <input type="text" class="form-control" id="pfinal" name="pfinal" placeholder="Punto Llegada" required>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="pwd">Distanacia</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="form-control" id="distancia" name="distancia" placeholder="Distancia" required>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="pwd">Tiempo Aprox</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="form-control" id="tiempo" name="tiempo" placeholder="Tiempo Aprox" required>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <div class="gerfer-submit-btn col-sm-10">
+	                    <input type="submit" value="Crear Evento" class="btn btn-success">
+	                </div>
+	            </div>
+	        </form>
+	    </div>
+	    <div class="col-md-6">
+	    	<div id="map" align="right"></div>
+	    </div>
     </div>
-
-    <div id="container">
-        <div id="map" align="right" ></div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWH8xrMZewAIVlQwc5bCkUxX-Y6bQ9uV0&signed_in=true&callback=initMap"
-        async defer>
-        </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
   		var poly;
   		var drawingState = "empty";
   		var originMarker;
@@ -232,8 +234,7 @@
 			console.log("destinyReady");
 		}
     </script>
-    </div>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWH8xrMZewAIVlQwc5bCkUxX-Y6bQ9uV0&signed_in=true&callback=initMap" async defer></script>
 
 
 }
