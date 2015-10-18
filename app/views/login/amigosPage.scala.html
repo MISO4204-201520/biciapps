@@ -1,0 +1,26 @@
+    @import navbar._
+    @import models.entities._
+    @(amigos: List[User])
+
+    @basicEmptyBootstrap{
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>BiciApps</title>
+        <link href="@routes.Assets.versioned("stylesheets/signin.css")" rel="stylesheet">
+
+    } {
+
+        @clientUnloggedNavbar()
+
+        <br>
+
+        <ul>
+        @for(usuario <- amigos) {
+            <li>@usuario.email</li>
+        }
+        </ul>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="@routes.Assets.versioned("javascripts/inicioSesion.js")"></script>
+    }

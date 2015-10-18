@@ -16,9 +16,7 @@ GET     /account/loginPage                  controllers.Account.loginPage()
 POST    /account/login                      controllers.Account.login()
 GET     /account/logout                     controllers.Account.logout()
 GET     /loginFacebook                      controllers.Account.loginFacebook()
-
-GET     /deletePage                         controllers.Application.deletePage()
-
+GET     /account/getAmigos                  controllers.Account.getAmigos()
 
 GET     /deletePage                         controllers.Application.deletePage()
 

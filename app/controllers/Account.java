@@ -7,6 +7,9 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by l on 2/10/15.
@@ -195,5 +198,16 @@ public class Account extends Controller {
         return ok("actualizado");
     }
 
+    public Result getAmigos() {
+        String email = session(MySecureAuth.SESSION_ID);
+        User usuario = UserBusiness.findByEmail(email);
+
+        Iterable<User> usuarios = UserBusiness.findAll();
+
+        List<User> usuariosList = new ArrayList<User>();
+        usuarios.forEach(x-> usuariosList.add(x));
+
+        return ok(views.html.login.amigosPage.render(usuariosList));
+    }
 
 }
