@@ -3,6 +3,9 @@ package models.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.bson.types.ObjectId;
 
+import java.util.List;
+
+
 /**
  * Created by l on 27/09/15.
  */
@@ -25,4 +28,5 @@ public class User {
 
     public String pwd;
 
+    public List<Amigo> amigos;
 }
