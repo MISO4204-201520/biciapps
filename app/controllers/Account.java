@@ -1,14 +1,20 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.business.UserBusiness;
+import models.entities.Amigo;
 import models.entities.User;
 import play.data.DynamicForm;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -47,7 +53,7 @@ public class Account extends Controller {
         UserBusiness.insert(formUser);
         boolean loggedIn = loginTask(email, pwd);
         if (loggedIn) {
-            return redirect(controllers.routes.Application.userPage());
+            return redirect(controllers.routes.Application.deletePage());
         } else {
             return ok("No se pudo logear");
         }
@@ -64,7 +70,7 @@ public class Account extends Controller {
         String pwd = f.get("pwd");
         boolean loggedIn = loginTask(email, pwd);
         if(loggedIn){
-            return redirect(controllers.routes.Application.userPage());
+            return redirect(controllers.routes.Application.deletePage());
         }
         else{
             flash("error", "Credenciales no validas");
@@ -141,13 +147,13 @@ public class Account extends Controller {
         if (existingUser != null){
             UserBusiness.insert(userInfo);
         }else{
-            if (existingUserFB != null){
+            if (existingUserFB != null) {
                 UserBusiness.update(userInfo);
             }
         }
 
 
-        return redirect(controllers.routes.Application.userPage());
+        return redirect(controllers.routes.Application.deletePage());
     }
 
     public Result logout() {
@@ -185,6 +191,7 @@ public class Account extends Controller {
         String email = f.get("email");
         String pwd = f.get("pwd");
 
+
         User formUser = new User();
         formUser.nombres = nombres;
         formUser.apellidos = apellidos;
@@ -198,6 +205,10 @@ public class Account extends Controller {
     }
 
     public Result getAmigos() {
+        return ok(views.html.login.amigosPage.render());
+    }
+
+    public Result getAmigos1() {
         String email = session(MySecureAuth.SESSION_ID);
         User usuario = UserBusiness.findByEmail(email);
 
@@ -206,7 +217,49 @@ public class Account extends Controller {
         List<User> usuariosList = new ArrayList<User>();
         usuarios.forEach(x-> usuariosList.add(x));
 
-        return ok(views.html.login.amigosPage.render(usuariosList));
+        ObjectNode result = Json.newObject();
+
+        ArrayNode an = result.putArray("aaData");
+
+        for(User c : usuariosList) {
+            ObjectNode row = Json.newObject();
+            row.put("0", c.nombres);
+            row.put("1", c.apellidos);
+            row.put("2", c.email);
+            an.add(row);
+        }
+        return ok(result);
     }
 
+    public Result addAmigo() {
+        JsonNode json = request().body().asJson();
+        String email = json.findPath("email").textValue();
+        String emailUsuario = session(MySecureAuth.SESSION_ID);
+        User usuarioSession = UserBusiness.findByEmail(emailUsuario);
+        User usuarioAmigo = UserBusiness.findByEmail(email);
+
+        if (usuarioSession.amigos != null && !usuarioSession.amigos.isEmpty()) {
+            // Buscar Amigo si existe para no volver a adicionar
+        } else {
+            usuarioSession.amigos = new ArrayList<Amigo>();
+            Amigo amigo = new Amigo();
+            amigo.nickName = usuarioAmigo.nombres + " " + usuarioAmigo.apellidos;
+            amigo.email = usuarioAmigo.email;
+
+            usuarioSession.amigos.add(amigo);
+        }
+
+        UserBusiness.update(usuarioSession);
+
+        ObjectNode result = Json.newObject();
+
+        ArrayNode an = result.putArray("data");
+
+        ObjectNode row = Json.newObject();
+        row.put("res", true);
+        row.put("mensaje", "Ok");
+        an.add(row);
+
+        return ok(result);
+    }
 }

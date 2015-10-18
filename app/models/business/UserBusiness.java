@@ -54,7 +54,12 @@ public class UserBusiness {
 
         if (user.pwd != null){
             //userDb.pwd = Utilities.encryptPass(user.pwd);
-        	userDb.pwd = (user.pwd);
+            userDb.pwd = (user.pwd);
+        }
+
+        if (user.amigos != null){
+            //userDb.pwd = Utilities.encryptPass(user.pwd);
+            userDb.amigos = user.amigos;
         }
 
         users().update("{email: #}", user.email).with(userDb);

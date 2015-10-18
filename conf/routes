@@ -16,15 +16,11 @@ GET     /account/loginPage                  controllers.Account.loginPage()
 POST    /account/login                      controllers.Account.login()
 GET     /account/logout                     controllers.Account.logout()
 GET     /loginFacebook                      controllers.Account.loginFacebook()
-
-
-GET     /userPage                           controllers.Application.userPage()
-
-GET     /mapPage                            controllers.Application.mapPage()
-
 GET     /account/getAmigos                  controllers.Account.getAmigos()
+GET     /account/getAmigos1                 controllers.Account.getAmigos1()
+POST    /account/addAmigo                   controllers.Account.addAmigo()
 
-
+GET     /deletePage                         controllers.Application.deletePage()
 
 #-----------------------------------------
 # Store
@@ -34,6 +30,7 @@ GET     /account/storeRegisterPage			controllers.Account.storeRegisterPage()
 GET     /account/storeLoginPage			    controllers.Account.storeLoginPage()
 POST    /account/storeLogin                 controllers.Account.storeLogin()
 POST    /account/storeRegister              controllers.Account.storeRegister()
+
 GET     /deleteStorePage                    controllers.Store.deleteStorePage()
 
 #-----------------------------------------
@@ -65,8 +62,3 @@ POST    /mensajes                			controllers.MensajesController.enviarMail()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
-
-#------------------------------------------
-#Mapa
-#------------------------------------------
-
