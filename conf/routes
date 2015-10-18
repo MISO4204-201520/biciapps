@@ -21,9 +21,9 @@ GET     /loginFacebook                      controllers.Account.loginFacebook()
 GET     /userPage                           controllers.Application.userPage()
 
 GET     /mapPage                            controllers.Application.mapPage()
-#GET     /MapPage                         controllers.Application.deletePage()
 
 GET     /account/getAmigos                  controllers.Account.getAmigos()
+
 
 
 #-----------------------------------------
