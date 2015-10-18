@@ -13,6 +13,12 @@ import play.mvc.Result;
  */
 public class Account extends Controller {
 
+    public Result mapPage()
+    {
+        return redirect(controllers.routes.Application.mapPage());
+
+    }
+
     public Result registerPage() {
         return ok(views.html.login.registerPage.render());
     }
@@ -44,7 +50,7 @@ public class Account extends Controller {
         UserBusiness.insert(formUser);
         boolean loggedIn = loginTask(email, pwd);
         if (loggedIn) {
-            return redirect(controllers.routes.Application.deletePage());
+            return redirect(controllers.routes.Application.userPage());
         } else {
             return ok("No se pudo logear");
         }
@@ -61,7 +67,7 @@ public class Account extends Controller {
         String pwd = f.get("pwd");
         boolean loggedIn = loginTask(email, pwd);
         if(loggedIn){
-            return redirect(controllers.routes.Application.deletePage());
+            return redirect(controllers.routes.Application.userPage());
         }
         else{
             flash("error", "Credenciales no validas");
@@ -130,11 +136,11 @@ public class Account extends Controller {
         userInfo.token = token;
         userInfo.nombres = name;
         userInfo.fbid = fbid;
-        
-        
+
+
         User existingUserFB = UserBusiness.findByFBId(fbid);
         User existingUser = UserBusiness.findByEmail(email);
-        
+
         if (existingUser != null){
             UserBusiness.insert(userInfo);
         }else{
@@ -142,9 +148,9 @@ public class Account extends Controller {
                 UserBusiness.update(userInfo);
             }
         }
-        
 
-        return redirect(controllers.routes.Application.deletePage());
+
+        return redirect(controllers.routes.Application.userPage());
     }
 
     public Result logout() {

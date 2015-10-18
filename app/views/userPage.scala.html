@@ -1,0 +1,112 @@
+@(message: String)
+
+@import navbar._
+
+@basicEmptyBootstrap{
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BiciApps</title>
+
+} {
+
+    @clientUnloggedNavbar()
+
+    <style>
+    .ger-img-container img {
+    min-width : 30 % ;
+    width : 800 px ;
+    max-width : 90 % ;
+    }
+    .ger-img-container {
+    width : 100 % ;
+    text-align : center ;
+    }
+    .accesos{
+
+    }
+
+    </style>
+
+    @clientUnloggedNavbar()
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Mi Cuenta</h2>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="information">
+            <form class="form-horizontal" role="form" action="@routes.Account.register()" method="POST">
+                @if(flash.containsKey("error")) {
+                    <div class="alert alert-danger" role="alert">@flash.get("error")</div>
+                }
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="nombres">Nombres:</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombres" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="apellidos">Sexo:</label>
+                    <div class="col-md-4">
+                        <input type="radio" name="sexo" value="masculino" checked>Masculino
+                        <br>
+                        <input type="radio" name="sexo" value="femenino">Femenino
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="email">Usuario:</label>
+                    <div class="col-md-4">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Correo electr&#243;nico" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd">Contrase&#241;a:</label>
+                    <div class="col-md-4">
+                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Contrase&#241;a" required onchange="validarContrasena();">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="pwd1">Confirmar contrase&#241;a:</label>
+                    <div class="col-md-4">
+                        <input type="password" class="form-control" id="pwd1" name="pwd1" placeholder="Confirmar contrase&#241;a" required onkeyup="validarContrasena();">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                            <label><input type="checkbox"> No cerrar sesi&#243;n</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" value="Abrir cuenta" class="btn btn-default">
+                    </div>
+                </div>
+            </form>
+        </div> <!-- /container -->
+
+        </div>
+        <div class="accesos">
+           <form action="">
+               <a href="" class="btn btn-success">Mis Amigos</a>
+               <a href="@routes.Application.mapPage()" type="submit" class="btn btn-success">Mapa</a>
+               <a href="/" type="submit" class="btn btn-success">Mis Eventos</a>
+               <a href="/" class="btn btn-success">Mis Recorridos</a>
+            </form>
+        </div>
+
+
+    </div>
+
+}

@@ -15,10 +15,10 @@ POST    /account/login                      controllers.Account.login()
 GET     /account/logout                     controllers.Account.logout()
 GET     /loginFacebook                      controllers.Account.loginFacebook()
 
-GET     /deletePage                         controllers.Application.deletePage()
+GET     /userPage                           controllers.Application.userPage()
 
-
-GET     /deletePage                         controllers.Application.deletePage()
+GET     /mapPage                            controllers.Application.mapPage()
+#GET     /MapPage                         controllers.Application.deletePage()
 
 #-----------------------------------------
 # Store
@@ -28,7 +28,6 @@ GET     /account/storeRegisterPage			controllers.Account.storeRegisterPage()
 GET     /account/storeLoginPage			    controllers.Account.storeLoginPage()
 POST    /account/storeLogin                 controllers.Account.storeLogin()
 POST    /account/storeRegister              controllers.Account.storeRegister()
-
 GET     /deleteStorePage                    controllers.Store.deleteStorePage()
 
 #-----------------------------------------
@@ -54,3 +53,8 @@ POST    /confBicicletas                		controllers.ConfBicicletasController.re
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+#------------------------------------------
+#Mapa
+#------------------------------------------
+
