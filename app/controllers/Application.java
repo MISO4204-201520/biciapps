@@ -16,7 +16,16 @@ public class Application extends Controller {
 
 
     @Security.Authenticated(MySecureAuth.class)
-    public Result deletePage() {
+    public Result userPage() {
+
+            String email = session(MySecureAuth.SESSION_ID);
+            User usuario = UserBusiness.findByEmail(email);
+            //return ok(listUsers);
+            return ok(views.html.userPage.render(usuario));
+    }
+
+    @Security.Authenticated(MySecureAuth.class)
+    public Result mapPage() {
 
         String listUsers = "";
         Iterable<User> allUsers = UserBusiness.users().find().as(User.class);
@@ -25,7 +34,7 @@ public class Application extends Controller {
             listUsers = listUsers + ", " + u.email;
         }
         //return ok(listUsers);
-        return ok(views.html.deletePage.render(listUsers));
+        return ok(views.html.MapPage.render(listUsers));
 
 
     }

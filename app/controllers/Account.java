@@ -7,6 +7,9 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by l on 2/10/15.
@@ -44,7 +47,7 @@ public class Account extends Controller {
         UserBusiness.insert(formUser);
         boolean loggedIn = loginTask(email, pwd);
         if (loggedIn) {
-            return redirect(controllers.routes.Application.deletePage());
+            return redirect(controllers.routes.Application.userPage());
         } else {
             return ok("No se pudo logear");
         }
@@ -61,7 +64,7 @@ public class Account extends Controller {
         String pwd = f.get("pwd");
         boolean loggedIn = loginTask(email, pwd);
         if(loggedIn){
-            return redirect(controllers.routes.Application.deletePage());
+            return redirect(controllers.routes.Application.userPage());
         }
         else{
             flash("error", "Credenciales no validas");
@@ -130,11 +133,11 @@ public class Account extends Controller {
         userInfo.token = token;
         userInfo.nombres = name;
         userInfo.fbid = fbid;
-        
-        
+
+
         User existingUserFB = UserBusiness.findByFBId(fbid);
         User existingUser = UserBusiness.findByEmail(email);
-        
+
         if (existingUser != null){
             UserBusiness.insert(userInfo);
         }else{
@@ -142,9 +145,9 @@ public class Account extends Controller {
                 UserBusiness.update(userInfo);
             }
         }
-        
 
-        return redirect(controllers.routes.Application.deletePage());
+
+        return redirect(controllers.routes.Application.userPage());
     }
 
     public Result logout() {
@@ -182,7 +185,6 @@ public class Account extends Controller {
         String email = f.get("email");
         String pwd = f.get("pwd");
 
-
         User formUser = new User();
         formUser.nombres = nombres;
         formUser.apellidos = apellidos;
@@ -195,5 +197,16 @@ public class Account extends Controller {
         return ok("actualizado");
     }
 
+    public Result getAmigos() {
+        String email = session(MySecureAuth.SESSION_ID);
+        User usuario = UserBusiness.findByEmail(email);
+
+        Iterable<User> usuarios = UserBusiness.findAll();
+
+        List<User> usuariosList = new ArrayList<User>();
+        usuarios.forEach(x-> usuariosList.add(x));
+
+        return ok(views.html.login.amigosPage.render(usuariosList));
+    }
 
 }

@@ -1,0 +1,98 @@
+@import models.entities.User
+@(usuario: User)
+
+@import navbar._
+
+@basicEmptyBootstrap{
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BiciApps</title>
+
+} {
+
+    @clientUnloggedNavbar()
+
+    <style>
+    .ger-img-container img {
+    min-width : 30 % ;
+    width : 800 px ;
+    max-width : 90 % ;
+    }
+    .ger-img-container {
+    width : 100 % ;
+    text-align : center ;
+    }
+    .gerfer-static-label {
+    border: none;
+    padding-top: 7px;
+    color: gray;
+    }
+    .gerfer-btn-success {
+    margin : 10px ;
+    display : block ;
+    width : 120px ;
+    }
+
+    </style>
+    @clientUnloggedNavbar()
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Mi Cuenta</h2>
+        </div>
+    </div>
+    <div class="container" align="center">
+        <div class="col-md-2">
+            <div >
+                <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQeYaJ6dkE1JwC6JRLBo0Rpu_MC4wCdT8EjT1vz0dAOVQsrJ6fO" style="margin: auto; width: 100px ;">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-horizontal">
+                <div class="from-group">
+                    <div class="col-md-12">
+                        <label class="control-label col-sm-6" for="nombres" dir="ltr">@usuario.nombres @usuario.apellidos</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-6" for="usuario">Usuario:</label>
+                    <div class="col-md-6">
+                        <input type="text" class="gerfer-static-label" id="usuario" name="usuario" disabled value="@usuario.email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-6" for="apellidos">Kilometros Recorridos</label>
+                    <div class="col-md-6">
+                        <input type="text" class="gerfer-static-label" id="km" name="km" disabled value="Kilometros Recorridos" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-6" for="apellidos">Ruta Favorita</label>
+                    <div class="col-md-6">
+                        <input type="text" class="gerfer-static-label" id="rf" name="rf" disabled value="Ruta Favorita">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="gerfer-submit-btn col-sm-12" align="center">
+                        <input type="submit" value="Editar Cuenta" class="btn btn-default">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-horizontal">
+                 <a href="" class="btn btn-success gerfer-btn-success">Mis Amigos</a>
+                 <a href="@routes.Application.mapPage()" class="btn btn-success gerfer-btn-success">Mapa</a>
+                 <a href="/"  class="btn btn-success gerfer-btn-success">Mis Eventos</a>
+                 <a href="/" class="btn btn-success gerfer-btn-success">Mis Recorridos</a>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+    
+
+}

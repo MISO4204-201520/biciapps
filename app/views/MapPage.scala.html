@@ -1,0 +1,288 @@
+@(message: String)
+
+@import navbar._
+
+@basicEmptyBootstrap{
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BiciApps</title>
+
+} {
+
+    @clientUnloggedNavbar()
+
+    <style>
+    .ger-img-container img {
+	    min-width : 30 % ;
+	    width : 800 px ;
+	    max-width : 90 % ;
+    }
+    .ger-img-container {
+	    width : 100 % ;
+	    text-align : center ;
+    }
+    #formulario{
+	    alignment: left;
+	    width: 50%;
+	    margin: auto;
+    }
+    #map {
+	    width: 100%;
+	    min-height: 400px;
+	    margin: auto;
+    }
+    .gerfer-submit-btn {
+	    text-align: right;
+	}
+	.gerfer-static-label {
+	    border: none;
+	    padding-top: 7px;
+	    color: gray;
+	    width: 100%;
+	}
+	#ger-originSelect, #ger-addPerson {
+	    margin-top: 7px;
+	    color: #7CC33C;
+	    background: none;
+    	border: none;
+	}
+	#ger-destinySelect {
+	    margin-top: 7px;
+	    color: #F76056;
+	    background: none;
+    	border: none;
+	}	
+    </style>
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Mapa</h2>
+        </div>
+    </div>
+
+    <div id="container">
+    	<div class="col-md-5">
+	        <form class="form-horizontal" role="form" action="" method="">
+	                @if(flash.containsKey("error")) {
+	                    <div class="alert alert-danger" role="alert">@flash.get("error")</div>
+	                }
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="nombre">Nombre del recorrido</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="form-control" id="nombre" name="nombre" value="" required>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="salida">Fecha de salida</label>
+	                <div class="col-md-6">
+	                    <input type="date" class="form-control" id="salida" name="salida" placeholder="" required>
+	                </div>
+	            </div>
+
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="grupo">Grupo</label>
+	                <div class="col-md-1">
+	                    <button id="ger-addPerson" type="button">
+					    	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					    </button>
+					</div>
+	                <div class="col-md-5">
+	                    <input type="text" class="form-control" id="grupo" name="grupo" placeholder="Agregar Personas" required>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="pinicio">Punto de salida</label>
+	                <div class="col-md-1">
+	                    <button id="ger-originSelect" type="button">
+					    	<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+					    </button>
+					</div>
+					<div class="col-md-5">
+	                    <input type="text" class="gerfer-static-label" id="pinicio" name="pinicio" disabled value="" require>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="pfinal">Punto de llegada </label>
+	                <div class="col-md-1">
+	                    <button id="ger-destinySelect" type="button">
+					    	<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+					    </button>
+					</div>
+					<div class="col-md-5">
+	                    <input type="text" class="gerfer-static-label" id="pfinal" name="pfinal" disabled value="" required>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="distancia">Distancia aproximada</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="gerfer-static-label" id="distancia" name="distancia" disabled value="" required>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="tiempo">Tiempo aproximado</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="gerfer-static-label" id="tiempo" name="tiempo" value="" disabled>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <div class="gerfer-submit-btn col-sm-12">
+	                    <input type="submit" value="Crear recorrido" class="btn btn-success">
+	                </div>
+	            </div>
+	        </form>
+	    </div>
+	    <div class="col-md-6">
+	    	<div id="map" align="right"></div>
+	    </div>
+    </div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+  		var poly;
+  		var drawingState = "empty";
+  		var originMarker;
+  		var destinyMarker;
+  		var map;
+  		var directionsDisplay;
+		var directionsService;
+		var marketPoints = [];
+	  	// Init the map
+
+		function initMap() {
+			map = new google.maps.Map(document.getElementById('map'),
+			{
+		    	center: {lat: 4.6097100 , lng: -74.0817500},
+		    	zoom: 12
+		  	});
+		  	var infoWindow = new google.maps.InfoWindow({map: map});
+		  	// GPS
+			if (navigator.geolocation) {
+			    navigator.geolocation.getCurrentPosition(function(position) {
+				    var pos =
+				    {
+			        	lat: position.coords.latitude,
+				        lng: position.coords.longitude
+				    };
+		      		infoWindow.setPosition(pos);
+		      		infoWindow.setContent('Estás acá');
+		      		map.setCenter(pos);
+		    	}, function() {
+		      		handleLocationError(true, infoWindow, map.getCenter());
+		    	});
+		  	}
+		  	else
+		  	{
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+		    }
+
+		  directionsService = new google.maps.DirectionsService;
+  			directionsDisplay = new google.maps.DirectionsRenderer;
+  			directionsDisplay.setMap(map);
+		   	poly = new google.maps.Polyline({
+			    strokeColor: '#000000',
+			    strokeOpacity: 1.0,
+			    strokeWeight: 3
+			});
+			poly.setMap(map);
+
+			// Add a listener for the click event
+			map.addListener('click', mapClicked);
+			$("#ger-originSelect").click(originSelection);
+			$("#ger-destinySelect").click(destinySelection);
+		}
+		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+		 	infoWindow.setPosition(pos);
+		  	infoWindow.setContent(browserHasGeolocation ?
+		                        'Error: The Geolocation service failed.' :
+		                        'Error: Your browser doesn\'t support geolocation.');
+		}
+
+		// Handles click events on a map, and adds a new point to the Polyline.
+		function mapClicked(event) {
+			if (drawingState=="originToDraw"){
+				if(typeof destinyMarker !== 'undefined'){
+					originMarker.setMap(null);
+				}
+			  	// Add a new marker at the new plotted point on the polyline.
+			  	originMarker = new google.maps.Marker({
+			    	position: event.latLng,
+			    	title: 'origen',
+			    	map: map
+			  	});
+
+			  	console.log("origin drawed");
+
+			}
+			if (drawingState=="destinyToDraw"){
+				if(typeof originMarker !== 'undefined'){
+					originMarker.setMap(null);
+				}
+				if(typeof destinyMarker !== 'undefined'){
+					destinyMarker.setMap(null);
+				}
+			  	// Add a new marker at the new plotted point on the polyline.
+			  	destinyMarker = new google.maps.Marker({
+			    	position: event.latLng,
+			    	title: 'destino',
+			    	map: map
+			  	});
+			  	if(typeof destinyMarker !== 'undefined'){
+					destinyMarker.setMap(null);
+				}
+			  	console.log("destiny drawed");
+			  	//removeRoute(); //Remove current route
+			  	drawRoute();
+
+			}
+			var route = poly.getPath();
+			//route.push(event.latLng);
+
+		}
+		function drawRoute(){
+			calculateAndDisplayRoute(directionsService, directionsDisplay);
+
+		}
+
+		function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+
+
+		  directionsService.route({
+		    origin: originMarker.position,
+		    destination: destinyMarker.position,
+		    travelMode: google.maps.TravelMode.WALKING
+		  }, function(response, status) {
+		    if (status === google.maps.DirectionsStatus.OK) {
+		      directionsDisplay.setDirections(response);
+		      var route = response.routes[0];
+		      $("#pinicio").val(route.legs[0].start_address);
+		      $("#pfinal").val(route.legs[0].end_address);
+		      $("#distancia").val(route.legs[0].distance.text);
+		      $("#tiempo").val(route.legs[0].duration.text);
+		    } else {
+		      window.alert('Directions request failed due to ' + status);
+		    }
+		  });
+		}
+		function callbackPlace(){
+			console.log("Holaaa");
+		}
+		function removeMarkers(){
+			originMarker.setMap(null);
+			destinyMarker.setMap(null);
+		}
+		function removeRoute() {
+			route.setMap(null);
+		}
+		function originSelection(){
+			drawingState = "originToDraw";
+			console.log("originReady");
+		}
+		function destinySelection(){
+			drawingState = "destinyToDraw";
+			console.log("destinyReady");
+		}
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWH8xrMZewAIVlQwc5bCkUxX-Y6bQ9uV0&signed_in=true&callback=initMap" async defer></script>
+
+
+}
