@@ -16,6 +16,4 @@ public class Amigo {
     public String nickName;
 
     public String email;
-
-    public List<User> usuarios;
 }
