@@ -18,7 +18,8 @@ public class UserBusiness {
     }
 
     public static void insert(User user) {
-        user.pwd = Utilities.encryptPass(user.pwd);
+        //user.pwd = Utilities.encryptPass(user.pwd);
+        user.pwd = (user.pwd);
         users().save(user);
 
         // TODO: Revisar si se puede hacer con AspectJ
@@ -26,7 +27,7 @@ public class UserBusiness {
         String subject = "Usuario Registrado Correctamente";
         String body = "Bienvenido " + user.email.substring(0, user.email.indexOf("@")) + " al sistema biciapps.";
 
-        Mail.sendMail(to, subject, body);
+        Mail.sendMailAdmin(to, subject, body);
     }
 
     public static void update(User user) {
@@ -52,7 +53,8 @@ public class UserBusiness {
         }
 
         if (user.pwd != null){
-            userDb.pwd = Utilities.encryptPass(user.pwd);
+            //userDb.pwd = Utilities.encryptPass(user.pwd);
+        	userDb.pwd = (user.pwd);
         }
 
         users().update("{email: #}", user.email).with(userDb);
@@ -71,7 +73,7 @@ public class UserBusiness {
     }
 
     public static User findByEmailAndPwd(String email, String pwd) {
-        pwd = Utilities.encryptPass(pwd);
+        //pwd = Utilities.encryptPass(pwd);
         return users().findOne("{email: #, pwd: #}", email, pwd).as(User.class);
     }
 
