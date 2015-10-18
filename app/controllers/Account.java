@@ -16,12 +16,6 @@ import java.util.List;
  */
 public class Account extends Controller {
 
-    public Result mapPage()
-    {
-        return redirect(controllers.routes.Application.mapPage());
-
-    }
-
     public Result registerPage() {
         return ok(views.html.login.registerPage.render());
     }
@@ -190,7 +184,6 @@ public class Account extends Controller {
         String sexo = f.get("sexo");
         String email = f.get("email");
         String pwd = f.get("pwd");
-
 
         User formUser = new User();
         formUser.nombres = nombres;
