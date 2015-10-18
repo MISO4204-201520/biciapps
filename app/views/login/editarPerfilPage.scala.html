@@ -37,11 +37,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <input type="hidden" id="sexoOculto" name="sexoOculto" value="@formData("sexo").value"  >
                     <label class="control-label col-sm-2" for="apellidos">Sexo:</label>
                     <div class="col-md-4">
-                        <input type="radio" name="sexo" value="masculino" checked>Masculino
+                        <input type="radio" id="masc" name="sexo" value="masculino" checked>Masculino
                         <br>
-                        <input type="radio" name="sexo" value="femenino">Femenino
+                        <input type="radio" id="feme" name="sexo" value="femenino">Femenino
                     </div>
                 </div>
                 <div class="form-group">
@@ -53,13 +54,13 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="pwd">Contrase&#241;a:</label>
                     <div class="col-md-4">
-                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Contrase&#241;a" required onchange="validarContrasena();">
+                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Contrase&#241;a" onchange="validarContrasena();">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="pwd1">Confirmar contrase&#241;a:</label>
                     <div class="col-md-4">
-                        <input type="password" class="form-control" id="pwd1" name="pwd1" placeholder="Confirmar contrase&#241;a" required onkeyup="validarContrasena();">
+                        <input type="password" class="form-control" id="pwd1" name="pwd1" placeholder="Confirmar contrase&#241;a" onkeyup="validarContrasena();">
                     </div>
                 </div>
                 <div class="form-group">
