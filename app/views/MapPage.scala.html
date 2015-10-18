@@ -39,8 +39,9 @@
 	    border: none;
 	    padding-top: 7px;
 	    color: gray;
+	    width: 100%;
 	}
-	#ger-originSelect {
+	#ger-originSelect, #ger-addPerson {
 	    margin-top: 7px;
 	    color: #7CC33C;
 	    background: none;
@@ -53,7 +54,6 @@
     	border: none;
 	}	
     </style>
-	@clientUnloggedNavbar()
     <div class="jumbotron">
         <div class="container">
             <h2>Mapa</h2>
@@ -67,7 +67,13 @@
 	                    <div class="alert alert-danger" role="alert">@flash.get("error")</div>
 	                }
 	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="salida">Fechade Salida</label>
+	                <label class="control-label col-sm-6" for="nombre">Nombre del recorrido</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="form-control" id="nombre" name="nombre" value="" required>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="salida">Fecha de salida</label>
 	                <div class="col-md-6">
 	                    <input type="date" class="form-control" id="salida" name="salida" placeholder="" required>
 	                </div>
@@ -75,47 +81,52 @@
 
 	            <div class="form-group">
 	                <label class="control-label col-sm-6" for="grupo">Grupo</label>
-	                <div class="col-md-6">
+	                <div class="col-md-1">
+	                    <button id="ger-addPerson" type="button">
+					    	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+					    </button>
+					</div>
+	                <div class="col-md-5">
 	                    <input type="text" class="form-control" id="grupo" name="grupo" placeholder="Agregar Personas" required>
 	                </div>
 	            </div>
 	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="pinicio">Punto de Salida</label>
-	                <div class="col-md-3">
-	                    <input type="text" class="gerfer-static-label" id="pinicio" name="pinicio" disabled value="Punto Salida" require>
-	                </div>
-	                <div class="col-md-3">
+	                <label class="control-label col-sm-6" for="pinicio">Punto de salida</label>
+	                <div class="col-md-1">
 	                    <button id="ger-originSelect" type="button">
-					    	<span class="glyphicon glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+					    	<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
 					    </button>
 					</div>
+					<div class="col-md-5">
+	                    <input type="text" class="gerfer-static-label" id="pinicio" name="pinicio" disabled value="" require>
+	                </div>
 	            </div>
 	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="pfinal">Punto de Llegada </label>
-	                <div class="col-md-3">
-	                    <input type="text" class="gerfer-static-label" id="pfinal" name="pfinal" disabled value="Punto Llegada" required>
-	                </div>
-	                <div class="col-md-3">
+	                <label class="control-label col-sm-6" for="pfinal">Punto de llegada </label>
+	                <div class="col-md-1">
 	                    <button id="ger-destinySelect" type="button">
-					    	<span class="glyphicon glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+					    	<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
 					    </button>
 					</div>
-	            </div>
-	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="distancia">Distanacia</label>
-	                <div class="col-md-6">
-	                    <input type="text" class="gerfer-static-label" id="distancia" name="distancia" disabled value="Distancia" required>
+					<div class="col-md-5">
+	                    <input type="text" class="gerfer-static-label" id="pfinal" name="pfinal" disabled value="" required>
 	                </div>
 	            </div>
 	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="tiempo">Tiempo Aprox</label>
+	                <label class="control-label col-sm-6" for="distancia">Distancia aproximada</label>
 	                <div class="col-md-6">
-	                    <input type="text" class="gerfer-static-label" id="tiempo" name="tiempo" value="Tiempo Aprox" required>
+	                    <input type="text" class="gerfer-static-label" id="distancia" name="distancia" disabled value="" required>
+	                </div>
+	            </div>
+	            <div class="form-group">
+	                <label class="control-label col-sm-6" for="tiempo">Tiempo aproximado</label>
+	                <div class="col-md-6">
+	                    <input type="text" class="gerfer-static-label" id="tiempo" name="tiempo" value="" disabled>
 	                </div>
 	            </div>
 	            <div class="form-group">
 	                <div class="gerfer-submit-btn col-sm-12">
-	                    <input type="submit" value="Crear Evento" class="btn btn-success">
+	                    <input type="submit" value="Crear recorrido" class="btn btn-success">
 	                </div>
 	            </div>
 	        </form>
@@ -152,7 +163,7 @@
 				        lng: position.coords.longitude
 				    };
 		      		infoWindow.setPosition(pos);
-		      		infoWindow.setContent('Aqui estoy.');
+		      		infoWindow.setContent('Estás acá');
 		      		map.setCenter(pos);
 		    	}, function() {
 		      		handleLocationError(true, infoWindow, map.getCenter());
@@ -203,6 +214,9 @@
 
 			}
 			if (drawingState=="destinyToDraw"){
+				if(typeof originMarker !== 'undefined'){
+					originMarker.setMap(null);
+				}
 				if(typeof destinyMarker !== 'undefined'){
 					destinyMarker.setMap(null);
 				}
@@ -212,6 +226,9 @@
 			    	title: 'destino',
 			    	map: map
 			  	});
+			  	if(typeof destinyMarker !== 'undefined'){
+					destinyMarker.setMap(null);
+				}
 			  	console.log("destiny drawed");
 			  	//removeRoute(); //Remove current route
 			  	drawRoute();
@@ -232,11 +249,15 @@
 		  directionsService.route({
 		    origin: originMarker.position,
 		    destination: destinyMarker.position,
-		    travelMode: google.maps.TravelMode.DRIVING
+		    travelMode: google.maps.TravelMode.WALKING
 		  }, function(response, status) {
 		    if (status === google.maps.DirectionsStatus.OK) {
 		      directionsDisplay.setDirections(response);
 		      var route = response.routes[0];
+		      $("#pinicio").val(route.legs[0].start_address);
+		      $("#pfinal").val(route.legs[0].end_address);
+		      $("#distancia").val(route.legs[0].distance.text);
+		      $("#tiempo").val(route.legs[0].duration.text);
 		    } else {
 		      window.alert('Directions request failed due to ' + status);
 		    }
