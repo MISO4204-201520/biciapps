@@ -53,7 +53,7 @@ public class Account extends Controller {
         UserBusiness.insert(formUser);
         boolean loggedIn = loginTask(email, pwd);
         if (loggedIn) {
-            return redirect(controllers.routes.Application.deletePage());
+            return redirect(controllers.routes.Application.userPage());
         } else {
             return ok("No se pudo logear");
         }
@@ -70,7 +70,7 @@ public class Account extends Controller {
         String pwd = f.get("pwd");
         boolean loggedIn = loginTask(email, pwd);
         if(loggedIn){
-            return redirect(controllers.routes.Application.deletePage());
+            return redirect(controllers.routes.Application.userPage());
         }
         else{
             flash("error", "Credenciales no validas");
@@ -153,7 +153,7 @@ public class Account extends Controller {
         }
 
 
-        return redirect(controllers.routes.Application.deletePage());
+        return redirect(controllers.routes.Application.userPage());
     }
 
     public Result logout() {

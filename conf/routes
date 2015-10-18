@@ -20,7 +20,8 @@ GET     /account/getAmigos                  controllers.Account.getAmigos()
 GET     /account/getAmigos1                 controllers.Account.getAmigos1()
 POST    /account/addAmigo                   controllers.Account.addAmigo()
 
-GET     /deletePage                         controllers.Application.deletePage()
+GET     /userPage                           controllers.Application.userPage()
+GET     /mapPage                            controllers.Application.mapPage()
 
 #-----------------------------------------
 # Store
