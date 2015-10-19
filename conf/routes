@@ -68,5 +68,5 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 #Mapa
 #------------------------------------------
 
-POST    /ruta/crear                   controllers.RutaController.crearRuta()
+POST    /ruta/crearRecorrido                   controllers.RutaController.crearRecorrido()
 

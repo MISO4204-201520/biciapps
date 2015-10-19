@@ -53,6 +53,15 @@
 	    background: none;
     	border: none;
 	}	
+	#ger-favoriteRoute {
+	    margin-top: 7px;
+	    color: #E9E5DC;
+	    background: none;
+	    border: none;
+	    width: 100%;
+	    font-size: 25px;
+	    text-align: right;
+	}
     </style>
     <div class="jumbotron">
         <div class="container">
@@ -62,7 +71,7 @@
 
     <div id="container">
     	<div class="col-md-5">
-	        <form  class="form-horizontal" role="form" action="@routes.RutaController.crearRuta()" method="POST">
+	        <form  id="form-recorridos" class="form-horizontal" role="form" action="@routes.RutaController.crearRecorrido()" method="POST">
 	                @if(flash.containsKey("error")) {
 	                    <div class="alert alert-danger" role="alert">@flash.get("error")</div>
 	                }
@@ -125,14 +134,20 @@
 	                </div>
 	            </div>
 	            <div class="form-group">
-	                <div class="gerfer-submit-btn col-sm-12">
-	                    <input type="submit" value="Crear recorrido" class="btn btn-success">
+	            	<div class="gerfer-submit-btn col-sm-6">
+	                    <button id="ger-favoriteRoute" type="button">
+					    	<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+					    </button>
+					</div>
+	                <div class="gerfer-submit-btn col-sm-6">
+	                    <input id="form-recorridos-sub" type="submit" value="Crear recorrido" class="btn btn-success">
 	                </div>
 	            </div>
 	            <input id="latOrigen" type="hidden" name="latOrigen" value="">
 	            <input id="lngOrigen" type="hidden" name="lngOrigen" value="">
 	            <input id="latDestino" type="hidden" name="latDestino" value="">
 	            <input id="lngDestino" type="hidden" name="lngDestino" value="">
+	            <input id="rutaFavorita" type="hidden" name="rutaFavorita" value="0">
 
 	        </form>
 	    </div>
@@ -219,6 +234,9 @@
 				if(typeof destinyMarker !== 'undefined'){
 					destinyMarker.setMap(null);
 				}
+				if(typeof originMarker !== 'undefined'){
+					originMarker.setMap(null);
+				}
 				
 			  	// Add a new marker at the new plotted point on the polyline.
 			  	destinyMarker = new google.maps.Marker({
@@ -262,7 +280,7 @@
 		    	$("#distancia").val(route.legs[0].distance.text);
 			    $("#tiempo").val(route.legs[0].duration.text);
 			    
-			    
+
 			    $("#latOrigen").val(route.bounds.Pa.I);
 			  	$("#lngOrigen").val(route.bounds.La.I);
 			  	$("#latDestino").val(route.bounds.Pa.j);
@@ -291,6 +309,20 @@
 			console.log("destinyReady");
 		}
 
+    </script>
+    <script>
+    	//Select as the favorite route
+    	$("#ger-favoriteRoute").on("click", function(e){
+    		if ($("#ger-favoriteRoute").children().hasClass("glyphicon-star")){
+				$("#ger-favoriteRoute").children().addClass("glyphicon glyphicon-star-empty");
+    			$("#ger-favoriteRoute").children().removeClass("glyphicon glyphicon-star");
+    			$("#rutaFavorita").val("0");
+    		}else{
+    			$("#ger-favoriteRoute").children().addClass("glyphicon glyphicon-star");
+		    	$("#ger-favoriteRoute").children().removeClass("glyphicon glyphicon-star-empty");
+		    	$("#rutaFavorita").val("1");
+    		}
+		});
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWH8xrMZewAIVlQwc5bCkUxX-Y6bQ9uV0&signed_in=true&callback=initMap" async defer></script>
 
