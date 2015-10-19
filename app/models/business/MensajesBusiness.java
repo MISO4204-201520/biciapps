@@ -1,8 +1,10 @@
 package models.business;
 
 import models.dao.MongoManager;
+
 import org.bson.types.ObjectId;
 import models.entities.Mensaje;
+import models.entities.User;
 
 import org.jongo.MongoCollection;
 
@@ -20,10 +22,10 @@ public class MensajesBusiness {
     }
 
     public static void update(Mensaje mensaje) {
-        Mensaje mensajeDb = mensajes().findOne("{id: #}", mensaje.getId()).as(Mensaje.class);
+        Mensaje mensajeDb = findByDestinatarioFecha(mensaje.getUserFrom().email, mensaje.getFecha());
         
         mensajeDb.setEstado(mensaje.getEstado());
-        mensajes().update("{id: #}", mensaje.getId()).with(mensajeDb);
+        mensajes().update("{userFrom.email: #, fecha: #}", mensaje.getUserFrom().email, mensaje.getFecha()).with(mensajeDb);
     }
 
     public static void remove(ObjectId id) {
@@ -37,6 +39,10 @@ public class MensajesBusiness {
     public static Iterable<Mensaje> findByDestinatarioEstado(String destinatario,  Long idEstado) {
         Iterable<Mensaje> mensajes = mensajes().find("{destinatario: #, estado: #}", destinatario, idEstado).as(Mensaje.class);
         return mensajes;
+    }
+    
+    public static Mensaje findByDestinatarioFecha(String remitente,  String fecha) {
+    	return mensajes().findOne("{userFrom.email: #, fecha: #}", remitente, fecha).as(Mensaje.class);
     }
     
     public static Iterable<Mensaje> findAll() {

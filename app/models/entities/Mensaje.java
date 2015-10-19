@@ -11,7 +11,7 @@ public class Mensaje {
     private ObjectId id;
 	private User userFrom;
     private String destinatario;
-	private Date fecha;
+	private String fecha;
 	private String asunto;
 	private String contenido;
 	private Long estado;
@@ -34,10 +34,10 @@ public class Mensaje {
 	public void setDestinatario(String destinatario) {
 		this.destinatario = destinatario;
 	}
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 	public String getAsunto() {
