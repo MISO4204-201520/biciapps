@@ -28,4 +28,6 @@ public class Ruta {
 
     public String nombreDestino;
 
+    public List<User> usuarios;
+
 }

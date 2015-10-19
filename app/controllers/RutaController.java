@@ -1,31 +1,28 @@
 package controllers;
 
 import models.business.UserBusiness;
-import models.entities.Amigo;
 import models.entities.User;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import models.entities.Ruta;
-import models.entities.Evento;
-import models.entities.Amigo;
 import models.business.RutaBusiness;
+import models.entities.Recorrido;
+import models.business.RecorridoBusiness;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * Created by Fernanda on 2/10/15.
+ * Created by l on 2/10/15.
  */
 public class RutaController extends Controller {
 
-    
     public Result crearRuta() {
 
         DynamicForm f = Form.form().bindFromRequest();
-        String emailUser= f.get("emailuser");
         String nombreOrigen = f.get("pinicio");
         String latitudOrigen = f.get("latOrigen");
         String longitudOrigen = f.get("lngOrigen");
@@ -36,7 +33,6 @@ public class RutaController extends Controller {
 
         Ruta formRuta = new Ruta();
 
-        formRuta.emailUser=emailUser;
         formRuta.nombreOrigen = nombreOrigen;
         formRuta.latitudOrigen = latitudOrigen;
         formRuta.longitudOrigen = longitudOrigen;
@@ -45,46 +41,57 @@ public class RutaController extends Controller {
         formRuta.latitudDestino = latitudDestino;
         formRuta.longitudDestino = longitudDestino;
 
-        RutaBusiness.insertRuta(formRuta);
-
-        return ok( latitudOrigen + longitudDestino);
+        RutaBusiness.insert(formRuta);
+        return ok("Ok");
     }
 
-    public Result crearEvento() {
+    public Result crearRecorrido() {
 
         DynamicForm f = Form.form().bindFromRequest();
-        String emailUser= f.get("emailuser");
-        String nombreruta=f.get("nombre");
-        //List<Amigo> amigos=f.get("grupo");
-        String fecha=f.get("salida");
-        String nombreOrigen = f.get("pinicio");
-        String latitudOrigen = f.get("latOrigen");
-        String longitudOrigen = f.get("lngOrigen");
 
-        String nombreDestino = f.get("pfinal");
-        String latitudDestino = f.get("latDestino");
-        String longitudDestino = f.get("lngDestino");
-        String distancia=f.get("distancia");
-        String tiempo=f.get("tiempo");
+        Ruta ruta = new Ruta();
 
-        Evento formEvento= new Evento();
+        ruta.nombreOrigen = f.get("pinicio");
+        ruta.latitudOrigen = f.get("latOrigen");
+        ruta.longitudOrigen = f.get("lngOrigen");
 
-        formEvento.emailUser=emailUser;
-        formEvento.nombre=nombreruta;
-        formEvento.fecha=fecha;
-        //formEvento.amigos=amigos;
-        formEvento.nombreOrigen = nombreOrigen;
-        formEvento.latitudOrigen = latitudOrigen;
-        formEvento.longitudOrigen = longitudOrigen;
-        formEvento.nombreDestino = nombreDestino;
-        formEvento.latitudDestino = latitudDestino;
-        formEvento.longitudDestino = longitudDestino;
-        formEvento.distancia=distancia;
-        formEvento.tiempo=tiempo;
+        ruta.nombreDestino = f.get("pfinal");
+        ruta.latitudDestino = f.get("latDestino");
+        ruta.longitudDestino = f.get("lngDestino");
 
-        RutaBusiness.insertEvento(formEvento);
+        
+        List<User> usuarios = new ArrayList<User>();
+        
+        String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
+        User usuarioLogueado = UserBusiness.findByEmail(emailUsuarioLogueado);
 
-        return ok( latitudOrigen + longitudDestino);
+        String msj = "No favorita"; 
+        
+        //¿Es una ruta favorita?
+
+        if (f.get("rutaFavorita").charAt(0) == '1'){
+
+            usuarios.add(usuarioLogueado);
+            msj = "Favorita";
+        }
+
+        ruta.usuarios = usuarios;
+        RutaBusiness.insert(ruta);
+
+        Recorrido recorrido = new Recorrido();
+
+        recorrido.nombre = f.get("nombre");
+        recorrido.fecha = f.get("salida");
+        recorrido.distancia = f.get("distancia");
+        recorrido.tiempo = f.get("tiempo");
+        recorrido.creador = usuarioLogueado;
+        recorrido.usuarios = usuarios;
+
+        recorrido.ruta = ruta;
+
+        RecorridoBusiness.insert(recorrido);
+
+        return ok(msj+f.get("rutaFavorita"));
     }
 
 }

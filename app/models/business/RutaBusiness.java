@@ -9,7 +9,7 @@ import models.entities.Evento;
 import org.jongo.MongoCollection;
 
 /**
- * Created by Omar on 10/10/2015.
+ * Created by Omar on 16/10/2015.
  */
 public class RutaBusiness {
 
