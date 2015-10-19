@@ -160,7 +160,7 @@
 	    	<button id="ger-favoriteRoute" type="button">
 	    		<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 	    	</button>
-	    	Guardar recorrido
+	    	Guardar ruta
 
 	    </div>
     </div>
@@ -325,38 +325,44 @@
 
     </script>
     <script>
-    	//Select as the favorite route
+    	//Select as the favorite route if exists
     	$("#ger-favoriteRoute").on("click", function(e){
-    		var pinicio = $("#pinicio").val();
-			var latOrigen = $("#latOrigen").val();
-			var lngOrigen = $("#lngOrigen").val();
+    		if((typeof originMarker !== 'undefined') && (typeof destinyMarker !== 'undefined')){
+	    		var pinicio = $("#pinicio").val();
+				var latOrigen = $("#latOrigen").val();
+				var lngOrigen = $("#lngOrigen").val();
 
-			var pfinal = $("#pfinal").val();
-			var latDestino = $("#latDestino").val();
-			var lngDestino = $("#lngDestino").val();
-			var request = $.ajax({
-				url: "@routes.RutaController.crearRuta()",
-				method: "POST",
-				data: {
-					pinicio : pinicio,
-					latOrigen : latOrigen,
-					lngOrigen : lngOrigen,
+				var pfinal = $("#pfinal").val();
+				var latDestino = $("#latDestino").val();
+				var lngDestino = $("#lngDestino").val();
+				var request = $.ajax({
+					url: "@routes.RutaController.crearRuta()",
+					method: "POST",
+					data: {
+						pinicio : pinicio,
+						latOrigen : latOrigen,
+						lngOrigen : lngOrigen,
 
-					pfinal: pfinal,
-					latDestino: latDestino,
-					lngDestino: lngDestino
-				},
-					dataType: "html"
-			});
+						pfinal: pfinal,
+						latDestino: latDestino,
+						lngDestino: lngDestino
+					},
+						dataType: "html"
+				});
 
-			request.done(function( msg ) {
-				console.log("ajax ok!");
-			});
-			 
-			request.fail(function( jqXHR, textStatus ) {
-				alert( "Request failed: " + textStatus );
-			});
+				request.done(function( msg ) {
+					console.log("ajax ok!");
+					alert("Se ha agregado tu ruta");
+				});
+				 
+				request.fail(function( jqXHR, textStatus ) {
+					alert("Algo está mal, verifica tu conexión a internet: " + textStatus );
+				});
+			}else{
+		    	alert("Debes seleccionar un punto de salida y de llegada");
+		    }
     	});
+	    
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWH8xrMZewAIVlQwc5bCkUxX-Y6bQ9uV0&signed_in=true&callback=initMap" async defer></script>
 
