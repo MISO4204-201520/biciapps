@@ -14,26 +14,31 @@
 
         <br>
 
-        <h2>Agregar amigos</h2>
-
-        <table id="contacts_table" class='display' style="width: 200px;">
-            <thead>
-                <tr>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
-                    <th>Correo</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Row 1 Data 1</td>
-                    <td>Row 1 Data 2</td>
-                    <td>Row 1 Data 3</td>
-                    <td>Row 1 Data 4</td>
-                </tr>
-            </tbody>
-        </table>
+        <div style="padding-left: 3em;">
+            <h2>Agregar amigos</h2>
+        </div>
+        <div id="resOk" class="alert alert-success" style="padding-left: 3em !important; width: 400px;"> </div>
+        <div id="resError" class="alert alert-danger" style="padding-left: 3em !important;  width: 400px;"> </div>
+        <div id = "tablaAmigos" style="width: 800px !important; padding-left: 5em;">
+            <table id="contacts_table" class="display">
+                <thead>
+                    <tr>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Row 1 Data 1</td>
+                        <td>Row 1 Data 2</td>
+                        <td>Row 1 Data 3</td>
+                        <td>Row 1 Data 4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="@routes.Assets.versioned("javascripts/amigo.js")"></script>
@@ -41,13 +46,17 @@
         <script type="text/javascript">
         $(document).ready(function() {
         console.log( "ready!" );
+        $("#resOk").hide();
+        $("#resError").hide();
 
          $('#contacts_table').dataTable( {
+            "bAutoWidth": false,
             "paging": false,
             "ordering": false,
             "info": false,
             "bFilter": false,
             "scrollY": "200px",
+            "width" : "400px",
             "scrollCollapse": true,
             "bProcessing": true,
             "bServerSide": true,
