@@ -14,8 +14,6 @@ public class Ruta {
     @JsonProperty("_id")
     public ObjectId id;
 
-    public String emailUser;
-
     public String latitudOrigen;
 
     public String longitudOrigen;
