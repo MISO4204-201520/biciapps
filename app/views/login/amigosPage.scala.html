@@ -1,13 +1,12 @@
     @import navbar._
     @import models.entities._
-    @(amigos: List[User])
-
     @basicEmptyBootstrap{
 
         <meta name="description" content="">
         <meta name="author" content="">
         <title>BiciApps</title>
         <link href="@routes.Assets.versioned("stylesheets/signin.css")" rel="stylesheet">
+        <link href="@routes.Assets.versioned("stylesheets/dataTables.jqueryui.min.css")" rel="stylesheet">
 
     } {
 
@@ -15,12 +14,54 @@
 
         <br>
 
-        <ul>
-        @for(usuario <- amigos) {
-            <li>@usuario.email</li>
-        }
-        </ul>
+        <h2>Agregar amigos</h2>
+
+        <table id="contacts_table" class='display' style="width: 200px;">
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                    <td>Row 1 Data 3</td>
+                    <td>Row 1 Data 4</td>
+                </tr>
+            </tbody>
+        </table>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="@routes.Assets.versioned("javascripts/inicioSesion.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/amigo.js")"></script>
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+        console.log( "ready!" );
+
+         $('#contacts_table').dataTable( {
+            "paging": false,
+            "ordering": false,
+            "info": false,
+            "bFilter": false,
+            "scrollY": "200px",
+            "scrollCollapse": true,
+            "bProcessing": true,
+            "bServerSide": true,
+            "bJQueryUI": true,
+            "columnDefs": [ {
+                "targets": -1,
+                "data": null,
+                "defaultContent": "<button>A&#241;adir amigo</button>"
+            } ],
+            "sAjaxSource": "@routes.Account.getAmigos1()"
+            });
+        });
+
+        $('#contacts_table tbody').on('click', 'button', metodoClick);
+
+        </script>
     }

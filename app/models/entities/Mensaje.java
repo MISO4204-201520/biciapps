@@ -9,17 +9,30 @@ public class Mensaje {
 	
     @JsonProperty("_id")
     private ObjectId id;
-	private String remitente;
+	private User userFrom;
+    private String destinatario;
 	private Date fecha;
 	private String asunto;
-	private String contenidoTxt;
-	private String contenidoHtml;
+	private String contenido;
+	private Long estado;
 	
-	public String getRemitente() {
-		return remitente;
+	public ObjectId getId() {
+		return id;
 	}
-	public void setRemitente(String remitente) {
-		this.remitente = remitente;
+	public void setId(ObjectId id) {
+		this.id = id;
+	}
+	public User getUserFrom() {
+		return userFrom;
+	}
+	public void setUserFrom(User userFrom) {
+		this.userFrom = userFrom;
+	}
+	public String getDestinatario() {
+		return destinatario;
+	}
+	public void setDestinatario(String destinatario) {
+		this.destinatario = destinatario;
 	}
 	public Date getFecha() {
 		return fecha;
@@ -33,16 +46,16 @@ public class Mensaje {
 	public void setAsunto(String asunto) {
 		this.asunto = asunto;
 	}
-	public String getContenidoTxt() {
-		return contenidoTxt;
+	public String getContenido() {
+		return contenido;
 	}
-	public void setContenidoTxt(String contenidoTxt) {
-		this.contenidoTxt = contenidoTxt;
+	public void setContenido(String contenido) {
+		this.contenido = contenido;
 	}
-	public String getContenidoHtml() {
-		return contenidoHtml;
+	public Long getEstado() {
+		return estado;
 	}
-	public void setContenidoHtml(String contenidoHtml) {
-		this.contenidoHtml = contenidoHtml;
+	public void setEstado(Long estado) {
+		this.estado = estado;
 	}
 }
