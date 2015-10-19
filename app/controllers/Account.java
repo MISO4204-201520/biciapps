@@ -11,11 +11,13 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 
 /**
@@ -176,6 +178,7 @@ public class Account extends Controller {
         return loggedIn;
     }
 
+    @Security.Authenticated(MySecureAuth.class)
     public Result editarPerfilPage() {
         String email = session(MySecureAuth.SESSION_ID);
         User usuario = UserBusiness.findByEmail(email);
@@ -183,6 +186,7 @@ public class Account extends Controller {
         return ok(views.html.login.editarPerfilPage.render(formData));
     }
 
+    @Security.Authenticated(MySecureAuth.class)
     public Result editarUsuario() {
 
         DynamicForm f = Form.form().bindFromRequest();
@@ -201,13 +205,16 @@ public class Account extends Controller {
         formUser.pwd = pwd;
 
         UserBusiness.update(formUser);
-        return redirect(controllers.routes.Application.userPage());
+
+        return ok("actualizado");
     }
 
+    @Security.Authenticated(MySecureAuth.class)
     public Result getAmigos() {
         return ok(views.html.login.amigosPage.render());
     }
 
+    @Security.Authenticated(MySecureAuth.class)
     public Result getAmigos1() {
         String email = session(MySecureAuth.SESSION_ID);
         User usuario = UserBusiness.findByEmail(email);
@@ -215,7 +222,10 @@ public class Account extends Controller {
         Iterable<User> usuarios = UserBusiness.findAll();
 
         List<User> usuariosList = new ArrayList<User>();
-        usuarios.forEach(x-> usuariosList.add(x));
+        usuarios.forEach(x-> {
+            if(!x.email.equalsIgnoreCase(usuario.email)) {
+                usuariosList.add(x);
+            }});
 
         ObjectNode result = Json.newObject();
 
@@ -231,7 +241,10 @@ public class Account extends Controller {
         return ok(result);
     }
 
+    @Security.Authenticated(MySecureAuth.class)
     public Result addAmigo() {
+        Boolean respuesta = false;
+        String mensaje ="Ya existe en su lista de amigos";
         JsonNode json = request().body().asJson();
         String email = json.findPath("email").textValue();
         String emailUsuario = session(MySecureAuth.SESSION_ID);
@@ -240,6 +253,15 @@ public class Account extends Controller {
 
         if (usuarioSession.amigos != null && !usuarioSession.amigos.isEmpty()) {
             // Buscar Amigo si existe para no volver a adicionar
+            Optional<Amigo> amigoOptEnco = usuarioSession.amigos.stream().filter(x -> x.email.equals(usuarioAmigo.email)).findFirst();
+            if(!amigoOptEnco.isPresent()) {
+                Amigo amigo = new Amigo();
+                amigo.nickName = usuarioAmigo.nombres + " " + usuarioAmigo.apellidos;
+                amigo.email = usuarioAmigo.email;
+                usuarioSession.amigos.add(amigo);
+                respuesta = true;
+                mensaje = "Amigo adicionado correctamente";
+            }
         } else {
             usuarioSession.amigos = new ArrayList<Amigo>();
             Amigo amigo = new Amigo();
@@ -247,6 +269,8 @@ public class Account extends Controller {
             amigo.email = usuarioAmigo.email;
 
             usuarioSession.amigos.add(amigo);
+            respuesta = true;
+            mensaje = "Amigo adicionado correctamente";
         }
 
         UserBusiness.update(usuarioSession);
@@ -256,8 +280,8 @@ public class Account extends Controller {
         ArrayNode an = result.putArray("data");
 
         ObjectNode row = Json.newObject();
-        row.put("res", true);
-        row.put("mensaje", "Ok");
+        row.put("res", respuesta);
+        row.put("mensaje", mensaje);
         an.add(row);
 
         return ok(result);
