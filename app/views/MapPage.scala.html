@@ -62,7 +62,7 @@
 
     <div id="container">
     	<div class="col-md-5">
-	        <form class="form-horizontal" role="form" action="" method="">
+	        <form  class="form-horizontal" role="form" action="@routes.RutaController.crearRuta()" method="POST">
 	                @if(flash.containsKey("error")) {
 	                    <div class="alert alert-danger" role="alert">@flash.get("error")</div>
 	                }
@@ -129,6 +129,11 @@
 	                    <input type="submit" value="Crear recorrido" class="btn btn-success">
 	                </div>
 	            </div>
+	            <input id="latOrigen" type="hidden" name="latOrigen" value="">
+	            <input id="lngOrigen" type="hidden" name="lngOrigen" value="">
+	            <input id="latDestino" type="hidden" name="latDestino" value="">
+	            <input id="lngDestino" type="hidden" name="lngDestino" value="">
+
 	        </form>
 	    </div>
 	    <div class="col-md-6">
@@ -200,7 +205,7 @@
 		// Handles click events on a map, and adds a new point to the Polyline.
 		function mapClicked(event) {
 			if (drawingState=="originToDraw"){
-				if(typeof destinyMarker !== 'undefined'){
+				if(typeof originMarker !== 'undefined'){
 					originMarker.setMap(null);
 				}
 			  	// Add a new marker at the new plotted point on the polyline.
@@ -209,22 +214,21 @@
 			    	title: 'origen',
 			    	map: map
 			  	});
-			  	console.log("origin drawed");
-
 			}
 			if (drawingState=="destinyToDraw"){
-				if(typeof originMarker !== 'undefined'){
-					originMarker.setMap(null);
-				}
 				if(typeof destinyMarker !== 'undefined'){
 					destinyMarker.setMap(null);
 				}
+				
 			  	// Add a new marker at the new plotted point on the polyline.
 			  	destinyMarker = new google.maps.Marker({
 			    	position: event.latLng,
 			    	title: 'destino',
 			    	map: map
 			  	});
+
+			  	
+
 			  	if(typeof destinyMarker !== 'undefined'){
 					destinyMarker.setMap(null);
 				}
@@ -251,12 +255,18 @@
 		    travelMode: google.maps.TravelMode.WALKING
 		  }, function(response, status) {
 		    if (status === google.maps.DirectionsStatus.OK) {
-		      directionsDisplay.setDirections(response);
-		      var route = response.routes[0];
-		      $("#pinicio").val(route.legs[0].start_address);
-		      $("#pfinal").val(route.legs[0].end_address);
-		      $("#distancia").val(route.legs[0].distance.text);
-		      $("#tiempo").val(route.legs[0].duration.text);
+			    directionsDisplay.setDirections(response);
+			    var route = response.routes[0];
+			    $("#pinicio").val(route.legs[0].start_address);
+			    $("#pfinal").val(route.legs[0].end_address);
+		    	$("#distancia").val(route.legs[0].distance.text);
+			    $("#tiempo").val(route.legs[0].duration.text);
+			    
+			    
+			    $("#latOrigen").val(route.bounds.Pa.I);
+			  	$("#lngOrigen").val(route.bounds.La.I);
+			  	$("#latDestino").val(route.bounds.Pa.j);
+			  	$("#lngDestino").val(route.bounds.La.j);
 		    } else {
 		      window.alert('Directions request failed due to ' + status);
 		    }
@@ -280,6 +290,7 @@
 			drawingState = "destinyToDraw";
 			console.log("destinyReady");
 		}
+
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWH8xrMZewAIVlQwc5bCkUxX-Y6bQ9uV0&signed_in=true&callback=initMap" async defer></script>
 
