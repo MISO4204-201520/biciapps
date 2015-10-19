@@ -7,6 +7,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 import models.entities.Ruta;
+import models.business.RutaBusiness;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,37 +40,9 @@ public class RutaController extends Controller {
         formRuta.latitudDestino = latitudDestino;
         formRuta.longitudDestino = longitudDestino;
 
+        RutaBusiness.insert(formRuta);
 
-        return ok("Hola Mafe" + latitudOrigen + longitudDestino);/*
-        DynamicForm f = Form.form().bindFromRequest();
-        String nombres = f.get("nombres");
-        String apellidos = f.get("apellidos");
-        String sexo = f.get("sexo");
-        String email = f.get("email");
-        String pwd = f.get("pwd");
-
-
-        User formUser = new User();
-        formUser.nombres = nombres;
-        formUser.apellidos = apellidos;
-        formUser.sexo = sexo;
-        formUser.email = email;
-        formUser.pwd = pwd;
-
-        User existingUser = UserBusiness.findByEmail(email);
-        if (existingUser != null) {
-            flash("error", "Ya existe ese usuario");
-            return redirect(controllers.routes.Account.registerPage());
-        }
-
-        System.out.println("Se creo el usuario: " + email);
-        UserBusiness.insert(formUser);
-        boolean loggedIn = loginTask(email, pwd);
-        if (loggedIn) {
-            return redirect(controllers.routes.Application.userPage());
-        } else {
-            return ok("No se pudo logear");
-        }*/ 
+        return ok("Hola Mafe" + latitudOrigen + longitudDestino);
     }
 
 }
