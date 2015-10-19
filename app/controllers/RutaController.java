@@ -20,6 +20,31 @@ import java.util.List;
  */
 public class RutaController extends Controller {
 
+    public Result crearRuta() {
+
+        DynamicForm f = Form.form().bindFromRequest();
+        String nombreOrigen = f.get("pinicio");
+        String latitudOrigen = f.get("latOrigen");
+        String longitudOrigen = f.get("lngOrigen");
+
+        String nombreDestino = f.get("pfinal");
+        String latitudDestino = f.get("latDestino");
+        String longitudDestino = f.get("lngDestino");
+
+        Ruta formRuta = new Ruta();
+
+        formRuta.nombreOrigen = nombreOrigen;
+        formRuta.latitudOrigen = latitudOrigen;
+        formRuta.longitudOrigen = longitudOrigen;
+
+        formRuta.nombreDestino = nombreDestino;
+        formRuta.latitudDestino = latitudDestino;
+        formRuta.longitudDestino = longitudDestino;
+
+        RutaBusiness.insert(formRuta);
+        return ok("Ok");
+    }
+
     public Result crearRecorrido() {
 
         DynamicForm f = Form.form().bindFromRequest();
@@ -63,7 +88,7 @@ public class RutaController extends Controller {
         recorrido.usuarios = usuarios;
 
         recorrido.ruta = ruta;
-        
+
         RecorridoBusiness.insert(recorrido);
 
         return ok(msj+f.get("rutaFavorita"));
