@@ -1,0 +1,45 @@
+@import models.entities.Recorrido
+@(recorridos : List[Recorrido])
+
+@import navbar._
+
+@basicEmptyBootstrap{
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BiciApps</title>
+
+} {
+
+    @clientUnloggedNavbar()
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Mis Recorridos</h2>
+        </div>
+    </div>
+    <div id="container">
+	    <table class="table"> 
+	    	<tr>
+		  		<th>Nombre</th>
+		  		<th>Fecha</th>
+		  		<th>Origen</th>
+		  		<th>Destino</th>
+		  		<th>Tiempo</th>
+		  		<th>Distancia</th>
+		  		<th>Ver ruta</th>
+		  	</tr>
+			@for(recorrido <- recorridos) {
+			  	<tr>
+			  		<td>@recorrido.nombre</td>
+			  		<td>@recorrido.fecha</td>
+			  		<td>@recorrido.ruta.nombreOrigen</td>
+			  		<td>@recorrido.ruta.nombreDestino</td>
+			  		<td>@recorrido.tiempo</td>
+			  		<td>@recorrido.distancia</td>
+			  		<td>@recorrido.ruta.id</td>
+			  	</tr>
+			} 
+		</table>
+	</div>
+
+}

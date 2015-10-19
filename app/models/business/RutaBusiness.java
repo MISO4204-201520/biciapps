@@ -3,6 +3,7 @@ package models.business;
 import models.dao.MongoManager;
 import org.bson.types.ObjectId;
 import models.entities.Ruta;
+import models.entities.User;
 import org.jongo.MongoCollection;
 
 /**
@@ -21,6 +22,11 @@ public class RutaBusiness {
 
     public static void remove(ObjectId id) {
         rutas().remove(id);
+    }
+
+    public static Iterable<Ruta> findByUser(User user) {
+        Iterable<Ruta> rutas = rutas().find("{usuarios.email: #}", user.email).as(Ruta.class);
+        return rutas;
     }
 
     public static  Iterable<Ruta> findAll() {

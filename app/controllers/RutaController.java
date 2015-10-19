@@ -13,7 +13,7 @@ import models.business.RecorridoBusiness;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import com.google.common.collect.Lists;
 
 /**
  * Created by l on 2/10/15.
@@ -41,8 +41,38 @@ public class RutaController extends Controller {
         formRuta.latitudDestino = latitudDestino;
         formRuta.longitudDestino = longitudDestino;
 
+        List<User> usuarios = new ArrayList<User>();
+
+        String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
+        User usuarioLogueado = UserBusiness.findByEmail(emailUsuarioLogueado);
+
+        usuarios.add(usuarioLogueado);
+        formRuta.usuarios = usuarios;
+
         RutaBusiness.insert(formRuta);
         return ok("Ok");
+    }
+
+    public Result verRecorridos() {
+        String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
+        User usuarioLogueado = UserBusiness.findByEmail(emailUsuarioLogueado);
+
+        Iterable<Recorrido> recorridosIterable = RecorridoBusiness.findByUser(usuarioLogueado);
+        List<Recorrido> recorridos = Lists.newArrayList(recorridosIterable);
+        
+        return ok(views.html.ListaRecorridos.render(recorridos));
+
+    }
+
+    public Result verRutas() {
+        String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
+        User usuarioLogueado = UserBusiness.findByEmail(emailUsuarioLogueado);
+
+        Iterable<Ruta> rutasIterable = RutaBusiness.findByUser(usuarioLogueado);
+        List<Ruta> rutas = Lists.newArrayList(rutasIterable);
+        
+        return ok(views.html.ListaRutas.render(rutas));
+
     }
 
     public Result crearRecorrido() {

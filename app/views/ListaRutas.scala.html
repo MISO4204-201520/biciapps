@@ -1,0 +1,37 @@
+@import models.entities.Ruta
+@(rutas : List[Ruta])
+
+@import navbar._
+
+@basicEmptyBootstrap{
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BiciApps</title>
+
+} {
+
+    @clientUnloggedNavbar()
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Mis Rutas</h2>
+        </div>
+    </div>
+    <div id="container">
+	    <table class="table"> 
+	    	<tr>
+		  		<th>Origen</th>
+		  		<th>Destino</th>
+		  		<th>Ver ruta</th>
+		  	</tr>
+			@for(ruta <- rutas) {
+			  	<tr>
+			  		<td>@ruta.nombreOrigen</td>
+			  		<td>@ruta.nombreDestino</td>
+			  		<td>@ruta.id</td>
+			  	</tr>
+			} 
+		</table>
+	</div>
+
+}
