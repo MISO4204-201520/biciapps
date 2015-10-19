@@ -1,33 +1,61 @@
 @()
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+@import navbar._
 
-    <h1>Promoción en el contexto</h1>
-    <p id="idUsuario"></p>
-    @**routes.Store.getPromotion()*@
-    <form action="">
-    	Longitud: <br>
-        <input id="lon" type="text" name="lon" value="4.603226">
-        <br>
-        Latitud: <br>
-        <input id="lat" type="text" name="lat" value="-74.065188">
-        <br>
-        Distancia maxima: <br>
-        <input id="maxDistancia" type="text" name="lat">
-    </form>
-    <button id="findPromotionsBtn" >Buscar Promociones</button>
+@basicEmptyBootstrap{
 
-    <ul id="listaPromociones"></ul>
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="@routes.Assets.versioned("javascripts/context.js")"></script>
-</body>
-</html>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BiciApps</title>
+    <link href="@routes.Assets.versioned("stylesheets/signin.css")" rel="stylesheet">
+
+} {
+    @clientUnloggedNavbar()
+
+    <div class="container">
+        <div class="row">
+            <h1>Promociones</h1>
+            <p id="idUsuario"></p>
+            @**routes.Store.getPromotion()*@
+            <form class="form-horizontal" role="form" action="">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="lon">Longitud: </label>
+                    <div class="col-md-4">
+                        <input id="lon" type="text" name="lon" value="4.603226" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="lat">Latitud: </label>
+                    <div class="col-md-4">
+                        <input id="lat" type="text" name="lat" value="-74.065188" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="maxDistancia">Distancia maxima: </label>
+                    <div class="col-md-4">
+                        <input id="maxDistancia" type="text" name="lat" class="form-control">
+                    </div>
+                </div>
+            </form>
+            <div class="col-sm-offset-2 col-sm-4">
+                <button id="findPromotionsBtn" class="btn btn-lg btn-primary btn-block">Buscar Promociones</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <hr>
+            <div class="col-sm-offset-2 col-sm-4">
+                <ul id="listaPromociones"></ul>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="@routes.Assets.versioned("javascripts/context.js")"></script>
+}

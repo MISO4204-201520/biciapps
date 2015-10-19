@@ -37,11 +37,11 @@ GET     /deleteStorePage                    controllers.Store.deleteStorePage()
 #-----------------------------------------
 #Context
 #-----------------------------------------
-GET     /context                            controllers.Store.contextTestPage()
+GET     /contexto                           controllers.Store.contextTestPage()
 
 #REST
-GET 	/contexto/promocion                  controllers.Store.darPromociones()
-GET		/contexto/test						 controllers.Store.test()
+GET 	/contexto/promocion                 controllers.Store.darPromociones()
+GET		/contexto/test						controllers.Store.test()
 
 #-----------------------------------------
 # Services
