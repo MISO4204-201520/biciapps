@@ -62,11 +62,14 @@ GET		/mensajes				 			controllers.MensajesController.inicializar()
 POST    /mensajes                			controllers.MensajesController.enviarMail()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /assets/*file                       controllers.Assets.versioned(path="/public", file: Asset)
+
 
 #------------------------------------------
 #Mapa
 #------------------------------------------
 
-POST    /ruta/crear                   controllers.RutaController.crearRuta()
+POST    /ruta/crear                           controllers.RutaController.crearRuta()
+POST    /evento/crear                         controllers.RutaController.crearEvento()
+
 

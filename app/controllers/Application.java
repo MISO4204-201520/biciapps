@@ -20,21 +20,15 @@ public class Application extends Controller {
 
             String email = session(MySecureAuth.SESSION_ID);
             User usuario = UserBusiness.findByEmail(email);
-            //return ok(listUsers);
             return ok(views.html.userPage.render(usuario));
     }
 
     @Security.Authenticated(MySecureAuth.class)
     public Result mapPage() {
 
-        String listUsers = "";
-        Iterable<User> allUsers = UserBusiness.users().find().as(User.class);
-
-        for(User u : allUsers){
-            listUsers = listUsers + ", " + u.email;
-        }
-        //return ok(listUsers);
-        return ok(views.html.MapPage.render(listUsers));
+        String email = session(MySecureAuth.SESSION_ID);
+        User usuario = UserBusiness.findByEmail(email);
+        return ok(views.html.MapPage.render(usuario));
 
 
     }

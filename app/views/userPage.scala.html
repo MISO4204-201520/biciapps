@@ -75,7 +75,7 @@
                 </div>
                 <div class="form-group">
                     <div class="gerfer-submit-btn col-sm-12" align="center">
-                        <input type="submit" value="Editar Cuenta" class="btn btn-default">
+                        <a href="@routes.Account.editarPerfilPage()" class="btn btn-default">Editar Cuenta</a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
 
         <div class="col-md-3">
             <div class="form-horizontal">
-                 <a href="" class="btn btn-success gerfer-btn-success">Mis Amigos</a>
+                 <a href="@routes.Account.getAmigos()" class="btn btn-success gerfer-btn-success">Mis Amigos</a>
                  <a href="@routes.Application.mapPage()" class="btn btn-success gerfer-btn-success">Mapa</a>
                  <a href="/"  class="btn btn-success gerfer-btn-success">Mis Eventos</a>                 
                  <a href="@routes.MensajesController.inicializar()" class="btn btn-success gerfer-btn-success">Mis Mensajes</a>

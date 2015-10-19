@@ -5,16 +5,21 @@ import org.bson.types.ObjectId;
 
 import java.util.List;
 
-
 /**
- * Created by ger y fer on 16/10/15.
+ * Created by User on 18/10/2015.
  */
-public class Ruta {
+public class Evento {
 
     @JsonProperty("_id")
     public ObjectId id;
 
     public String emailUser;
+
+    public String nombre;
+
+    public String fecha;
+
+    public List<Amigo> amigos;
 
     public String latitudOrigen;
 
@@ -27,5 +32,9 @@ public class Ruta {
     public String longitudDestino;
 
     public String nombreDestino;
+
+    public String distancia;
+
+    public String tiempo;
 
 }

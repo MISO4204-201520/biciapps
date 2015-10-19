@@ -12,6 +12,7 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -200,8 +201,7 @@ public class Account extends Controller {
         formUser.pwd = pwd;
 
         UserBusiness.update(formUser);
-
-        return ok("actualizado");
+        return redirect(controllers.routes.Application.userPage());
     }
 
     public Result getAmigos() {

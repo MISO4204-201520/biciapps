@@ -1,10 +1,11 @@
-@(message: String)
+@import models.entities.User
+@(usuario: User)
 
 @import navbar._
 
 @basicEmptyBootstrap{
 
-    <meta name="description" content="">
+	<meta name="description" content="" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <meta name="author" content="">
     <title>BiciApps</title>
 
@@ -62,7 +63,7 @@
 
     <div id="container">
     	<div class="col-md-5">
-	        <form  class="form-horizontal" role="form" action="@routes.RutaController.crearRuta()" method="POST">
+			<form  class="form-horizontal" role="form" action="@routes.RutaController.crearEvento()" method="POST">
 	                @if(flash.containsKey("error")) {
 	                    <div class="alert alert-danger" role="alert">@flash.get("error")</div>
 	                }
@@ -98,7 +99,7 @@
 					    </button>
 					</div>
 					<div class="col-md-5">
-	                    <input type="text" class="gerfer-static-label" id="pinicio" name="pinicio" disabled value="" require>
+	                    <input type="text" class="gerfer-static-label" id="pinicio" name="pinicio" readonly value="" required>
 	                </div>
 	            </div>
 	            <div class="form-group">
@@ -109,36 +110,48 @@
 					    </button>
 					</div>
 					<div class="col-md-5">
-	                    <input type="text" class="gerfer-static-label" id="pfinal" name="pfinal" disabled value="" required>
+	                    <input type="text" class="gerfer-static-label" id="pfinal" name="pfinal" readonly value="" required>
 	                </div>
 	            </div>
 	            <div class="form-group">
 	                <label class="control-label col-sm-6" for="distancia">Distancia aproximada</label>
 	                <div class="col-md-6">
-	                    <input type="text" class="gerfer-static-label" id="distancia" name="distancia" disabled value="" required>
+	                    <input type="text" class="gerfer-static-label" id="distancia" name="distancia" readonly value="" required>
 	                </div>
 	            </div>
 	            <div class="form-group">
 	                <label class="control-label col-sm-6" for="tiempo">Tiempo aproximado</label>
 	                <div class="col-md-6">
-	                    <input type="text" class="gerfer-static-label" id="tiempo" name="tiempo" value="" disabled>
+	                    <input type="text" class="gerfer-static-label" id="tiempo" name="tiempo" value="" readonly>
 	                </div>
 	            </div>
 	            <div class="form-group">
 	                <div class="gerfer-submit-btn col-sm-12">
-	                    <input type="submit" value="Crear recorrido" class="btn btn-success">
+	                    <input type="submit" value="Crear Evento" class="btn btn-success">
 	                </div>
 	            </div>
+				<input id="emailuser" type="hidden" name="emailuser" value="@usuario.email">
 	            <input id="latOrigen" type="hidden" name="latOrigen" value="">
 	            <input id="lngOrigen" type="hidden" name="lngOrigen" value="">
 	            <input id="latDestino" type="hidden" name="latDestino" value="">
 	            <input id="lngDestino" type="hidden" name="lngDestino" value="">
 
+
 	        </form>
 	    </div>
 	    <div class="col-md-6">
 	    	<div id="map" align="right"></div>
-	    </div>
+			<script>
+				var email=$("#emailuser").val();
+				var pincio=$("pinicio").val();
+				var pfinal=$("pfinal").val();
+				var latOrigen
+
+			</script>
+			<img  id="fav"src="data:image/png;base64,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" style="margin: auto; width:30px;">
+			Guardar Recorrido
+		</div>
+
     </div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
