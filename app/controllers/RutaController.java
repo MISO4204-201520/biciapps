@@ -10,6 +10,7 @@ import models.entities.Ruta;
 import models.business.RutaBusiness;
 import models.entities.Recorrido;
 import models.business.RecorridoBusiness;
+import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,6 +76,17 @@ public class RutaController extends Controller {
 
     }
 
+    public Result verDetalleRuta(String id) {
+        
+        if (id != null){
+            ObjectId idObj = new ObjectId(id);
+            Ruta ruta = RutaBusiness.findById(idObj);
+            return ok(views.html.DetalleRuta.render(ruta));
+        }
+        return ok("Debes especificar el ID de la ruta");
+
+    }
+
     public Result crearRecorrido() {
 
         DynamicForm f = Form.form().bindFromRequest();
@@ -106,7 +118,7 @@ public class RutaController extends Controller {
         }
 
         ruta.usuarios = usuarios;
-        RutaBusiness.insert(ruta);
+        
 
         Recorrido recorrido = new Recorrido();
 
@@ -120,8 +132,9 @@ public class RutaController extends Controller {
         recorrido.ruta = ruta;
 
         RecorridoBusiness.insert(recorrido);
-
-        return ok(msj+f.get("rutaFavorita"));
+        ruta.id = recorrido.id;
+        RutaBusiness.insert(recorrido.ruta);
+        return redirect(routes.RutaController.verRecorridos());
     }
 
 }

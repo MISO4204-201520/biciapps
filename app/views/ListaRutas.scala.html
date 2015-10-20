@@ -22,13 +22,13 @@
 	    	<tr>
 		  		<th>Origen</th>
 		  		<th>Destino</th>
-		  		<th>Ver ruta</th>
+		  		<th>-</th>
 		  	</tr>
 			@for(ruta <- rutas) {
 			  	<tr>
 			  		<td>@ruta.nombreOrigen</td>
 			  		<td>@ruta.nombreDestino</td>
-			  		<td>@ruta.id</td>
+			  		<td><a href='@routes.RutaController.verDetalleRuta(ruta.id.toString())'>Ver Ruta<a></td>
 			  	</tr>
 			} 
 		</table>
