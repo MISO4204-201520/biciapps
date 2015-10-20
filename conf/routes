@@ -15,6 +15,7 @@ POST    /account/editarUsuario              controllers.Account.editarUsuario()
 GET     /account/loginPage                  controllers.Account.loginPage()
 POST    /account/login                      controllers.Account.login()
 GET     /account/logout                     controllers.Account.logout()
+GET     /account/storeLogout                controllers.Account.storeLogout()
 GET     /loginFacebook                      controllers.Account.loginFacebook()
 GET     /account/getAmigos                  controllers.Account.getAmigos()
 GET     /account/getAmigos1                 controllers.Account.getAmigos1()
@@ -32,7 +33,7 @@ GET     /account/storeLoginPage			    controllers.Account.storeLoginPage()
 POST    /account/storeLogin                 controllers.Account.storeLogin()
 POST    /account/storeRegister              controllers.Account.storeRegister()
 
-GET     /deleteStorePage                    controllers.Store.deleteStorePage()
+GET     /listPromotionPage                    controllers.Store.listPromotionPage()
 
 #-----------------------------------------
 #Context

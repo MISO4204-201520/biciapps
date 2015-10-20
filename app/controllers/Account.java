@@ -63,11 +63,14 @@ public class Account extends Controller {
     }
 
     public Result loginPage() {
-
+        if(isLoggedIn()){
+            return redirect(controllers.routes.Application.userPage());
+        }
         return ok(views.html.login.loginPage.render());
     }
 
     public Result login() {
+
         DynamicForm f = Form.form().bindFromRequest();
         String email = f.get("email");
         String pwd = f.get("pwd");
@@ -104,14 +107,16 @@ public class Account extends Controller {
         UserBusiness.insert(formUser);
         boolean loggedIn = loginTask(email, pwd);
         if(loggedIn){
-            return redirect(controllers.routes.Store.deleteStorePage());
+            return redirect(controllers.routes.Store.listPromotionPage());
         }else{
             return ok("No se pudo logear");
         }
     }
 
     public Result storeLoginPage() {
-
+        if(isLoggedIn()){
+            return redirect(controllers.routes.Store.listPromotionPage());
+        }
         return ok(views.html.login.storeLoginPage.render());
     }
 
@@ -121,7 +126,7 @@ public class Account extends Controller {
         String pwd = f.get("pwd");
         boolean loggedIn = loginTask(email, pwd);
         if(loggedIn){
-            return redirect(controllers.routes.Store.deleteStorePage());
+            return redirect(controllers.routes.Store.listPromotionPage());
         }
         else{
             flash("error", "Credenciales no validas");
@@ -164,6 +169,10 @@ public class Account extends Controller {
         return redirect(controllers.routes.Application.index());
     }
 
+    public Result storeLogout() {
+        session().clear();
+        return redirect(controllers.routes.Store.homePage());
+    }
 
 
     private boolean loginTask(String email, String pwd) {
@@ -176,6 +185,11 @@ public class Account extends Controller {
             loggedIn = true;
         }
         return loggedIn;
+    }
+
+    private boolean isLoggedIn(){
+        String email = session(MySecureAuth.SESSION_ID);
+        return (email != null)? true: false;
     }
 
     @Security.Authenticated(MySecureAuth.class)

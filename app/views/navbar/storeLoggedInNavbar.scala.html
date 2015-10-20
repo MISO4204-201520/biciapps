@@ -1,0 +1,7 @@
+@()
+
+@import navbar.baseLoggedInNavbar
+
+@baseLoggedInNavbar{
+    <a class="navbar-brand" href="@routes.Store.homePage()">BiciappsStore</a>
+}(routes.Account.storeLogout().toString())

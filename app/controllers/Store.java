@@ -31,8 +31,13 @@ public class Store extends Controller {
         return ok(views.html.store.homePage.render());
     }
 
-    public Result deleteStorePage() {
-        return ok(views.html.store.deleteStorePage.render());
+    public Result listPromotionPage() {
+
+		List<PromocionContexto> promociones = DAOContexto.getPromociones();
+		List<PromocionV> promocionesV = toPromocionesV(promociones);
+
+		System.out.println(promocionesV);
+        return ok(views.html.store.listPromotionPage.render(promocionesV));
     }
 
     public Result contextTestPage() {

@@ -32,6 +32,16 @@ public class DAOContexto {
 	public static void savePromocion(PromocionContexto promocion){
 		promociones.save(promocion);
 	}
+
+	public static List<PromocionContexto> getPromociones(){
+		List<PromocionContexto> res = new ArrayList<>();
+		MongoCursor<PromocionContexto> cursor = promociones.find("{}").as(PromocionContexto.class);
+
+		for(PromocionContexto pc: cursor){
+			res.add(pc);
+		}
+		return res;
+	}
 	
 	public static List<PromocionContexto> getPromocionesUsuario(QueryParametersPromocion infoUsuario) {
 		
