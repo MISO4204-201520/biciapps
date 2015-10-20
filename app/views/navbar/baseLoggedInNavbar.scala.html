@@ -1,4 +1,4 @@
-@(navbarBrand: Html)(registerUrl: String)(loginUrl: String)
+@(navbarBrand: Html)(logoutUrl: String)
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -17,24 +17,22 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span class="caret"></span></a>
                     <ul class="dropdown-menu">
+                        <li><a href="@routes.Application.mapPage()">Mapa</a></li>
+                        <li><a href="@routes.RutaController.verRutas()">Mis Rutas</a></li>
+                        <li><a href="@routes.RutaController.verRecorridos()">Mis Recorridos</a></li>
+                        <li><a href="@routes.Account.getAmigos()">Mis Amigos</a></li>
                         <li><a href="@routes.ConfBicicletasController.inicializar()">Configurar Bicicleta</a></li>
-                        <li><a href="@routes.Store.homePage()">Tienda</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="/">Biciapps</a></li>
+                        <li><a href="@routes.Application.userPage()">Mi Cuenta</a></li>
                     </ul>
                 </li>
             </ul>
 
             <form class="navbar-form navbar-right" action="">
-                <a href="@registerUrl" type="submit" class="btn btn-success">Registrarse</a>
-                <a href="@loginUrl" class="btn btn-default">Inicia sesi&#243;n</a>
+                <a href="@logoutUrl" type="submit" class="btn btn-default">
+                    <span class="glyphicon glyphicon-log-out"></span>Cerrar sessión
+                </a>
             </form>
-            @**
-            <form class="navbar-form navbar-right" action="">
-                <a href="@routes.Account.registerPage()" type="submit" class="btn btn-success">Sign up</a>
-                <a href="@routes.Account.loginPage()" class="btn btn-default">Sign in</a>
-            </form>
-            **@
 
         </div><!--/.nav-collapse -->
     </div>
