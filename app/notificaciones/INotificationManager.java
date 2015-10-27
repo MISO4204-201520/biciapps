@@ -2,7 +2,7 @@ package notificaciones;
 
 import java.util.List;
 
-import models.form.NotificacionV;
+import models.form.NotificationV;
 
 import com.google.inject.ImplementedBy;
 
@@ -12,9 +12,9 @@ public interface INotificationManager {
 	
 	public boolean isEnabled();
 	
-	public void sendNotification(String userId, NotificacionV notification, String toUserId);
+	public void sendNotification(String userId, NotificationV notification, String toUserId);
 	
-	public List<NotificacionV> getNotifications(String userId);
+	public List<NotificationV> getNotifications(String userId);
 
 	public void markNotificationAsRead(String userId, String notificationId);
 	

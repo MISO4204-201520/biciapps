@@ -9,7 +9,6 @@
 	});
 
 	function findNotifications(){
-		console.log("Hello");
 		networkModule.queryIfEnabled(
 			function(data){
 				if(data["enabled"] == true){
@@ -37,7 +36,7 @@
 				console.log("Post success");
 			});
 			
-			networkModule.deleteNotification(function(data , statusText, xhr){
+			networkModule.deleteNotification("123", function(data , statusText, xhr){
 				if(xhr.status == 200){
 					console.log("Delete success");
 				}
@@ -53,7 +52,7 @@
 	
 	var networkModule = {
 			queryIfEnabled: function(successCall) {
-				var url = "/notifications/enabled";
+				var url = "/notificationsModule/enabled";
 				$.ajax({
 					type: "GET",
 					url: url,
@@ -107,8 +106,8 @@
 					},
 				});
 			},
-			deleteNotification: function(successCall) {
-				var url = "/notifications/id";
+			deleteNotification: function(id, successCall) {
+				var url = "/notifications/" + id;
 				$.ajax({
 					type: "DELETE",
 					url: url,

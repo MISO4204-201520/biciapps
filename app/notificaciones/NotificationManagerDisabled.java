@@ -3,7 +3,7 @@ package notificaciones;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.form.NotificacionV;
+import models.form.NotificationV;
 
 public class NotificationManagerDisabled implements INotificationManager{
 
@@ -13,13 +13,13 @@ public class NotificationManagerDisabled implements INotificationManager{
 	}
 
 	@Override
-	public void sendNotification(String userId, NotificacionV notification, String toUserId) {
+	public void sendNotification(String userId, NotificationV notification, String toUserId) {
 		return;
 	}
 	
 	@Override
-	public List<NotificacionV> getNotifications(String userId) {
-		List<NotificacionV> notificaciones = new ArrayList<NotificacionV>();
+	public List<NotificationV> getNotifications(String userId) {
+		List<NotificationV> notificaciones = new ArrayList<NotificationV>();
 		return notificaciones;
 	}
 
