@@ -24,7 +24,7 @@ public class NotificationManagerDisabled implements INotificationManager{
 	}
 
 	@Override
-	public void markNotificationAsRead(String userId, String notificationId) {
-		return;
+	public boolean markNotificationAsRead(String userId, String notificationId) {
+		return true;
 	}
 }

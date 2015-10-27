@@ -4,6 +4,9 @@
 
 (function(){
 	
+	var notifications = [];
+	var notificationsEnabled = false;
+	
 	$(document).ready(function () {
 	    $( "#findNotifictionsBtn" ).click(findNotifications);
 	});
@@ -12,6 +15,7 @@
 		networkModule.queryIfEnabled(
 			function(data){
 				if(data["enabled"] == true){
+					notificationsEnabled = true;
 					moduleEnabled();
 				}
 				else{
@@ -21,29 +25,38 @@
 		);
 	}
 	
-	function notification(title){
-		this.title = title;
+	function notification(topic, message, userId, id){
+		this.topic = topic;
+		this.message = message;
+		this.userId = userId;
+		this.id = id;
 	}
+	
 	
 	function moduleEnabled(){
 		console.log("Notifications are enabled, ok");
 		networkModule.queryForNotifications(function(data){
-			console.log(data);
+			console.log("Len: " +data.length);
 			
-			var title = new notification("Some title");
+			for(var i = 0 ; i< data.length; i++){
+				var n = new notification(data[i]['topic'], data[i]['message'], data[i]['userId'], data[i]['id'])
+				notifications.push(n);
+				console.log(n);
+			}
+			
+			var title = new notification("Topic", "message", "userId");
 			
 			networkModule.postNewNotification(title, function(){
 				console.log("Post success");
 			});
 			
-			networkModule.deleteNotification("123", function(data , statusText, xhr){
+			networkModule.deleteNotification(notifications[0].id, function(data , statusText, xhr){
 				if(xhr.status == 200){
 					console.log("Delete success");
 				}
 				else{
 					console.log("No content")
 				}
-				
 			});
 			
 			

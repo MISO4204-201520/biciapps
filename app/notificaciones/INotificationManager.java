@@ -16,6 +16,6 @@ public interface INotificationManager {
 	
 	public List<NotificationV> getNotifications(String userId);
 
-	public void markNotificationAsRead(String userId, String notificationId);
+	public boolean markNotificationAsRead(String userId, String notificationId);
 	
 }

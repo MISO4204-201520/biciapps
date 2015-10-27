@@ -42,29 +42,21 @@ public class Notifications extends Controller{
 	@BodyParser.Of(BodyParser.Json.class)
 	public Result createNotification() {
 		NotificationV notification = jsonToNotificationV(request().body().asJson());
-		
-		notificationManager.sendNotification(notification);
-		
-		Logger.debug(request().body().asJson().toString());
-		
-		boolean success = true;
-		if(success){
-			return ok();
-		}
-		else{
+		if(notification == null){
 			return badRequest();
 		}
+		notificationManager.sendNotification(notification);
+		return ok();
 	}
 	
 	public Result getNotifications() {
-		
-		List<NotificationV> notificacionesV = notificationManager.getNotifications("");
+		List<NotificationV> notificacionesV = notificationManager.getNotifications("userId");
 		return ok(Json.toJson(notificacionesV));
 	}
 	
 	public Result deleteNotification(String id) {
 		Logger.debug(id);
-		boolean success = true;
+		boolean success = notificationManager.markNotificationAsRead("userId", id);
 		if(success){
 			return ok();
 		}
@@ -74,13 +66,19 @@ public class Notifications extends Controller{
 	}
 	
 	public static NotificationV jsonToNotificationV(JsonNode json){
-		String message = json.findPath("message").textValue();
 		String topic = json.findPath("topic").textValue();
-		String toUserId = json.findPath("userId").textValue();
+		String message = json.findPath("message").textValue();
+		String userId = json.findPath("userId").textValue();
+		if(	topic == null || topic.equals("") ||
+			message == null || message.equals("")||
+			userId == null || userId.equals("")){
+			return null;
+		}
 		
 		NotificationV notification = new NotificationV();
 		notification.setMessage(message);
 		notification.setTopic(topic);
+		notification.setUserId(userId);
 		
 		return notification;
 	}
