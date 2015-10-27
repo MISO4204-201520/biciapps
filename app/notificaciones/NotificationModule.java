@@ -32,7 +32,7 @@ public class NotificationModule extends AbstractModule{
 		}
 		else{
 			bind(INotificationManager.class)
-			.to(NotificationManagerMock.class);
+			.to(NotificationManagerDisabled.class);
 		}
 	}
 

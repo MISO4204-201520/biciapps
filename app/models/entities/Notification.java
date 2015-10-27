@@ -1,5 +1,5 @@
 package models.entities;
 
-public class Notificacion {
+public class Notification {
 
 }

@@ -51,6 +51,23 @@
         </div>
 
 
+	<div class="container">
+        <div class="row">
+            <h1>Notificaciones</h1>
+            <p id="idUsuario"></p>
+            @**routes.Store.getPromotion()*@
+            <div class="col-sm-offset-2 col-sm-4">
+                <button id="findNotifictionsBtn" class="btn btn-lg btn-primary btn-block">Notificaciones</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <hr>
+            <div class="col-sm-offset-2 col-sm-4">
+                <ul id="listaNotificaciones"></ul>
+            </div>
+        </div>
+
     </div>
 
     <!-- Bootstrap core JavaScript
@@ -58,4 +75,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="@routes.Assets.versioned("javascripts/context.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/notifications.js")"></script>
+    
 }

@@ -10,8 +10,12 @@ import com.google.inject.ImplementedBy;
 //@ImplementedBy(NotificationManager.class)
 public interface INotificationManager {
 	
-	public String test();
+	public boolean isEnabled();
 	
-	public List<NotificacionV> getNotificacione();
+	public void sendNotification(String userId, NotificacionV notification, String toUserId);
+	
+	public List<NotificacionV> getNotifications(String userId);
 
+	public void markNotificationAsRead(String userId, String notificationId);
+	
 }
