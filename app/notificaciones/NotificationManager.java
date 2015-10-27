@@ -14,7 +14,7 @@ public class NotificationManager implements INotificationManager{
 
 	
 	@Override
-	public void sendNotification(String userId, NotificationV notification, String toUserId) {
+	public void sendNotification(NotificationV notification) {
 		// TODO Auto-generated method stub
 		
 	}

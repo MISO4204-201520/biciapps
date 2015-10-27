@@ -12,7 +12,7 @@ public interface INotificationManager {
 	
 	public boolean isEnabled();
 	
-	public void sendNotification(String userId, NotificationV notification, String toUserId);
+	public void sendNotification(NotificationV notification);
 	
 	public List<NotificationV> getNotifications(String userId);
 

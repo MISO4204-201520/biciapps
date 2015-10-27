@@ -2,14 +2,24 @@ package models.form;
 
 public class NotificationV {
 
+	
+	private String id;
 	private String message;
 	private String topic;
-	private String toUserId;
+	private String userId;
 	
 	public NotificationV(){
 		
 	}
 
+	
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getMessage() {
 		return message;
 	}
@@ -26,15 +36,19 @@ public class NotificationV {
 		this.topic = topic;
 	}
 
-	public String getToUserId() {
-		return toUserId;
+
+
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setToUserId(String toUserId) {
-		this.toUserId = toUserId;
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
+
 	
 	
-	
-	
+		
 }

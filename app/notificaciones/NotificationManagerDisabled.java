@@ -13,7 +13,7 @@ public class NotificationManagerDisabled implements INotificationManager{
 	}
 
 	@Override
-	public void sendNotification(String userId, NotificationV notification, String toUserId) {
+	public void sendNotification(NotificationV notification) {
 		return;
 	}
 	

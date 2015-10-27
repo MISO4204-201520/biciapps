@@ -41,10 +41,11 @@ public class Notifications extends Controller{
 	
 	@BodyParser.Of(BodyParser.Json.class)
 	public Result createNotification() {
+		NotificationV notification = jsonToNotificationV(request().body().asJson());
 		
-		JsonNode json = request().body().asJson();
-		NotificationV notification = jsonToNotificationV(json);
-		Logger.debug(json.toString());
+		notificationManager.sendNotification(notification);
+		
+		Logger.debug(request().body().asJson().toString());
 		
 		boolean success = true;
 		if(success){
@@ -75,7 +76,7 @@ public class Notifications extends Controller{
 	public static NotificationV jsonToNotificationV(JsonNode json){
 		String message = json.findPath("message").textValue();
 		String topic = json.findPath("topic").textValue();
-		String toUserId = json.findPath("toUserId").textValue();
+		String toUserId = json.findPath("userId").textValue();
 		
 		NotificationV notification = new NotificationV();
 		notification.setMessage(message);
