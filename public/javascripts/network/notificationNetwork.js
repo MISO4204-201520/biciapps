@@ -66,7 +66,16 @@ define ({
 				contentType: 'application/json',
 				//data: JSON.stringify(data),
 				//dataType: "json",
-				success: successCall,
+				success: function(data, statusText, xhr){
+					if(xhr.status == 200){
+						console.log("Delete success");
+						successCall();
+					}
+					else{
+						console.log("No content")
+					}
+				}
+				,
 				failure: function failureCall(errMsg){
 					console.log("Err:" + errMsg);
 				},

@@ -4,12 +4,6 @@
 define(function(require){
 	console.log("hello from main");	
 
-	function notification(topic, message, userId, id){
-		this.topic = topic;
-		this.message = message;
-		this.userId = userId;
-		this.id = id;
-	}
 
 	var networkModule = require("network/notificationNetwork");
 	var notificationModule = require("./notifications"); 
@@ -25,27 +19,17 @@ define(function(require){
 
 	function onNotificationEnabled(){
 		$("#findNotifictionsBtn").click(function(){
-			networkModule.queryForNotifications(function(data){
-				console.log("Len: " +data.length);
-				
-				notifications.length = 0;
-				for(var i = 0 ; i< data.length; i++){
-					var n = new notification(data[i]['topic'], 
-						data[i]['message'], data[i]['userId'], data[i]['id'])
-					notifications.push(n);
-					console.log(n);
-				}
+			notificationModule.queryForNotifications(function(notifications){	
 				updateList(notifications);
-			});	
+			});
 		});
 
 		$("#createNotifictionsBtn").click(function(){	
-			var title = new notification("Topic", "message", "userId");	
+			var title = new notificationModule.notification("Topic", "message", "userId");	
 			networkModule.postNewNotification(title, function(){
 				console.log("Post success");
 			});
 		});	
-		//moduleEnabled();
 	}
 
 	function queryForNotifications(){
@@ -75,15 +59,12 @@ define(function(require){
 		//var id = $(item).attr("id");
 		var id = item.data.id;
 		console.log("hello: " +  id);
-		networkModule.deleteNotification(id, function(data , statusText, xhr){
-					if(xhr.status == 200){
-						console.log("Delete success");
-						//moduleEnabled();
-					}
-					else{
-						console.log("No content")
-					}
+		networkModule.deleteNotification(id, function(){	
+				notificationModule.queryForNotifications(
+					function(notifications){	
+					updateList(notifications);
 				});
+			});
 	}
 
 });
