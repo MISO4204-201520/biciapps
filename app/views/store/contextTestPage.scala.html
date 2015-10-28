@@ -57,6 +57,9 @@
             <p id="idUsuario"></p>
             @**routes.Store.getPromotion()*@
             <div class="col-sm-offset-2 col-sm-4">
+                <button id="createNotifictionsBtn" class="btn btn-lg btn-primary btn-block">Nueva Notificacion</button>
+            </div>
+            <div class="col-sm-offset-2 col-sm-4">
                 <button id="findNotifictionsBtn" class="btn btn-lg btn-primary btn-block">Notificaciones</button>
             </div>
         </div>
@@ -76,5 +79,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="@routes.Assets.versioned("javascripts/context.js")"></script>
     @**<script src="@routes.Assets.versioned("javascripts/notifications.js")"></script>*@
-    <script data-main="assets/javascripts/notifications" src="@routes.Assets.versioned("javascripts/require.js")"></script>
+    <script data-main="assets/javascripts/contextPage" src="@routes.Assets.versioned("javascripts/require.js")"></script>
 }
