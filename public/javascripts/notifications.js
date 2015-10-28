@@ -2,7 +2,20 @@
  * 
  */
 
-(function(){
+function onNotificationClicked(item){
+	var id = $(item).attr("id");
+	console.log("hello: " +  id);
+	notificationModule.networkModule.deleteNotification(id, function(data , statusText, xhr){
+				if(xhr.status == 200){
+					console.log("Delete success");
+				}
+				else{
+					console.log("No content")
+				}
+			});
+}
+
+var notificationModule = (function(){
 	
 	var notifications = [];
 	var notificationsEnabled = false;
@@ -32,6 +45,19 @@
 		this.id = id;
 	}
 	
+	function updateList(data){
+		var items = [];
+		$.each(data, function(i, item) {
+			  var btn = '<button id="'+ item.id+ '" type="button" class="btn btn-default" onClick="onNotificationClicked(this)">' + 
+					'<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>'+
+				'</button>';
+			  var listItem ='<li>' + item.topic + ' '+ btn +'</li>'  
+              items.push(listItem);
+       });  // close each()
+       $('#listaNotificaciones li').remove();
+       $('#listaNotificaciones').append( items.join('') );
+		
+	}
 	
 	function moduleEnabled(){
 		console.log("Notifications are enabled, ok");
@@ -43,7 +69,7 @@
 				notifications.push(n);
 				console.log(n);
 			}
-			
+			updateList(notifications);
 			var title = new notification("Topic", "message", "userId");
 			
 			networkModule.postNewNotification(title, function(){
@@ -140,6 +166,10 @@
 			},
 			
 	};
+	
+	return {
+		networkModule: networkModule
+	}
 	
 })();
 
