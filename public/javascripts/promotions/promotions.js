@@ -1,7 +1,7 @@
 /*
  *
  */
-define(['require', 'network/promotionsNetwork' ],function(require){
+define(function(require){
 
 
 	var networkModule = require('network/promotionsNetwork');
