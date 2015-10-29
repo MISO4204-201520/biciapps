@@ -33,7 +33,9 @@ GET     /account/storeLoginPage			    controllers.Account.storeLoginPage()
 POST    /account/storeLogin                 controllers.Account.storeLogin()
 POST    /account/storeRegister              controllers.Account.storeRegister()
 
-GET     /listPromotionPage                    controllers.Store.listPromotionPage()
+GET     /listPromotionPage                  controllers.Store.listPromotionPage()
+GET     /newPromotionPage                   controllers.Store.newPromotionPage()
+POST    /newPromotion                    	controllers.Store.newPromotion()
 
 #-----------------------------------------
 #Context

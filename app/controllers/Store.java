@@ -13,7 +13,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import play.Logger;
 import play.Play;
+import play.data.DynamicForm;
+import play.data.Form;
 import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
@@ -40,6 +43,44 @@ public class Store extends Controller {
         return ok(views.html.store.listPromotionPage.render(promocionesV));
     }
 
+    public Result newPromotionPage() {
+        return ok(views.html.store.newPromotionPage.render());
+    }
+    
+    public Result newPromotion() {
+    	DynamicForm f = Form.form().bindFromRequest();
+    	String titulo = f.get("titulo");
+    	String descripcion = f.get("descripcion");
+    	String longitud = f.get("longitud");
+    	String latitud = f.get("latitud");
+    	double [] pos = new double [2];
+    	try{
+    		pos[1] = Double.valueOf(longitud);
+    	}catch(NumberFormatException e){
+    		flash("error", "La longitud debe ser un numero");
+    		return redirect(controllers.routes.Store.newPromotionPage());
+    	}
+    	
+    	try{
+    		pos[0] = Double.valueOf(latitud);
+    	}catch(NumberFormatException e){
+    		flash("error", "La latitud debe ser un numero");
+    		return redirect(controllers.routes.Store.newPromotionPage());
+    	}
+    	
+    	
+    	PromocionContexto promocion = new PromocionContexto();
+    	promocion.setTitulo(titulo);
+    	promocion.setDescripcion(descripcion);
+    	promocion.setPosicion(pos);
+    	
+    	DAOContexto.savePromocion(promocion);
+    	
+    	Logger.info(titulo + "," + descripcion + ", " + longitud + "," + latitud);
+        return redirect(controllers.routes.Store.listPromotionPage());
+    }
+    
+    
     public Result contextTestPage() {
         return ok(views.html.store.contextTestPage.render());
     }
