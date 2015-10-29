@@ -1,1 +1,1 @@
-requirejs(['notifications/main']);
+requirejs(['notifications/main', 'promotions/main']);
