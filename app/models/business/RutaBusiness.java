@@ -25,7 +25,7 @@ public class RutaBusiness {
     }
 
     public static Iterable<Ruta> findByUser(User user) {
-        Iterable<Ruta> rutas = rutas().find("{usuarios.email: #}", user.email).as(Ruta.class);
+        Iterable<Ruta> rutas = rutas().find("{usuarios.email: #}", user.getEmail()).as(Ruta.class);
         return rutas;
     }
 

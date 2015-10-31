@@ -22,10 +22,10 @@ public class MensajesBusiness {
     }
 
     public static void update(Mensaje mensaje) {
-        Mensaje mensajeDb = findByDestinatarioFecha(mensaje.getUserFrom().email, mensaje.getFecha());
+        Mensaje mensajeDb = findByDestinatarioFecha(mensaje.getUserFrom().getEmail(), mensaje.getFecha());
         
         mensajeDb.setEstado(mensaje.getEstado());
-        mensajes().update("{userFrom.email: #, fecha: #}", mensaje.getUserFrom().email, mensaje.getFecha()).with(mensajeDb);
+        mensajes().update("{userFrom.email: #, fecha: #}", mensaje.getUserFrom().getEmail(), mensaje.getFecha()).with(mensajeDb);
     }
 
     public static void remove(ObjectId id) {

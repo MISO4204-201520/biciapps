@@ -11,9 +11,42 @@ import java.util.List;
 public class Amigo {
 
     @JsonProperty("_id")
-    public ObjectId id;
+    private ObjectId id;
 
-    public String nickName;
+    private String nickName;
 
-    public String email;
+    private String email;
+
+    public Amigo(ObjectId id, String nickName, String email) {
+        this.id = id;
+        this.nickName = nickName;
+        this.email = email;
+    }
+
+    public Amigo() {
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

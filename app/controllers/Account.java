@@ -40,11 +40,11 @@ public class Account extends Controller {
 
 
         User formUser = new User();
-        formUser.nombres = nombres;
-        formUser.apellidos = apellidos;
-        formUser.sexo = sexo;
-        formUser.email = email;
-        formUser.pwd = pwd;
+        formUser.setNombres(nombres);
+        formUser.setApellidos(apellidos);
+        formUser.setSexo(sexo);
+        formUser.setEmail(email);
+        formUser.setPwd(pwd);
 
         User existingUser = UserBusiness.findByEmail(email);
         if (existingUser != null) {
@@ -95,8 +95,8 @@ public class Account extends Controller {
         String pwd = f.get("pwd");
 
         User formUser = new User();
-        formUser.email = email;
-        formUser.pwd = pwd;
+        formUser.setEmail(email);
+        formUser.setPwd(pwd);
         User existingUser = UserBusiness.findByEmail(email);
         if(existingUser != null){
             flash("error", "Ya existe ese usuario");
@@ -144,9 +144,9 @@ public class Account extends Controller {
         String email = f.get("email");
 
         User userInfo = new User();
-        userInfo.token = token;
-        userInfo.nombres = name;
-        userInfo.fbid = fbid;
+        userInfo.setToken(token);
+        userInfo.setNombres(name);
+        userInfo.setFbid(fbid);
 
 
         User existingUserFB = UserBusiness.findByFBId(fbid);
@@ -212,11 +212,11 @@ public class Account extends Controller {
 
 
         User formUser = new User();
-        formUser.nombres = nombres;
-        formUser.apellidos = apellidos;
-        formUser.sexo = sexo;
-        formUser.email = email;
-        formUser.pwd = pwd;
+        formUser.setNombres(nombres);
+        formUser.setApellidos(apellidos);
+        formUser.setSexo(sexo);
+        formUser.setEmail(email);
+        formUser.setPwd(pwd);
 
         UserBusiness.update(formUser);
 
@@ -237,7 +237,7 @@ public class Account extends Controller {
 
         List<User> usuariosList = new ArrayList<User>();
         usuarios.forEach(x-> {
-            if(!x.email.equalsIgnoreCase(usuario.email)) {
+            if(!x.getEmail().equalsIgnoreCase(usuario.getEmail())) {
                 usuariosList.add(x);
             }});
 
@@ -247,9 +247,9 @@ public class Account extends Controller {
 
         for(User c : usuariosList) {
             ObjectNode row = Json.newObject();
-            row.put("0", c.nombres);
-            row.put("1", c.apellidos);
-            row.put("2", c.email);
+            row.put("0", c.getNombres());
+            row.put("1", c.getApellidos());
+            row.put("2", c.getEmail());
             an.add(row);
         }
         return ok(result);
@@ -265,24 +265,24 @@ public class Account extends Controller {
         User usuarioSession = UserBusiness.findByEmail(emailUsuario);
         User usuarioAmigo = UserBusiness.findByEmail(email);
 
-        if (usuarioSession.amigos != null && !usuarioSession.amigos.isEmpty()) {
+        if (usuarioSession.getAmigos() != null && !usuarioSession.getAmigos().isEmpty()) {
             // Buscar Amigo si existe para no volver a adicionar
-            Optional<Amigo> amigoOptEnco = usuarioSession.amigos.stream().filter(x -> x.email.equals(usuarioAmigo.email)).findFirst();
+            Optional<Amigo> amigoOptEnco = usuarioSession.getAmigos().stream().filter(x -> x.getEmail().equals(usuarioAmigo.getEmail())).findFirst();
             if(!amigoOptEnco.isPresent()) {
                 Amigo amigo = new Amigo();
-                amigo.nickName = usuarioAmigo.nombres + " " + usuarioAmigo.apellidos;
-                amigo.email = usuarioAmigo.email;
-                usuarioSession.amigos.add(amigo);
+                amigo.setNickName(usuarioAmigo.getNombres() + " " + usuarioAmigo.getApellidos());
+                amigo.setEmail(usuarioAmigo.getEmail());
+                usuarioSession.getAmigos().add(amigo);
                 respuesta = true;
                 mensaje = "Amigo adicionado correctamente";
             }
         } else {
-            usuarioSession.amigos = new ArrayList<Amigo>();
+            usuarioSession.setAmigos(new ArrayList<Amigo>());
             Amigo amigo = new Amigo();
-            amigo.nickName = usuarioAmigo.nombres + " " + usuarioAmigo.apellidos;
-            amigo.email = usuarioAmigo.email;
+            amigo.setNickName(usuarioAmigo.getNombres() + " " + usuarioAmigo.getApellidos());
+            amigo.setEmail(usuarioAmigo.getEmail());
 
-            usuarioSession.amigos.add(amigo);
+            usuarioSession.getAmigos().add(amigo);
             respuesta = true;
             mensaje = "Amigo adicionado correctamente";
         }

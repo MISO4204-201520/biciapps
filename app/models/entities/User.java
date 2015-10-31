@@ -12,21 +12,107 @@ import java.util.List;
 public class User {
 
     @JsonProperty("_id")
-    public ObjectId id;
+    private ObjectId id;
 
-    public String token;
+    private String token;
 
-    public String fbid;
+    private String fbid;
 
-    public String nombres;
+    private String nombres;
 
-    public String apellidos;
+    private String apellidos;
 
-    public String sexo;
+    private String sexo;
 
-    public String email;
+    private String email;
 
-    public String pwd;
+    private String pwd;
 
-    public List<Amigo> amigos;
+    private List<Amigo> amigos;
+
+    public User(ObjectId id, String token, String fbid, String nombres, String apellidos, String sexo, String email, String pwd) {
+        this.id = id;
+        this.token = token;
+        this.fbid = fbid;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.sexo = sexo;
+        this.email = email;
+        this.pwd = pwd;
+    }
+
+    public User() {
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getFbid() {
+        return fbid;
+    }
+
+    public void setFbid(String fbid) {
+        this.fbid = fbid;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public List<Amigo> getAmigos() {
+        return amigos;
+    }
+
+    public void setAmigos(List<Amigo> amigos) {
+        this.amigos = amigos;
+    }
 }

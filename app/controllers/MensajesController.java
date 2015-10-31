@@ -41,7 +41,7 @@ public class MensajesController extends Controller {
    	 	if (usuarioLogueado != null){
    	 		listaMensajes = new ArrayList<Mensaje>();
    	 		Iterable<Mensaje> iMensajes = MensajesBusiness.findByDestinatarioEstado(
-   	   	 			usuarioLogueado.email, ConstantesEstadoMensaje.SIN_LEER);
+					usuarioLogueado.getEmail(), ConstantesEstadoMensaje.SIN_LEER);
 
 	   	    if(iMensajes != null) {
 	   	    	iMensajes.forEach(x-> listaMensajes.add(x));
@@ -57,7 +57,7 @@ public class MensajesController extends Controller {
 		   ArrayNode an = result.putArray("aaData");
 		   for(Mensaje message : listaMensajes) {
 		      ObjectNode row = Json.newObject();
-		      row.put("0", message.getUserFrom().email);
+		      row.put("0", message.getUserFrom().getEmail());
 		      row.put("1", message.getAsunto());
 		      row.put("2", message.getFecha());
 		      row.put("3", message.getContenido());
@@ -112,7 +112,7 @@ public class MensajesController extends Controller {
 	 	
 	 	cantMenNoLeidos = 0;
  		Iterable<Mensaje> mensajesNoLeidos = MensajesBusiness.findByDestinatarioEstado(
-	   	 			usuarioLogueado.email, ConstantesEstadoMensaje.SIN_LEER);
+				usuarioLogueado.getEmail(), ConstantesEstadoMensaje.SIN_LEER);
 	 	
    	    if(mensajesNoLeidos != null) {
    	    	mensajesNoLeidos.forEach(x-> listaMensajes.add(x));

@@ -19,50 +19,50 @@ public class UserBusiness {
 
     public static void insert(User user) {
         //user.pwd = Utilities.encryptPass(user.pwd);
-        user.pwd = (user.pwd);
+        user.setPwd(user.getPwd());
         users().save(user);
 
         // TODO: Revisar si se puede hacer con AspectJ
-        String[] to = {user.email};
+        String[] to = {user.getEmail()};
         String subject = "Usuario Registrado Correctamente";
-        String body = "Bienvenido " + user.email.substring(0, user.email.indexOf("@")) + " al sistema biciapps.";
+        String body = "Bienvenido " + user.getEmail().substring(0, user.getEmail().indexOf("@")) + " al sistema biciapps.";
 
         Mail.sendMailAdmin(to, subject, body);
     }
 
     public static void update(User user) {
-        User userDb = users().findOne("{email: #}", user.email).as(User.class);
-        if (user.token != null){
-            userDb.token = user.token;
+        User userDb = users().findOne("{email: #}", user.getEmail()).as(User.class);
+        if (user.getToken() != null){
+            userDb.setToken(user.getToken());
         }
 
-        if (user.nombres != null){
-            userDb.nombres = user.nombres;
+        if (user.getNombres() != null){
+            userDb.setNombres(user.getNombres());
         }
 
-        if (user.fbid != null){
-            userDb.fbid = user.fbid;
+        if (user.getFbid() != null){
+            userDb.setFbid(user.getFbid());
         }
 
-        if (user.apellidos != null){
-            userDb.apellidos = user.apellidos;
+        if (user.getApellidos() != null){
+            userDb.setApellidos(user.getApellidos());
         }
 
-        if (user.sexo != null){
-            userDb.sexo = user.sexo;
+        if (user.getSexo() != null){
+            userDb.setSexo(user.getSexo());
         }
 
-        if (user.pwd != null){
+        if (user.getPwd() != null){
             //userDb.pwd = Utilities.encryptPass(user.pwd);
-            userDb.pwd = (user.pwd);
+            userDb.setPwd((user.getPwd()));
         }
 
-        if (user.amigos != null){
+        if (user.getAmigos() != null){
             //userDb.pwd = Utilities.encryptPass(user.pwd);
-            userDb.amigos = user.amigos;
+            userDb.setAmigos(user.getAmigos());
         }
 
-        users().update("{email: #}", user.email).with(userDb);
+        users().update("{email: #}", user.getEmail()).with(userDb);
     }
 
     public static void remove(ObjectId id) {

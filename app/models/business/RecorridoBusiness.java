@@ -27,7 +27,7 @@ public class RecorridoBusiness {
     }
 
     public static Iterable<Recorrido> findByUser(User user) {
-        Iterable<Recorrido> recorridos = recorridos().find("{creador.email: #}", user.email).as(Recorrido.class);
+        Iterable<Recorrido> recorridos = recorridos().find("{creador.email: #}", user.getEmail()).as(Recorrido.class);
         return recorridos;
     }
     public static Iterable<Recorrido> findAll() {

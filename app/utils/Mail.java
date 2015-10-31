@@ -47,8 +47,8 @@ public class Mail {
         public static void sendMailUser(String[] to, User user, String subject, String body) {
             PropertyReader.initializePropertyReader();
 
-            String from = user.email;
-            String pass = user.pwd;
+            String from = user.getEmail();
+            String pass = user.getPwd();
             
             String host = PropertyReader.getPropertyValue("mail.smtp.host");
 
