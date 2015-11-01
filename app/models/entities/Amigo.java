@@ -17,10 +17,13 @@ public class Amigo {
 
     private String email;
 
-    public Amigo(ObjectId id, String nickName, String email) {
+    private ObjectId idUser;
+
+    public Amigo(ObjectId id, String nickName, String email, ObjectId idUser) {
         this.id = id;
         this.nickName = nickName;
         this.email = email;
+        this.idUser = idUser;
     }
 
     public Amigo() {
@@ -48,5 +51,13 @@ public class Amigo {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public ObjectId getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(ObjectId idUser) {
+        this.idUser = idUser;
     }
 }

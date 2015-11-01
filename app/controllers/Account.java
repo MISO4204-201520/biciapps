@@ -63,7 +63,7 @@ public class Account extends Controller {
     }
 
     public Result loginPage() {
-        if(isLoggedIn()){
+        if (isLoggedIn()) {
             return redirect(controllers.routes.Application.userPage());
         }
         return ok(views.html.login.loginPage.render());
@@ -75,10 +75,9 @@ public class Account extends Controller {
         String email = f.get("email");
         String pwd = f.get("pwd");
         boolean loggedIn = loginTask(email, pwd);
-        if(loggedIn){
+        if (loggedIn) {
             return redirect(controllers.routes.Application.userPage());
-        }
-        else{
+        } else {
             flash("error", "Credenciales no validas");
             return redirect(controllers.routes.Account.loginPage());
         }
@@ -98,7 +97,7 @@ public class Account extends Controller {
         formUser.setEmail(email);
         formUser.setPwd(pwd);
         User existingUser = UserBusiness.findByEmail(email);
-        if(existingUser != null){
+        if (existingUser != null) {
             flash("error", "Ya existe ese usuario");
             return redirect(controllers.routes.Account.storeRegisterPage());
         }
@@ -106,15 +105,15 @@ public class Account extends Controller {
         System.out.println("Se creo el usuario: " + email);
         UserBusiness.insert(formUser);
         boolean loggedIn = loginTask(email, pwd);
-        if(loggedIn){
+        if (loggedIn) {
             return redirect(controllers.routes.Store.listPromotionPage());
-        }else{
+        } else {
             return ok("No se pudo logear");
         }
     }
 
     public Result storeLoginPage() {
-        if(isLoggedIn()){
+        if (isLoggedIn()) {
             return redirect(controllers.routes.Store.listPromotionPage());
         }
         return ok(views.html.login.storeLoginPage.render());
@@ -125,15 +124,13 @@ public class Account extends Controller {
         String email = f.get("email");
         String pwd = f.get("pwd");
         boolean loggedIn = loginTask(email, pwd);
-        if(loggedIn){
+        if (loggedIn) {
             return redirect(controllers.routes.Store.listPromotionPage());
-        }
-        else{
+        } else {
             flash("error", "Credenciales no validas");
             return redirect(controllers.routes.Account.storeLoginPage());
         }
     }
-
 
 
     public Result loginFacebook() {
@@ -152,9 +149,9 @@ public class Account extends Controller {
         User existingUserFB = UserBusiness.findByFBId(fbid);
         User existingUser = UserBusiness.findByEmail(email);
 
-        if (existingUser != null){
+        if (existingUser != null) {
             UserBusiness.insert(userInfo);
-        }else{
+        } else {
             if (existingUserFB != null) {
                 UserBusiness.update(userInfo);
             }
@@ -178,7 +175,7 @@ public class Account extends Controller {
     private boolean loginTask(String email, String pwd) {
         boolean loggedIn = false;
         User user = UserBusiness.findByEmailAndPwd(email, pwd);
-        if(user != null){
+        if (user != null) {
             //Login consiste en agregar cookie:
             session(MySecureAuth.SESSION_ID, email);
             System.out.println("Logged in:" + email);
@@ -187,9 +184,9 @@ public class Account extends Controller {
         return loggedIn;
     }
 
-    private boolean isLoggedIn(){
+    private boolean isLoggedIn() {
         String email = session(MySecureAuth.SESSION_ID);
-        return (email != null)? true: false;
+        return (email != null) ? true : false;
     }
 
     @Security.Authenticated(MySecureAuth.class)
@@ -233,19 +230,90 @@ public class Account extends Controller {
         String email = session(MySecureAuth.SESSION_ID);
         User usuario = UserBusiness.findByEmail(email);
 
-        Iterable<User> usuarios = UserBusiness.findAll();
-
-        List<User> usuariosList = new ArrayList<User>();
-        usuarios.forEach(x-> {
-            if(!x.getEmail().equalsIgnoreCase(usuario.getEmail())) {
-                usuariosList.add(x);
-            }});
+        List<Amigo> amigos = usuario.getAmigos();
 
         ObjectNode result = Json.newObject();
 
         ArrayNode an = result.putArray("aaData");
 
-        for(User c : usuariosList) {
+        for (Amigo c : amigos) {
+            ObjectNode row = Json.newObject();
+            row.put("0", c.getNickName());
+            row.put("1", c.getEmail());
+            an.add(row);
+        }
+        return ok(result);
+    }
+
+    @Security.Authenticated(MySecureAuth.class)
+    public Result addAmigo() {
+        Boolean respuesta = false;
+        String mensaje = "Ya existe en su lista de amigos";
+        JsonNode json = request().body().asJson();
+        String email = json.findPath("email").textValue();
+        String emailUsuario = session(MySecureAuth.SESSION_ID);
+        User usuarioSession = UserBusiness.findByEmail(emailUsuario);
+        User usuarioAmigo = UserBusiness.findByEmail(email);
+
+        if (usuarioSession.getAmigos() != null && !usuarioSession.getAmigos().isEmpty()) {
+            // Buscar Amigo si existe para no volver a adicionar
+            Optional<Amigo> amigoOptEnco = usuarioSession.getAmigos().stream().filter(x -> x.getEmail().equals(usuarioAmigo.getEmail())).findFirst();
+            if (!amigoOptEnco.isPresent()) {
+                Amigo amigo = new Amigo();
+                amigo.setNickName(usuarioAmigo.getNombres() + " " + usuarioAmigo.getApellidos());
+                amigo.setEmail(usuarioAmigo.getEmail());
+                amigo.setIdUser(usuarioSession.getId());
+                usuarioSession.getAmigos().add(amigo);
+                respuesta = true;
+                mensaje = "Amigo adicionado correctamente";
+            }
+        } else {
+            usuarioSession.setAmigos(new ArrayList<Amigo>());
+            Amigo amigo = new Amigo();
+            amigo.setNickName(usuarioAmigo.getNombres() + " " + usuarioAmigo.getApellidos());
+            amigo.setEmail(usuarioAmigo.getEmail());
+            amigo.setIdUser(usuarioSession.getId());
+            usuarioSession.getAmigos().add(amigo);
+            respuesta = true;
+            mensaje = "Amigo adicionado correctamente";
+        }
+
+        UserBusiness.update(usuarioSession);
+
+        ObjectNode result = Json.newObject();
+
+        ArrayNode an = result.putArray("data");
+
+        ObjectNode row = Json.newObject();
+        row.put("res", respuesta);
+        row.put("mensaje", mensaje);
+        an.add(row);
+
+        return ok(result);
+    }
+
+    @Security.Authenticated(MySecureAuth.class)
+    public Result getAddAmigos() {
+        String email = session(MySecureAuth.SESSION_ID);
+        User usuarioSession = UserBusiness.findByEmail(email);
+
+        Iterable<User> usuarios = UserBusiness.findAll();
+
+        List<User> usuariosList = new ArrayList<User>();
+
+        usuarios.forEach(x -> {
+
+            Optional<Amigo> amigoOptEnco = usuarioSession.getAmigos().stream().filter(y -> y.getEmail().equals(x.getEmail())).findFirst();
+            if (!x.getEmail().equalsIgnoreCase(usuarioSession.getEmail()) && !amigoOptEnco.isPresent()) {
+                usuariosList.add(x);
+            }
+        });
+
+        ObjectNode result = Json.newObject();
+
+        ArrayNode an = result.putArray("aaData");
+
+        for (User c : usuariosList) {
             ObjectNode row = Json.newObject();
             row.put("0", c.getNombres());
             row.put("1", c.getApellidos());
@@ -256,35 +324,27 @@ public class Account extends Controller {
     }
 
     @Security.Authenticated(MySecureAuth.class)
-    public Result addAmigo() {
+    public Result removeAmigo() {
         Boolean respuesta = false;
-        String mensaje ="Ya existe en su lista de amigos";
+        String mensaje = "No se puedo ejecutar la funcionlidad";
+
         JsonNode json = request().body().asJson();
         String email = json.findPath("email").textValue();
         String emailUsuario = session(MySecureAuth.SESSION_ID);
+
         User usuarioSession = UserBusiness.findByEmail(emailUsuario);
-        User usuarioAmigo = UserBusiness.findByEmail(email);
 
         if (usuarioSession.getAmigos() != null && !usuarioSession.getAmigos().isEmpty()) {
-            // Buscar Amigo si existe para no volver a adicionar
-            Optional<Amigo> amigoOptEnco = usuarioSession.getAmigos().stream().filter(x -> x.getEmail().equals(usuarioAmigo.getEmail())).findFirst();
-            if(!amigoOptEnco.isPresent()) {
-                Amigo amigo = new Amigo();
-                amigo.setNickName(usuarioAmigo.getNombres() + " " + usuarioAmigo.getApellidos());
-                amigo.setEmail(usuarioAmigo.getEmail());
-                usuarioSession.getAmigos().add(amigo);
+            // Buscar Amigo para removerlo
+            Optional<Amigo> amigoOptEnco = usuarioSession.getAmigos().stream().filter(x -> x.getEmail().equals(email)).findFirst();
+            if (amigoOptEnco.isPresent()) {
+
+                usuarioSession.getAmigos().remove(amigoOptEnco.get());
                 respuesta = true;
-                mensaje = "Amigo adicionado correctamente";
+                mensaje = "Amigo removido correctamente";
             }
         } else {
-            usuarioSession.setAmigos(new ArrayList<Amigo>());
-            Amigo amigo = new Amigo();
-            amigo.setNickName(usuarioAmigo.getNombres() + " " + usuarioAmigo.getApellidos());
-            amigo.setEmail(usuarioAmigo.getEmail());
-
-            usuarioSession.getAmigos().add(amigo);
-            respuesta = true;
-            mensaje = "Amigo adicionado correctamente";
+            mensaje = "El amigo no existe en su lista";
         }
 
         UserBusiness.update(usuarioSession);
