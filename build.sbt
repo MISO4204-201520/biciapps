@@ -12,7 +12,8 @@ libraryDependencies ++= Seq(
   javaWs,
   //Jongo
   "org.jongo" % "jongo" % "1.2",
-  "org.mongodb" % "mongo-java-driver" % "3.0.4"
+  "org.mongodb" % "mongo-java-driver" % "3.0.4",
+  "com.feth" %% "play-authenticate" % "0.7.0"
 )
 
 

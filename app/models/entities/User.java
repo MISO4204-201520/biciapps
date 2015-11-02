@@ -28,6 +28,10 @@ public class User {
 
     private String pwd;
 
+    private String idSocial;
+
+    private String proveedor;
+
     private List<Amigo> amigos;
 
     public User(ObjectId id, String token, String fbid, String nombres, String apellidos, String sexo, String email, String pwd) {
@@ -115,4 +119,21 @@ public class User {
     public void setAmigos(List<Amigo> amigos) {
         this.amigos = amigos;
     }
+
+    public String getIdSocial() {
+        return idSocial;
+    }
+
+    public void setIdSocial(String idSocial) {
+        this.idSocial = idSocial;
+    }
+
+    public String getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(String proveedor) {
+        this.proveedor = proveedor;
+    }
+
 }

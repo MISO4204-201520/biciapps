@@ -132,35 +132,6 @@ public class Account extends Controller {
         }
     }
 
-
-    public Result loginFacebook() {
-        DynamicForm f = Form.form().bindFromRequest();
-        String token = f.get("token");
-        String name = f.get("name");
-        String fbid = f.get("id");
-        String email = f.get("email");
-
-        User userInfo = new User();
-        userInfo.setToken(token);
-        userInfo.setNombres(name);
-        userInfo.setFbid(fbid);
-
-
-        User existingUserFB = UserBusiness.findByFBId(fbid);
-        User existingUser = UserBusiness.findByEmail(email);
-
-        if (existingUser != null) {
-            UserBusiness.insert(userInfo);
-        } else {
-            if (existingUserFB != null) {
-                UserBusiness.update(userInfo);
-            }
-        }
-
-
-        return redirect(controllers.routes.Application.userPage());
-    }
-
     public Result logout() {
         session().clear();
         return redirect(controllers.routes.Application.index());
@@ -172,7 +143,7 @@ public class Account extends Controller {
     }
 
 
-    private boolean loginTask(String email, String pwd) {
+    public boolean loginTask(String email, String pwd) {
         boolean loggedIn = false;
         User user = UserBusiness.findByEmailAndPwd(email, pwd);
         if (user != null) {
@@ -231,6 +202,10 @@ public class Account extends Controller {
         User usuario = UserBusiness.findByEmail(email);
 
         List<Amigo> amigos = usuario.getAmigos();
+
+        if (amigos == null) {
+            amigos = new ArrayList<Amigo>();
+        }
 
         ObjectNode result = Json.newObject();
 
@@ -301,11 +276,17 @@ public class Account extends Controller {
 
         List<User> usuariosList = new ArrayList<User>();
 
-        usuarios.forEach(x -> {
 
-            Optional<Amigo> amigoOptEnco = usuarioSession.getAmigos().stream().filter(y -> y.getEmail().equals(x.getEmail())).findFirst();
-            if (!x.getEmail().equalsIgnoreCase(usuarioSession.getEmail()) && !amigoOptEnco.isPresent()) {
-                usuariosList.add(x);
+        usuarios.forEach(x -> {
+            if (usuarioSession.getAmigos() != null) {
+                Optional<Amigo> amigoOptEnco = usuarioSession.getAmigos().stream().filter(y -> y.getEmail().equals(x.getEmail())).findFirst();
+                if (!x.getEmail().equalsIgnoreCase(usuarioSession.getEmail()) && !amigoOptEnco.isPresent()) {
+                    usuariosList.add(x);
+                }
+            } else {
+                if (!x.getEmail().equalsIgnoreCase(usuarioSession.getEmail())) {
+                    usuariosList.add(x);
+                }
             }
         });
 

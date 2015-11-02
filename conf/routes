@@ -16,7 +16,6 @@ GET     /account/loginPage                  controllers.Account.loginPage()
 POST    /account/login                      controllers.Account.login()
 GET     /account/logout                     controllers.Account.logout()
 GET     /account/storeLogout                controllers.Account.storeLogout()
-GET     /loginFacebook                      controllers.Account.loginFacebook()
 GET     /account/amigos                     controllers.Account.getAmigos()
 GET     /account/getAmigos1                 controllers.Account.getAmigos1()
 GET     /account/getAddAmigos               controllers.Account.getAddAmigos()
@@ -75,20 +74,20 @@ POST 	/notifications						controllers.Notifications.createNotification()
 DELETE 	/notifications/:id					controllers.Notifications.deleteNotification(id: String)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET     /assets/*file                       controllers.Assets.versioned(path="/public", file: Asset)
 
 #------------------------------------------
 #Mapa
 #------------------------------------------
 
-POST    /ruta/crearRecorrido                   controllers.RutaController.crearRecorrido()
-POST    /ruta/crearRuta		                   controllers.RutaController.crearRuta()
+POST    /ruta/crearRecorrido                controllers.RutaController.crearRecorrido()
+POST    /ruta/crearRuta		                controllers.RutaController.crearRuta()
 
 
 #------------------------------------------
 #Reportes
 #------------------------------------------
-GET    /reports                   controllers.Reports.reportsPage()
+GET    /reports                             controllers.Reports.reportsPage()
 
 #------------------------------------------
 #My
@@ -96,5 +95,9 @@ GET    /reports                   controllers.Reports.reportsPage()
 GET    /misRecorridos		                   controllers.RutaController.verRecorridos()
 GET    /misRutas			                   controllers.RutaController.verRutas()
 GET    /verRuta/:id		               		controllers.RutaController.verDetalleRuta(id: String)
-
-
+#------------------------------------------
+# Autenticacion Redes Sociales
+#------------------------------------------
+GET     /logout                             controllers.Authenticate.logout()
+GET     /authenticate/:provider             controllers.Authenticate.authenticate(provider: String)
+GET     /authenticate/:provider/denied      controllers.Application.oAuthDenied(provider: String)
