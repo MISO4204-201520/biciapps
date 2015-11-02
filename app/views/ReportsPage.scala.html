@@ -1,3 +1,121 @@
 @()
 
-<h1>Report page</h1>
+@import navbar._
+
+@basicEmptyBootstrap{
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BiciApps</title>
+    
+    
+    <style>
+        body {
+            padding-top: 65px;
+        }
+    </style>
+
+} {
+
+
+    @clientLoggedInNavbar()
+
+    
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><b>Reporte Metricas</b></div>
+                <form class="form-horizontal" role="form" action="@routes.Store.newPromotion()" method="POST">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="descripcion">Distancia Total:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingresar descripcion" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="longitud">Tiempo Total:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="longitud" name="longitud" placeholder="Longitud" readonly >
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div><!-- row-->
+
+
+
+
+        <div class="row">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><b>Reporte Rutas</b></div>
+                <form class="form-horizontal" role="form" action="@routes.Store.newPromotion()" method="POST">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="titulo">Número de rutas guradadas:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ingresar titulo" readonly>
+                        </div>
+                    </div>
+
+
+                    
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <button type="button" class="list-group-item disabled"><b>Rutas más pupulares</b></button>
+                            <button type="button" class="list-group-item">Dapibus ac facilisis in</button>
+                            <button type="button" class="list-group-item">Morbi leo risus</button>
+                            <button type="button" class="list-group-item">Porta ac consectetur ac</button>
+                            <button type="button" class="list-group-item">Vestibulum at eros</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div><!-- row-->
+
+
+
+        <div class="row">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading"><b>Reporte Historial Viajes</b></div>
+                <form class="form-horizontal" role="form" action="@routes.Store.newPromotion()" method="POST">
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="numViajes">Número de viajes:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="numViajes" name="numViajes" placeholder="Ingresar titulo" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="numViajes">Número de viajes individuales:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="numViajes" name="numViajes" placeholder="Ingresar titulo" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-4" for="numViajes">Número de viajes grupales:</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="numViajes" name="numViajes" placeholder="Ingresar titulo" readonly>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div><!-- row-->
+    </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+}
