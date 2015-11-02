@@ -1,4 +1,6 @@
-@()
+@(reporteMetricas: form.reports.ReporteMetricasV,
+    reporteRuta: form.reports.ReporteRutaV,
+    reporteHisorialViaje: form.reports.ReporteHistorialViajeV)
 
 @import navbar._
 
@@ -20,8 +22,8 @@
 
     @clientLoggedInNavbar()
 
-    
     <div class="container">
+        @if(reporteMetricas != null){ 
         <div class="row">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
@@ -30,14 +32,14 @@
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="descripcion">Distancia Total:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingresar descripcion" readonly>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion" value="@reporteMetricas.getDistanciaTotal" readonly>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="longitud">Tiempo Total:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="longitud" name="longitud" placeholder="Longitud" readonly >
+                            <input type="text" class="form-control" id="longitud" name="longitud" value="@reporteMetricas.getTiempoTotal" readonly >
                         </div>
                     </div>
 
@@ -46,10 +48,10 @@
             </div>
 
         </div><!-- row-->
+        }
 
 
-
-
+        @if(reporteRuta != null){
         <div class="row">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
@@ -58,7 +60,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="titulo">Número de rutas guradadas:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ingresar titulo" readonly>
+                            <input type="text" class="form-control" id="titulo" name="titulo" value="@reporteRuta.getNumeroDeRutasGuardadas" readonly>
                         </div>
                     </div>
 
@@ -79,8 +81,9 @@
             </div>
 
         </div><!-- row-->
+        }
 
-
+        @if(reporteHisorialViaje != null){
 
         <div class="row">
             <div class="panel panel-default">
@@ -90,26 +93,28 @@
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="numViajes">Número de viajes:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="numViajes" name="numViajes" placeholder="Ingresar titulo" readonly>
+                            <input type="text" class="form-control" id="numViajes" name="numViajes" value="@reporteHisorialViaje.getNumeroDeViajes"  readonly>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="numViajes">Número de viajes individuales:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="numViajes" name="numViajes" placeholder="Ingresar titulo" readonly>
+                            <input type="text" class="form-control" id="numViajes" name="numViajes" value="@reporteHisorialViaje.getNumeroDeViajesIndividuales" readonly>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-sm-4" for="numViajes">Número de viajes grupales:</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="numViajes" name="numViajes" placeholder="Ingresar titulo" readonly>
+                            <input type="text" class="form-control" id="numViajes" name="numViajes" value="@reporteHisorialViaje.getNumeroDeViajesGrupales" readonly>
                         </div>
                     </div>
+                    
 
                 </form>
 
             </div>
+            }
 
         </div><!-- row-->
     </div>
