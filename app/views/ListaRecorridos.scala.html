@@ -12,6 +12,20 @@
 } {
 
 	@clientLoggedInNavbar()
+	<style>
+		td {
+			font-size: 10px;
+		}
+		th {
+			font-size: 12px;
+		}
+		td, th {
+			text-align: center;
+		}
+		li {
+			display: flex;
+		}
+	</style>
     <div class="jumbotron">
         <div class="container">
             <h2>Mis Recorridos</h2>
@@ -26,6 +40,7 @@
 		  		<th>Destino</th>
 		  		<th>Tiempo</th>
 		  		<th>Distancia</th>
+		  		<th>Personas</th>
 		  		<th>-</th>
 		  	</tr>
 			@for(recorrido <- recorridos) {
@@ -36,7 +51,16 @@
 			  		<td>@recorrido.ruta.nombreDestino</td>
 			  		<td>@recorrido.tiempo</td>
 			  		<td>@recorrido.distancia</td>
-			  		<td><td><a href='@routes.RutaController.verDetalleRuta(recorrido.id.toString())'>Ver Ruta<a></td></td>
+			  		<td>
+			  			<ul>
+			  			@for(usuario <- recorrido.usuarios) {
+			  				<li>
+			  					@usuario.getNombres()
+			  				</li>
+			  			}
+			  			</ul>
+			  		</td>
+			  		<td><a href='@routes.RutaController.verDetalleRuta(recorrido.id.toString())'>Ver Ruta<a></td>
 			  	</tr>
 			} 
 		</table>
