@@ -35,7 +35,6 @@ public class RutaBusiness {
     }
     public static Ruta findById(ObjectId id) {
         return rutas().findOne(id).as(Ruta.class);
-
     }
 
 }

@@ -237,7 +237,7 @@ public class Account extends Controller {
                 Amigo amigo = new Amigo();
                 amigo.setNickName(usuarioAmigo.getNombres() + " " + usuarioAmigo.getApellidos());
                 amigo.setEmail(usuarioAmigo.getEmail());
-                amigo.setIdUser(usuarioSession.getId());
+                amigo.setIdUser(usuarioAmigo.getId());
                 usuarioSession.getAmigos().add(amigo);
                 respuesta = true;
                 mensaje = "Amigo adicionado correctamente";
@@ -247,7 +247,7 @@ public class Account extends Controller {
             Amigo amigo = new Amigo();
             amigo.setNickName(usuarioAmigo.getNombres() + " " + usuarioAmigo.getApellidos());
             amigo.setEmail(usuarioAmigo.getEmail());
-            amigo.setIdUser(usuarioSession.getId());
+            amigo.setIdUser(usuarioAmigo.getId());
             usuarioSession.getAmigos().add(amigo);
             respuesta = true;
             mensaje = "Amigo adicionado correctamente";

@@ -140,7 +140,9 @@ public class UserBusiness {
         System.out.println("Se creo el usuario: " + emailUsuario);
         return usuario;
     }
-
+    public static User findById(ObjectId id) {
+        return users().findOne(id).as(User.class);
+    }
     public static User findByIdSocialAndProvider(String idSocial, String provider) {
         //pwd = Utilities.encryptPass(pwd);
         return users().findOne("{idSocial: #, proveedor: #}", idSocial, provider).as(User.class);

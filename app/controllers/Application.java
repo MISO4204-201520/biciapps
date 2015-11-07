@@ -5,7 +5,10 @@ import models.entities.User;
 import play.*;
 import play.mvc.*;
 import views.html.*;
-
+import models.entities.Amigo;
+import java.util.List;
+import org.bson.types.ObjectId;
+import java.util.ArrayList;
 
 public class Application extends Controller {
 
@@ -31,7 +34,19 @@ public class Application extends Controller {
 
         String email = session(MySecureAuth.SESSION_ID);
         User usuario = UserBusiness.findByEmail(email);
-        return ok(views.html.MapPage.render(usuario));
+
+        List<Amigo> amigos = usuario.getAmigos();
+        List<User> amigosData = new ArrayList<User>();
+        if (amigos != null){
+            for(Amigo amigo : amigos){
+                ObjectId amigoId = amigo.getIdUser();
+                User amigoData = UserBusiness.findById(amigoId);
+                amigosData.add(amigoData);
+            }
+        }
+
+
+        return ok(views.html.MapPage.render(usuario, amigosData));
 
 
     }
