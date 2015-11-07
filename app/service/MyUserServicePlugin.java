@@ -13,6 +13,8 @@ import com.feth.play.module.pa.user.AuthUserIdentity;
 import com.feth.play.module.pa.service.UserServicePlugin;
 import com.google.inject.Inject;
 import play.mvc.Controller;
+import play.mvc.Results;
+import utils.Twitter;
 
 public class MyUserServicePlugin extends UserServicePlugin {
 
@@ -30,6 +32,11 @@ public class MyUserServicePlugin extends UserServicePlugin {
             if(loggedIn) {
                 Controller.session(MySecureAuth.SESSION_ID, usuarioCreado.getEmail());
             }
+
+            if(authUser.getProvider().equalsIgnoreCase("twitter")) {
+                Twitter.tweet("@" + usuarioCreado.getEmail() + " esta usando biciapps");
+            }
+
             return usuarioCreado.getIdSocial();
         } else {
             // we have this user already, so return null
@@ -42,6 +49,9 @@ public class MyUserServicePlugin extends UserServicePlugin {
         final User user = UserBusiness.findByIdSocialAndProvider(identity.getId(), identity.getProvider());
         if(user != null) {
             Controller.session(MySecureAuth.SESSION_ID, user.getEmail());
+            if(identity.getProvider().equalsIgnoreCase("twitter")) {
+                Twitter.tweet("@" + user.getEmail() + " esta usando biciapps");
+            }
             return user.getIdSocial();
         } else {
             return null;

@@ -1,9 +1,13 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.business.UserBusiness;
 import models.entities.User;
 import play.data.DynamicForm;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import models.entities.Ruta;
@@ -15,6 +19,8 @@ import org.bson.types.ObjectId;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.common.collect.Lists;
+import play.mvc.Security;
+import utils.Twitter;
 
 /**
  * Created by ger on 2/10/15.
@@ -139,4 +145,35 @@ public class RutaController extends Controller {
         return redirect(routes.RutaController.verRecorridos());
     }
 
+    @Security.Authenticated(MySecureAuth.class)
+    public Result tweet() {
+        String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
+        Boolean respuesta = false;
+        String mensaje = "false";
+        JsonNode json = request().body().asJson();
+        String mensajeInfo = json.findPath("info").textValue();
+        mensajeInfo = "@" + emailUsuarioLogueado + "," + mensajeInfo;
+        int maxlength = mensajeInfo.length() - 1;
+        if(maxlength > 139) {
+            mensajeInfo =  mensajeInfo.substring(0, 139);
+        }
+
+        twitter4j.Status resultado = Twitter.tweet(mensajeInfo);
+
+        if(resultado != null) {
+            respuesta = true;
+            mensaje = "ok";
+        }
+
+        ObjectNode result = Json.newObject();
+
+        ArrayNode an = result.putArray("data");
+
+        ObjectNode row = Json.newObject();
+        row.put("res", respuesta);
+        row.put("mensaje", mensaje);
+        an.add(row);
+
+        return ok(result);
+    }
 }

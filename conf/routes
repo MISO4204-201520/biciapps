@@ -82,7 +82,7 @@ GET     /assets/*file                       controllers.Assets.versioned(path="/
 
 POST    /ruta/crearRecorrido                controllers.RutaController.crearRecorrido()
 POST    /ruta/crearRuta		                controllers.RutaController.crearRuta()
-
+POST    /ruta/tweet                         controllers.RutaController.tweet()
 
 #------------------------------------------
 #Reportes
