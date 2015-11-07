@@ -63,6 +63,9 @@
 	    font-size: 25px;
 	    text-align: right;
 	}
+	#amigos-info {
+	    margin-top: 7px;
+	}
     </style>
     <div class="jumbotron">
         <div class="container">
@@ -99,7 +102,7 @@
 					    </button>
 					</div>
 	                <div class="col-md-5">
-	                    <input type="text" class="form-control" id="grupo" name="grupo" placeholder="Agregar Amigos" required>
+	                    <label id="amigos-info"><span id="amigos-num">0</span><span> Amigos agregados</span></label>
 	                </div>
 	            </div>
 	            <div class="form-group">
@@ -146,6 +149,7 @@
 	                    <input id="form-recorridos-sub" type="submit" value="Crear Eventos" class="btn btn-success">
 	                </div>
 	            </div>
+	            <input id="amigos" type="hidden" name="amigos" value="">
 	            <input id="pinicio" type="hidden" name="pinicio" value="">
 	            <input id="pfinal" type="hidden" name="pfinal" value="">
 	            <input id="distancia" type="hidden" name="distancia" value="">
@@ -194,7 +198,7 @@
 									  		<td>@amigo.getNombres()</td>
 									  		<td>@amigo.getApellidos()</td>
 									  		<td>@amigo.getEmail()</td>
-									  		<td></td>
+									  		<td><button class="ger-agregar-amigo" amigoid="@amigo.getId().toString()">Agregar amigo al viaje</button></td>
 									  	</tr>
 									} 
                                 </tbody>
@@ -338,11 +342,11 @@
 		    	$("#distanciaText").val(route.legs[0].distance.text);
 				$("#tiempoText").val(route.legs[0].duration.text);
 			    
-
-			    $("#latOrigen").val(route.bounds.Pa.I);
-			  	$("#lngOrigen").val(route.bounds.La.I);
-			  	$("#latDestino").val(route.bounds.Pa.j);
-			  	$("#lngDestino").val(route.bounds.La.j);
+				//console.log(route.bounds);
+			    $("#latOrigen").val(route.bounds.O.O);
+			  	$("#lngOrigen").val(route.bounds.j.O);
+			  	$("#latDestino").val(route.bounds.O.j);
+			  	$("#lngDestino").val(route.bounds.j.j);
 		    } else {
 		      window.alert('Directions request failed due to ' + status);
 		    }
@@ -367,6 +371,30 @@
 			console.log("destinyReady");
 		}
 
+    </script>
+    <script>
+    	var amigosStr = "";
+    	var amigos = [];
+    	$(document).ready(function(){
+
+    		$(".ger-agregar-amigo").on("click", function(e){
+	    		var amigoid = $(this).attr("amigoid");
+	    		if (amigos.indexOf(amigoid) == -1) {
+	    			if (amigosStr != "") {
+	    				amigosStr += ",";
+	    			}
+	    			amigosStr += amigoid;
+			    	amigos.push(amigoid);
+			    	$("#amigos").val(amigosStr);
+			    	$("#amigos-num").text(amigos.length);
+	    		}
+	    		$(this).prop('disabled', true);
+	    		$(this).css('color', "#AAA");
+	    	});
+
+
+    	});
+    	
     </script>
     <script>
     	//Select as the favorite route if exists

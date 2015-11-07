@@ -102,21 +102,14 @@ public class RutaController extends Controller {
         ruta.longitudDestino = f.get("lngDestino");
 
 
+
         List<User> usuarios = new ArrayList<User>();
 
         String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
         User usuarioLogueado = UserBusiness.findByEmail(emailUsuarioLogueado);
 
-        String msj = "No favorita";
-
-        //Es una ruta favorita?
-
-        if (f.get("rutaFavorita").charAt(0) == '1'){
-
-            usuarios.add(usuarioLogueado);
-            msj = "Favorita";
-        }
-
+        usuarios.add(usuarioLogueado);
+        
         ruta.usuarios = usuarios;
         
 
@@ -127,6 +120,15 @@ public class RutaController extends Controller {
         recorrido.distancia = f.get("distancia");
         recorrido.tiempo = f.get("tiempo");
         recorrido.creador = usuarioLogueado;
+
+        String amigosIds = f.get("amigos");
+        String[] amigosIdList = amigosIds.split(",");
+        for (int i = 0; i < amigosIdList.length; i++) {
+            ObjectId idObj = new ObjectId(amigosIdList[i]);
+            User amigoEncontrado = UserBusiness.findById(idObj);
+            usuarios.add(amigoEncontrado);
+        }
+
         recorrido.usuarios = usuarios;
 
         recorrido.ruta = ruta;
