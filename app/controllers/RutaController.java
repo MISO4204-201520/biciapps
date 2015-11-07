@@ -149,7 +149,7 @@ public class RutaController extends Controller {
     public Result tweet() {
         String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
         Boolean respuesta = false;
-        String mensaje = "false";
+        String mensaje = "No se puedo compartir el contenido";
         JsonNode json = request().body().asJson();
         String mensajeInfo = json.findPath("info").textValue();
         mensajeInfo = "@" + emailUsuarioLogueado + "," + mensajeInfo;
@@ -162,7 +162,7 @@ public class RutaController extends Controller {
 
         if(resultado != null) {
             respuesta = true;
-            mensaje = "ok";
+            mensaje = "Se compartio exitosamente el contenido";
         }
 
         ObjectNode result = Json.newObject();

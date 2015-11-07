@@ -25,15 +25,15 @@ function metodoClick() {
 function resultado(data) {
     console.log(data);
     if (data.data[0].res) {
-        $("#resOk").text(data.data[0].mensaje)
-        $("#resOk").show()
+        $("#resOk").text(data.data[0].mensaje);
+        $("#resOk").show();
         $('#contacts_table').DataTable().ajax.reload();
         $('#addContacts_table').DataTable().ajax.reload();
         //$('#myModal').modal('hide');
     }
     else {
-        $("#resError").text(data.data[0].mensaje)
-        $("#resError").show()
+        $("#resError").text(data.data[0].mensaje);
+        $("#resError").show();
     }
 }
 
@@ -75,8 +75,8 @@ function resultadoDejarAmigo(data) {
         $('#addContacts_table').DataTable().ajax.reload();
     }
     else {
-        $("#resError").text(data.data[0].mensaje)
-        $("#resError").show()
+        $("#resError").text(data.data[0].mensaje);
+        $("#resError").show();
     }
 }
 

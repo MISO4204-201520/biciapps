@@ -102,7 +102,8 @@
             <h2>Mapa</h2>
         </div>
     </div>
-
+    <div id="resOk" class="alert alert-success" style="padding-left: 3em !important; width: 400px;"> </div>
+    <div id="resError" class="alert alert-danger" style="padding-left: 3em !important;  width: 400px;"> </div>
     <div id="container">
     	<div class="col-md-5">
 	        <form  id="form-recorridos" class="form-horizontal" role="form" action="@routes.RutaController.crearRecorrido()" method="POST">
@@ -420,10 +421,14 @@
 		}
 		function originSelection(){
 			drawingState = "originToDraw";
+			$("#resOk").hide();
+			$("#resError").hide();
 			console.log("originReady");
 		}
 		function destinySelection(){
 			drawingState = "destinyToDraw";
+			$("#resOk").hide();
+			$("#resError").hide();
 			console.log("destinyReady");
 		}
 
@@ -448,7 +453,8 @@
 	    		$(this).css('color', "#AAA");
 	    	});
 
-
+            $("#resOk").hide();
+            $("#resError").hide();
     	});
     	
     </script>
@@ -526,9 +532,12 @@
             console.log(data);
             if (data.data[0].res) {
                console.log("Ok");
-            }
-            else {
+                $("#resOk").text(data.data[0].mensaje);
+                $("#resOk").show();
+            } else {
                console.log("Error");
+                $("#resError").text(data.data[0].mensaje);
+                $("#resError").show();
             }
         }
 
