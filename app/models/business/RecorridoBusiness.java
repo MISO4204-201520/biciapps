@@ -34,5 +34,7 @@ public class RecorridoBusiness {
         Iterable<Recorrido> recorridos = recorridos().find().as(Recorrido.class);
         return recorridos;
     }
-
+    public static Recorrido findById(ObjectId id) {
+        return recorridos().findOne(id).as(Recorrido.class);
+    }
 }

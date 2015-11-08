@@ -12,6 +12,20 @@
 } {
 
 	@clientLoggedInNavbar()
+	<style>
+		td {
+			font-size: 10px;
+		}
+		th {
+			font-size: 12px;
+		}
+		td, th {
+			text-align: center;
+		}
+		li {
+			display: flex;
+		}
+	</style>
     <div class="jumbotron">
         <div class="container">
             <h2>Mis Recorridos</h2>
@@ -20,26 +34,74 @@
     <div id="container">
 	    <table class="table"> 
 	    	<tr>
+	    		<th>-</th>
 		  		<th>Nombre</th>
 		  		<th>Fecha</th>
 		  		<th>Origen</th>
 		  		<th>Destino</th>
 		  		<th>Tiempo</th>
 		  		<th>Distancia</th>
+		  		<th>Invitados</th>
 		  		<th>-</th>
 		  	</tr>
 			@for(recorrido <- recorridos) {
 			  	<tr>
+			  		<td><button viajeid="@recorrido.id.toString()" class="simular-viaje">Simular viaje</button></td>
 			  		<td>@recorrido.nombre</td>
 			  		<td>@recorrido.fecha</td>
 			  		<td>@recorrido.ruta.nombreOrigen</td>
 			  		<td>@recorrido.ruta.nombreDestino</td>
 			  		<td>@recorrido.tiempo</td>
 			  		<td>@recorrido.distancia</td>
-			  		<td><td><a href='@routes.RutaController.verDetalleRuta(recorrido.id.toString())'>Ver Ruta<a></td></td>
+			  		<td>
+			  			<ul>
+			  			@for(usuario <- recorrido.usuarios) {
+			  				<li>
+			  					@usuario.getNombres()
+			  				</li>
+			  			}
+			  			</ul>
+			  		</td>
+			  		<td><a href='@routes.RutaController.verDetalleRuta(recorrido.id.toString())'>Ver Ruta<a></td>
 			  	</tr>
 			} 
 		</table>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".simular-viaje").click(function(){
+				var recorridoid = $(this).attr("viajeid")
+				var request = $.ajax({
+					url: "@routes.RutaController.crearViaje()",
+					method: "POST",
+					data: {
+						recorridoid : recorridoid,
+						fecha : currentFormatDate()
+					},
+						dataType: "html"
+				});
+				request.done(function( msg ) {
+					console.log("ajax ok!");
+					alert("Se ha agregado el viaje simulado");
+				});
+				 
+				request.fail(function( jqXHR, textStatus ) {
+					alert("Algo está mal, verifica tu conexión a internet: " + textStatus );
+				});
+			});
+		});
+		function currentFormatDate() {
+		    var d = new Date(),
+		        month = '' + (d.getMonth() + 1),
+		        day = '' + d.getDate(),
+		        year = d.getFullYear();
+
+		    if (month.length < 2) month = '0' + month;
+		    if (day.length < 2) day = '0' + day;
+
+		    return [year, month, day].join('-');
+		}
+	</script>
 
 }

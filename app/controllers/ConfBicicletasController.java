@@ -1,7 +1,9 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import models.business.ConfBicicletasBusiness;
 import models.entities.ConfBicicleta;
@@ -44,18 +46,31 @@ public class ConfBicicletasController extends Controller {
         String resultado ="";
     
         if (validarConfBicicleta()){
+        	
+          	 Map<String, Object> map = leerAtributos(df);
+        	
         	 ConfBicicleta confBicicleta = new ConfBicicleta();
-             confBicicleta.setTienda(tiendaSeleccionada);
-             confBicicleta.setNombrePersonalizado(df.get("nombrePersonalizado"));
+             confBicicleta.setTienda(tiendaSeleccionada);   
+             confBicicleta.setNombrePersonalizado(map.get("nombrePersonalizado").toString());
+             confBicicleta.setTipoBicicleta(map.get("tipoBicicleta").toString());
+             confBicicleta.setAleacion(map.get("aleacion").toString());
+    
+             confBicicleta.setRines(map.get("rines").toString());
+             confBicicleta.setBielas(map.get("bielas").toString());
+             confBicicleta.setTipoMarco(map.get("tipoMarco").toString());
+             confBicicleta.setTenedor(map.get("tenedor").toString());
              
-             confBicicleta.setDescripcionConf(df.get("opciones"));
+             confBicicleta.setTipoLlanta(map.get("tipoLlanta").toString());
+             confBicicleta.setAccesorio1(map.get("luzDelantera").toString());
+             confBicicleta.setAccesorio2(map.get("luzStop").toString());
+             confBicicleta.setAccesorio3(map.get("guardaBarros").toString());
              
              if(ConfBicicletasBusiness.buscarPorNombrePersonalizado(
              		confBicicleta.getNombrePersonalizado()) == null){
              	ConfBicicletasBusiness.insert(confBicicleta);
-             	resultado = "Registro insertado";
+             	resultado = "Registro insertado" + confBicicleta.toString();
              }else{
-             	resultado = "Existe un registro con el mismo nombre";
+             	resultado = "Existe un registro con el mismo nombre" + confBicicleta.toString();
              }
         }else{
         	resultado = "Error validando datos obligatorios";
@@ -71,4 +86,27 @@ public class ConfBicicletasController extends Controller {
     	//TODO
     	return true;
     } 
+    
+    /**
+     * 
+     * @param df
+     * @return
+     */
+    private Map<String, Object> leerAtributos(DynamicForm df){ 	
+    	Map<String, Object> map = new HashMap<String, Object>();
+    	
+    	map.put("nombrePersonalizado",df.get("nombrePersonalizado"));
+    	map.put("tipoBicicleta",df.get("tipoBicicleta"));
+    	map.put("aleacion",df.get("aleacion"));
+    	map.put("rines",df.get("rines"));
+    	map.put("bielas",df.get("bielas"));
+    	map.put("tipoMarco",df.get("tipoMarco"));
+    	map.put("tenedor",df.get("tenedor"));
+    	map.put("tipoLlanta",df.get("tipoLlanta"));
+    	map.put("luzDelantera",df.get("accesorio1"));
+    	map.put("luzStop",df.get("accesorio2"));
+    	map.put("guardaBarros",df.get("accesorio3"));
+    	
+    	return map;  	
+    }
 }

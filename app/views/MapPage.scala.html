@@ -63,13 +63,48 @@
 	    font-size: 25px;
 	    text-align: right;
 	}
+	#amigos-info {
+	    margin-top: 7px;
+	}
+
+    .twitter-share-button,
+    .twitter-mention-button,
+    .twitter-hashtag-button {
+    display: inline-block;
+    padding: 1px 3px 0 19px;
+    border: #ccc solid 1px;
+    border-radius: 3px;
+    background: #f8f8f8 url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNzIgNzIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDcyIDcyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxyZWN0IHg9IjAiIGZpbGw9Im5vbmUiIHdpZHRoPSI3MiIgaGVpZ2h0PSI3MiIvPg0KPHBhdGggZmlsbD0iIzU1YWNlZSIgZD0iTTY4LjgxMiwxNS4xNDFjLTIuMzQ4LDEuMDM5LTQuODY5LDEuNzQzLTcuNTE5LDIuMDZjMi43MDMtMS42Miw0Ljc3OC00LjE4Nyw1Ljc1Ni03LjI0NGMtMi41MjksMS41LTUuMzMsMi41OTItOC4zMTMsMy4xNzYNCglDNTYuMzQ5LDEwLjU5MSw1Mi45NDgsOSw0OS4xODIsOWMtNy4yMjksMC0xMy4wOTIsNS44NjEtMTMuMDkyLDEzLjA5M2MwLDEuMDI2LDAuMTE4LDIuMDIxLDAuMzM4LDIuOTgxDQoJYy0xMC44ODUtMC41NDgtMjAuNTI4LTUuNzU3LTI2Ljk4Ny0xMy42NzljLTEuMTI2LDEuOTM2LTEuNzcxLDQuMTg0LTEuNzcxLDYuNTgxYzAsNC41NDIsMi4zMTIsOC41NTEsNS44MjQsMTAuODk4DQoJYy0yLjE0Ni0wLjA2OS00LjE2NS0wLjY1Ny01LjkzLTEuNjM4Yy0wLjAwMiwwLjA1NS0wLjAwMiwwLjExLTAuMDAyLDAuMTYyYzAsNi4zNDUsNC41MTMsMTEuNjM4LDEwLjUwNCwxMi44NA0KCWMtMS4xMDEsMC4yOTgtMi4yNTYsMC40NTctMy40NDksMC40NTdjLTAuODQ2LDAtMS42NjctMC4wNzgtMi40NjUtMC4yMzFjMS42NjcsNS4yLDYuNDk5LDguOTg2LDEyLjIzLDkuMDkNCgljLTQuNDgyLDMuNTEyLTEwLjEyOSw1LjYwNi0xNi4yNiw1LjYwNmMtMS4wNTUsMC0yLjA5Ni0wLjA2MS0zLjEyMi0wLjE4NGM1Ljc5NCwzLjcxNywxMi42NzYsNS44ODIsMjAuMDY3LDUuODgyDQoJYzI0LjA4MywwLDM3LjI1MS0xOS45NDksMzcuMjUxLTM3LjI0OWMwLTAuNTY2LTAuMDE0LTEuMTM0LTAuMDM5LTEuNjk0QzY0LjgzOCwyMC4wNjgsNjcuMDU4LDE3Ljc2NSw2OC44MTIsMTUuMTQxeiIvPg0KPC9zdmc+DQo=") 2px 3px no-repeat;
+    background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNzIgNzIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDcyIDcyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxyZWN0IHg9IjAiIGZpbGw9Im5vbmUiIHdpZHRoPSI3MiIgaGVpZ2h0PSI3MiIvPg0KPHBhdGggZmlsbD0iIzU1YWNlZSIgZD0iTTY4LjgxMiwxNS4xNDFjLTIuMzQ4LDEuMDM5LTQuODY5LDEuNzQzLTcuNTE5LDIuMDZjMi43MDMtMS42Miw0Ljc3OC00LjE4Nyw1Ljc1Ni03LjI0NGMtMi41MjksMS41LTUuMzMsMi41OTItOC4zMTMsMy4xNzYNCglDNTYuMzQ5LDEwLjU5MSw1Mi45NDgsOSw0OS4xODIsOWMtNy4yMjksMC0xMy4wOTIsNS44NjEtMTMuMDkyLDEzLjA5M2MwLDEuMDI2LDAuMTE4LDIuMDIxLDAuMzM4LDIuOTgxDQoJYy0xMC44ODUtMC41NDgtMjAuNTI4LTUuNzU3LTI2Ljk4Ny0xMy42NzljLTEuMTI2LDEuOTM2LTEuNzcxLDQuMTg0LTEuNzcxLDYuNTgxYzAsNC41NDIsMi4zMTIsOC41NTEsNS44MjQsMTAuODk4DQoJYy0yLjE0Ni0wLjA2OS00LjE2NS0wLjY1Ny01LjkzLTEuNjM4Yy0wLjAwMiwwLjA1NS0wLjAwMiwwLjExLTAuMDAyLDAuMTYyYzAsNi4zNDUsNC41MTMsMTEuNjM4LDEwLjUwNCwxMi44NA0KCWMtMS4xMDEsMC4yOTgtMi4yNTYsMC40NTctMy40NDksMC40NTdjLTAuODQ2LDAtMS42NjctMC4wNzgtMi40NjUtMC4yMzFjMS42NjcsNS4yLDYuNDk5LDguOTg2LDEyLjIzLDkuMDkNCgljLTQuNDgyLDMuNTEyLTEwLjEyOSw1LjYwNi0xNi4yNiw1LjYwNmMtMS4wNTUsMC0yLjA5Ni0wLjA2MS0zLjEyMi0wLjE4NGM1Ljc5NCwzLjcxNywxMi42NzYsNS44ODIsMjAuMDY3LDUuODgyDQoJYzI0LjA4MywwLDM3LjI1MS0xOS45NDksMzcuMjUxLTM3LjI0OWMwLTAuNTY2LTAuMDE0LTEuMTM0LTAuMDM5LTEuNjk0QzY0LjgzOCwyMC4wNjgsNjcuMDU4LDE3Ljc2NSw2OC44MTIsMTUuMTQxeiIvPg0KPC9zdmc+DQo=") 2px 3px no-repeat,
+    -webkit-linear-gradient(#fff, #dedede);
+    background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNzIgNzIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDcyIDcyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxyZWN0IHg9IjAiIGZpbGw9Im5vbmUiIHdpZHRoPSI3MiIgaGVpZ2h0PSI3MiIvPg0KPHBhdGggZmlsbD0iIzU1YWNlZSIgZD0iTTY4LjgxMiwxNS4xNDFjLTIuMzQ4LDEuMDM5LTQuODY5LDEuNzQzLTcuNTE5LDIuMDZjMi43MDMtMS42Miw0Ljc3OC00LjE4Nyw1Ljc1Ni03LjI0NGMtMi41MjksMS41LTUuMzMsMi41OTItOC4zMTMsMy4xNzYNCglDNTYuMzQ5LDEwLjU5MSw1Mi45NDgsOSw0OS4xODIsOWMtNy4yMjksMC0xMy4wOTIsNS44NjEtMTMuMDkyLDEzLjA5M2MwLDEuMDI2LDAuMTE4LDIuMDIxLDAuMzM4LDIuOTgxDQoJYy0xMC44ODUtMC41NDgtMjAuNTI4LTUuNzU3LTI2Ljk4Ny0xMy42NzljLTEuMTI2LDEuOTM2LTEuNzcxLDQuMTg0LTEuNzcxLDYuNTgxYzAsNC41NDIsMi4zMTIsOC41NTEsNS44MjQsMTAuODk4DQoJYy0yLjE0Ni0wLjA2OS00LjE2NS0wLjY1Ny01LjkzLTEuNjM4Yy0wLjAwMiwwLjA1NS0wLjAwMiwwLjExLTAuMDAyLDAuMTYyYzAsNi4zNDUsNC41MTMsMTEuNjM4LDEwLjUwNCwxMi44NA0KCWMtMS4xMDEsMC4yOTgtMi4yNTYsMC40NTctMy40NDksMC40NTdjLTAuODQ2LDAtMS42NjctMC4wNzgtMi40NjUtMC4yMzFjMS42NjcsNS4yLDYuNDk5LDguOTg2LDEyLjIzLDkuMDkNCgljLTQuNDgyLDMuNTEyLTEwLjEyOSw1LjYwNi0xNi4yNiw1LjYwNmMtMS4wNTUsMC0yLjA5Ni0wLjA2MS0zLjEyMi0wLjE4NGM1Ljc5NCwzLjcxNywxMi42NzYsNS44ODIsMjAuMDY3LDUuODgyDQoJYzI0LjA4MywwLDM3LjI1MS0xOS45NDksMzcuMjUxLTM3LjI0OWMwLTAuNTY2LTAuMDE0LTEuMTM0LTAuMDM5LTEuNjk0QzY0LjgzOCwyMC4wNjgsNjcuMDU4LDE3Ljc2NSw2OC44MTIsMTUuMTQxeiIvPg0KPC9zdmc+DQo=") 2px 3px no-repeat,
+    linear-gradient(#fff, #dedede);
+    background-size: 16px 13px, auto auto;
+
+    /* Text */
+    font: bold 11px/17px Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    color: #333;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+    white-space: nowrap;
+    }
+
+    /* Color Highlight for keyboard navigation */
+    .twitter-share-button:focus,
+    .twitter-mention-button:focus,
+    .twitter-hashtag-button:focus {
+    outline: none;
+    border-color: #0089cb;
+    }
+
     </style>
     <div class="jumbotron">
         <div class="container">
             <h2>Mapa</h2>
         </div>
     </div>
-
+    <div id="resOk" class="alert alert-success" style="padding-left: 3em !important; width: 400px;"> </div>
+    <div id="resError" class="alert alert-danger" style="padding-left: 3em !important;  width: 400px;"> </div>
     <div id="container">
     	<div class="col-md-5">
 	        <form  id="form-recorridos" class="form-horizontal" role="form" action="@routes.RutaController.crearRecorrido()" method="POST">
@@ -99,7 +134,7 @@
 					    </button>
 					</div>
 	                <div class="col-md-5">
-	                    <input type="text" class="form-control" id="grupo" name="grupo" placeholder="Agregar Amigos" required>
+	                    <label id="amigos-info"><span id="amigos-num">0</span><span> Amigos agregados</span></label>
 	                </div>
 	            </div>
 	            <div class="form-group">
@@ -146,6 +181,7 @@
 	                    <input id="form-recorridos-sub" type="submit" value="Crear Eventos" class="btn btn-success">
 	                </div>
 	            </div>
+	            <input id="amigos" type="hidden" name="amigos" value="">
 	            <input id="pinicio" type="hidden" name="pinicio" value="">
 	            <input id="pfinal" type="hidden" name="pfinal" value="">
 	            <input id="distancia" type="hidden" name="distancia" value="">
@@ -164,7 +200,14 @@
 	    		<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 	    	</button>
 	    	Guardar ruta
-
+            @if(usuario.getProveedor() != null && usuario.getProveedor().equalsIgnoreCase("twitter")) {
+                <button id = "tweetButton" class="twitter-share-button" data-via="biciapps" onclick="abrirModal();" data-toggle="modal" data-target="#myModalTweet">Tweet</button>
+            }
+			@if(usuario.getProveedor() != null && usuario.getProveedor().equalsIgnoreCase("facebook")){
+				<button id = "fbButton" style="border: 0; background: transparent" data-via="biciapps" onclick="abrirModal();" data-toggle="modal" data-target="#myModalTweet">
+					<img style="cursor : pointer" src="@routes.Assets.versioned("images/compartirfacebook.png")" alt="Facebook" title="Facebook" width="90" height="30">
+				</button>
+            }
 	    </div>
     </div>
     <!-- Modal -->
@@ -194,7 +237,7 @@
 									  		<td>@amigo.getNombres()</td>
 									  		<td>@amigo.getApellidos()</td>
 									  		<td>@amigo.getEmail()</td>
-									  		<td></td>
+									  		<td><button class="ger-agregar-amigo" amigoid="@amigo.getId().toString()">Agregar amigo al viaje</button></td>
 									  	</tr>
 									} 
                                 </tbody>
@@ -208,6 +251,33 @@
 
             </div>
         </div>
+
+    <!-- Modal -->
+    <div id="myModalTweet" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+                <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Deseas compartir la siguiente informaci&#243;n:</h4>
+                </div>
+                <div id="tweetContent" class="modal-body">
+                </div>
+                <div class="modal-footer">
+				@if(usuario.getProveedor() != null && usuario.getProveedor().equalsIgnoreCase("twitter")) {
+					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="tweetInfo();">Tweet</button>
+				}else{
+					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="postInfo();">Facebook</button>
+				}
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script>
   		var poly;
@@ -339,11 +409,11 @@
 		    	$("#distanciaText").val(route.legs[0].distance.text);
 				$("#tiempoText").val(route.legs[0].duration.text);
 			    
-
-			    $("#latOrigen").val(route.bounds.Pa.I);
-			  	$("#lngOrigen").val(route.bounds.La.I);
-			  	$("#latDestino").val(route.bounds.Pa.j);
-			  	$("#lngDestino").val(route.bounds.La.j);
+				//console.log(route.bounds);
+			    $("#latOrigen").val(route.bounds.O.O);
+			  	$("#lngOrigen").val(route.bounds.j.O);
+			  	$("#latDestino").val(route.bounds.O.j);
+			  	$("#lngDestino").val(route.bounds.j.j);
 		    } else {
 		      window.alert('Directions request failed due to ' + status);
 		    }
@@ -361,13 +431,42 @@
 		}
 		function originSelection(){
 			drawingState = "originToDraw";
+			$("#resOk").hide();
+			$("#resError").hide();
 			console.log("originReady");
 		}
 		function destinySelection(){
 			drawingState = "destinyToDraw";
+			$("#resOk").hide();
+			$("#resError").hide();
 			console.log("destinyReady");
 		}
 
+    </script>
+    <script>
+    	var amigosStr = "";
+    	var amigos = [];
+    	$(document).ready(function(){
+
+    		$(".ger-agregar-amigo").on("click", function(e){
+	    		var amigoid = $(this).attr("amigoid");
+	    		if (amigos.indexOf(amigoid) == -1) {
+	    			if (amigosStr != "") {
+	    				amigosStr += ",";
+	    			}
+	    			amigosStr += amigoid;
+			    	amigos.push(amigoid);
+			    	$("#amigos").val(amigosStr);
+			    	$("#amigos-num").text(amigos.length);
+	    		}
+	    		$(this).prop('disabled', true);
+	    		$(this).css('color', "#AAA");
+	    	});
+
+            $("#resOk").hide();
+            $("#resError").hide();
+    	});
+    	
     </script>
     <script>
     	//Select as the favorite route if exists
@@ -407,7 +506,100 @@
 		    	alert("Debes seleccionar un punto de salida y de llegada");
 		    }
     	});
-	    
+
+	     function abrirModal() {
+            var pInicio = $("#pinicioText").val();
+			var pFinal = $("#pfinalText").val();
+		    var pDistancia = $("#distanciaText").val();
+			var tiempo = $("#tiempoText").val();
+			var texto = "Ruta: O:" + pInicio + ",D:" + pFinal +",DIS:" + pDistancia +",T:" + tiempo;
+
+			$("#tweetContent").val(texto);
+			$("#tweetContent").text(texto);
+        }
+
+	    function tweetInfo() {
+	        var content = $("#tweetContent").val();
+
+	        var url = "/ruta/tweet";
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: 'application/json',
+                data: '{ "info" : "' + content + '"}',
+                dataType: "json",
+                success: resultadoTweet,
+                failure: failureCallTweet,
+                statusCode: {
+                    400: badRequestTweet
+                },
+            });
+
+        }
+
+        function resultadoTweet(data) {
+            console.log(data);
+            if (data.data[0].res) {
+               console.log("Ok");
+                $("#resOk").text(data.data[0].mensaje);
+                $("#resOk").show();
+            } else {
+               console.log("Error");
+                $("#resError").text(data.data[0].mensaje);
+                $("#resError").show();
+            }
+        }
+
+        function badRequestTweet(data, textStatus, jqXHR){
+            console.log("Bad request " + data);
+        }
+
+        function failureCallTweet(errMsg){
+            console.log("Error:" + errMsg);
+        }
+
+		function postInfo() {
+	        var content = $("#tweetContent").val();
+
+	        var url = "/ruta/post";
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: 'application/json',
+                data: '{ "info" : "' + content + '"}',
+                dataType: "json",
+                success: resultadoPost,
+                failure: failureCallPost,
+                statusCode: {
+                    400: badRequestPost
+                },
+            });
+
+        }
+
+        function resultadoPost(data) {
+            console.log(data);
+            if (data.data[0].res) {
+               console.log("Ok");
+                $("#resOk").text(data.data[0].mensaje);
+                $("#resOk").show();
+            } else {
+               console.log("Error");
+                $("#resError").text(data.data[0].mensaje);
+                $("#resError").show();
+            }
+        }
+
+        function badRequestPost(data, textStatus, jqXHR){
+            console.log("Bad request " + data);
+        }
+
+        function failureCallPost(errMsg){
+            console.log("Error:" + errMsg);
+        }
+
     </script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWH8xrMZewAIVlQwc5bCkUxX-Y6bQ9uV0&signed_in=true&callback=initMap" async defer></script>
 

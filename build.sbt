@@ -13,7 +13,10 @@ libraryDependencies ++= Seq(
   //Jongo
   "org.jongo" % "jongo" % "1.2",
   "org.mongodb" % "mongo-java-driver" % "3.0.4",
-  "com.feth" %% "play-authenticate" % "0.7.0"
+  "com.feth" %% "play-authenticate" % "0.7.0",
+  "org.twitter4j" % "twitter4j-core" % "4.0.2",
+  "org.facebook4j" % "facebook4j-core" % "2.2.0",
+  "com.twitter" % "twitter-text" % "1.6.1"
 )
 
 

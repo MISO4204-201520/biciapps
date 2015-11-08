@@ -1,20 +1,29 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.business.UserBusiness;
 import models.entities.User;
 import play.data.DynamicForm;
 import play.data.Form;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 import models.entities.Ruta;
 import models.business.RutaBusiness;
 import models.entities.Recorrido;
 import models.business.RecorridoBusiness;
+import models.entities.Viaje;
+import models.business.ViajeBusiness;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
 import java.util.List;
 import com.google.common.collect.Lists;
+import play.mvc.Security;
+import utils.Facebook;
+import utils.Twitter;
 
 /**
  * Created by ger on 2/10/15.
@@ -86,6 +95,25 @@ public class RutaController extends Controller {
         return ok("Debes especificar el ID de la ruta");
 
     }
+    public Result verViajes(){
+        String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
+        User usuarioLogueado = UserBusiness.findByEmail(emailUsuarioLogueado);
+
+        Iterable<Viaje> viajesIterable = ViajeBusiness.findByUser(usuarioLogueado);
+        List<Viaje> viajes = Lists.newArrayList(viajesIterable);
+        return ok(views.html.listaViajes.render(viajes));
+    }
+    public Result crearViaje() {
+        DynamicForm f = Form.form().bindFromRequest();
+        Viaje viaje = new Viaje();
+        ObjectId idObj = new ObjectId(f.get("recorridoid"));
+        viaje.recorrido = RecorridoBusiness.findById(idObj);
+        viaje.fecha = f.get("fecha");
+        viaje.tiempo =  viaje.recorrido.tiempo;
+        viaje.distancia = viaje.recorrido.distancia;
+        ViajeBusiness.insert(viaje);
+        return ok("Ok");
+    }
 
     public Result crearRecorrido() {
 
@@ -102,21 +130,14 @@ public class RutaController extends Controller {
         ruta.longitudDestino = f.get("lngDestino");
 
 
+
         List<User> usuarios = new ArrayList<User>();
 
         String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
         User usuarioLogueado = UserBusiness.findByEmail(emailUsuarioLogueado);
 
-        String msj = "No favorita";
-
-        //Es una ruta favorita?
-
-        if (f.get("rutaFavorita").charAt(0) == '1'){
-
-            usuarios.add(usuarioLogueado);
-            msj = "Favorita";
-        }
-
+        usuarios.add(usuarioLogueado);
+        
         ruta.usuarios = usuarios;
         
 
@@ -127,6 +148,18 @@ public class RutaController extends Controller {
         recorrido.distancia = f.get("distancia");
         recorrido.tiempo = f.get("tiempo");
         recorrido.creador = usuarioLogueado;
+
+        String amigosIds = f.get("amigos");
+        if (amigosIds != ""){
+            String[] amigosIdList = amigosIds.split(",");
+            for (int i = 0; i < amigosIdList.length; i++) {
+                ObjectId idObj = new ObjectId(amigosIdList[i]);
+                User amigoEncontrado = UserBusiness.findById(idObj);
+                usuarios.add(amigoEncontrado);
+            }
+        }
+        
+
         recorrido.usuarios = usuarios;
 
         recorrido.ruta = ruta;
@@ -137,4 +170,63 @@ public class RutaController extends Controller {
         return redirect(routes.RutaController.verRecorridos());
     }
 
+    @Security.Authenticated(MySecureAuth.class)
+    public Result tweet() {
+        String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
+        Boolean respuesta = false;
+        String mensaje = "No se puedo compartir el contenido";
+        JsonNode json = request().body().asJson();
+        String mensajeInfo = json.findPath("info").textValue();
+        mensajeInfo = "@" + emailUsuarioLogueado + "," + mensajeInfo;
+        int maxlength = mensajeInfo.length() - 1;
+        if(maxlength > 139) {
+            mensajeInfo =  mensajeInfo.substring(0, 139);
+        }
+
+        twitter4j.Status resultado = Twitter.tweet(mensajeInfo);
+
+        if(resultado != null) {
+            respuesta = true;
+            mensaje = "Se compartio exitosamente el contenido";
+        }
+
+        ObjectNode result = Json.newObject();
+
+        ArrayNode an = result.putArray("data");
+
+        ObjectNode row = Json.newObject();
+        row.put("res", respuesta);
+        row.put("mensaje", mensaje);
+        an.add(row);
+
+        return ok(result);
+    }
+
+
+    @Security.Authenticated(MySecureAuth.class)
+    public Result post() {
+        String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
+        Boolean respuesta = false;
+        String mensaje = "No se puedo compartir el contenido";
+        JsonNode json = request().body().asJson();
+        String mensajeInfo = json.findPath("info").textValue();
+
+        String resultado = Facebook.post(mensajeInfo, null);
+
+        if(resultado != null) {
+            respuesta = true;
+            mensaje = "Se compartio exitosamente el contenido";
+        }
+
+        ObjectNode result = Json.newObject();
+
+        ArrayNode an = result.putArray("data");
+
+        ObjectNode row = Json.newObject();
+        row.put("res", respuesta);
+        row.put("mensaje", mensaje);
+        an.add(row);
+
+        return ok(result);
+    }
 }
