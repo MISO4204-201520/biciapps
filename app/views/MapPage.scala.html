@@ -202,7 +202,7 @@
             @if(usuario.getProveedor() != null && usuario.getProveedor().equalsIgnoreCase("twitter")) {
                 <button id = "tweetButton" class="twitter-share-button" data-via="biciapps" onclick="abrirModal();" data-toggle="modal" data-target="#myModalTweet">Tweet</button>
             } else {
-
+				<button id = "fbButton" class="twitter-share-button" data-via="biciapps" onclick="abrirModal();" data-toggle="modal" data-target="#myModalTweet">Facebook</button>
             }
 	    </div>
     </div>
@@ -261,7 +261,12 @@
                 <div id="tweetContent" class="modal-body">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="tweetInfo();">Tweet</button>
+				@if(usuario.getProveedor() != null && usuario.getProveedor().equalsIgnoreCase("twitter")) {
+					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="tweetInfo();">Tweet</button>
+				}else{
+					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="postInfo();">Facebook</button>
+				}
+
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>
@@ -546,6 +551,47 @@
         }
 
         function failureCallTweet(errMsg){
+            console.log("Error:" + errMsg);
+        }
+
+		function postInfo() {
+	        var content = $("#tweetContent").val();
+
+	        var url = "/ruta/post";
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: 'application/json',
+                data: '{ "info" : "' + content + '"}',
+                dataType: "json",
+                success: resultadoPost,
+                failure: failureCallPost,
+                statusCode: {
+                    400: badRequestPost
+                },
+            });
+
+        }
+
+        function resultadoPost(data) {
+            console.log(data);
+            if (data.data[0].res) {
+               console.log("Ok");
+                $("#resOk").text(data.data[0].mensaje);
+                $("#resOk").show();
+            } else {
+               console.log("Error");
+                $("#resError").text(data.data[0].mensaje);
+                $("#resError").show();
+            }
+        }
+
+        function badRequestPost(data, textStatus, jqXHR){
+            console.log("Bad request " + data);
+        }
+
+        function failureCallPost(errMsg){
             console.log("Error:" + errMsg);
         }
 

@@ -84,6 +84,7 @@ POST    /ruta/crearRecorrido                controllers.RutaController.crearReco
 POST    /ruta/crearRuta		                controllers.RutaController.crearRuta()
 POST	/viaje								controllers.RutaController.crearViaje()
 POST    /ruta/tweet                         controllers.RutaController.tweet()
+POST    /ruta/post                          controllers.RutaController.post()
 
 #------------------------------------------
 #Reportes

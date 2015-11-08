@@ -1,5 +1,6 @@
 package service;
 
+import com.feth.play.module.pa.providers.oauth2.OAuth2AuthUser;
 import com.feth.play.module.pa.providers.oauth2.facebook.FacebookAuthUser;
 import controllers.Account;
 import controllers.MySecureAuth;
@@ -52,6 +53,14 @@ public class MyUserServicePlugin extends UserServicePlugin {
             if(identity.getProvider().equalsIgnoreCase("twitter")) {
                 Twitter.tweet("@" + user.getEmail() + " esta usando biciapps");
             }
+            else if(identity.getProvider().equalsIgnoreCase("facebook")){
+                if (identity instanceof OAuth2AuthUser) {
+                    OAuth2AuthUser oAuth2AuthUser = (OAuth2AuthUser) identity;
+                    String oauth2accessToken = oAuth2AuthUser.getOAuth2AuthInfo().getAccessToken();
+                    Controller.session().put("oauth2accessToken", oauth2accessToken);
+                }
+            }
+
             return user.getIdSocial();
         } else {
             return null;

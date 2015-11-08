@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.common.collect.Lists;
 import play.mvc.Security;
+import utils.Facebook;
 import utils.Twitter;
 
 /**
@@ -183,6 +184,34 @@ public class RutaController extends Controller {
         }
 
         twitter4j.Status resultado = Twitter.tweet(mensajeInfo);
+
+        if(resultado != null) {
+            respuesta = true;
+            mensaje = "Se compartio exitosamente el contenido";
+        }
+
+        ObjectNode result = Json.newObject();
+
+        ArrayNode an = result.putArray("data");
+
+        ObjectNode row = Json.newObject();
+        row.put("res", respuesta);
+        row.put("mensaje", mensaje);
+        an.add(row);
+
+        return ok(result);
+    }
+
+
+    @Security.Authenticated(MySecureAuth.class)
+    public Result post() {
+        String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
+        Boolean respuesta = false;
+        String mensaje = "No se puedo compartir el contenido";
+        JsonNode json = request().body().asJson();
+        String mensajeInfo = json.findPath("info").textValue();
+
+        String resultado = Facebook.post(mensajeInfo, null);
 
         if(resultado != null) {
             respuesta = true;
