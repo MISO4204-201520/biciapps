@@ -12,10 +12,9 @@
 } {
 
 	<style> 
-	<!-- #main { width:100%; }
-	.column1 { padding:2px; margin-right:5px; width:200px; float:left; } 
-	.column2 { padding:2px; margin-right:5px; width:200px; float:left; } 
-	--> 
+		<!-- #main { width:100%; }
+		.column { padding:1px; margin-right:1px; width:150px; float:left; }  
+		--> 
 	</style> 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -63,7 +62,7 @@
 	    });
 	    
 	    $("#montana").click(function(){
-	        document.getElementById("2disco").style.visibility = "hidden";      
+	        document.getElementById("2disco").style.visibility = "visible";      
 	    });
 	    $("#cross").click(function(){
 	        document.getElementById("2disco").style.visibility = "hidden";
@@ -83,105 +82,98 @@
     </div>
 
     <div class="container">
-        <form class="form-horizontal" role="form" 
-        	action="@routes.ConfBicicletasController.registrar()" method="POST">
-        	
-        	
-        	<div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Tienda de Preferencia: </label>
-                <div class="col-sm-10">
-                    <select name="opciones" size="1">	
-						<option value="1">Cannondale</option> 
-						<option value="2">Bike House Bogota</option> 
-						<option value="3">Bicicletas Strongman</option> 
-					</select> 
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label class="control-label col-sm-2" for="pwd">Nombre Personalizado</label>
-                <div class="col-sm-10">
-                    <input id="nombrePersonalizado" 
-                    name="nombrePersonalizado" 
-                    class="form-control" 
-                    placeholder="Nombre Personalizado para su Bicicleta">
-                </div>
-            </div>  
-        </form>
-        
-             <body>
-             	<div class="column1">
-		          	<form id="tipoBicicleta" action="" method="post">
+    
+    		<form class="form-horizontal" role="form"
+    			action="@routes.ConfBicicletasController.registrar()" method="POST">
+			   	<div class="form-group">
+	                <label class="control-label col-sm-2" for="pwd">Tienda de Preferencia: </label>
+	                <div class="col-sm-10">
+	                    <select name="opciones" size="1">	
+							<option value="1">Cannondale</option> 
+							<option value="2">Bike House Bogota</option> 
+							<option value="3">Bicicletas Strongman</option> 
+						</select> 
+	                </div>
+	            </div>
+	            
+	            <div id="tipoBicicleta" class="column">	          
 					    <br>Tipo de Bicicleta<br/> 
-					    <input type="radio" name="action" id="montana" value="montana" checked/><label for="montana">Monta&#241;a</label><br />
-					    <input type="radio" name="action" id="ruta" value="ruta" /><label for="ruta">Ruta</label><br />				
-						<input type="radio" name="action" id="cross" value="cross" /><label for="cross">Cross</label><br />							
-					</form>	
+					    <input type="radio" name="tipoBicicleta" id="montana" value="montana" checked/><label for="montana">Monta&#241;a</label><br />
+					    <input type="radio" name="tipoBicicleta" id="ruta" value="ruta" /><label for="ruta">Ruta</label><br />				
+						<input type="radio" name="tipoBicicleta" id="cross" value="cross" /><label for="cross">Cross</label><br />							
 				</div>
 				
-				<div class="column2">
-					<form id="tipoMarco" action="" method="post">
-						<br>Marco<br/> 
-						<input type="radio" name="action" id="rigido" value="rigido" checked /><label for="rigido">Tijera Rigida</label><br />					
-						<input type="radio" name="action" id="susp" value="susp"  /><label for="susp">Suspensi&#243;n</label><br />					
-					</form>	
-				</div>
-				
-				<div class="column1">	     
-				    <form id="tenedor" action="" method="post">
-				    	<br>Tenedor<br/>
-					    <input type="radio" name="action" id="tenedorRigido" value="tenedorRigido" checked /><label for="tenedorRigido">Rigido</label><br />
-					    <input type="radio" name="action" id="tenedorSuspension" value="tenedorSuspension"/><label for="tenedorSuspension">Suspensi&#243;n</label><br />
-					</form>	  
-				</div> 				    								
-				
-				<div class="column1">		     
-					<form id="tipoLlanta" action="" method="post">
-					  	<br>Tipo Llanta<br/>
-					    <input type="radio" name="action" id="grabado" value="grabado" checked /><label for="grabado">Grabado</label><br />
-					    <input type="radio" name="action" id="pistera" value="pistera"/><label for="pistera">Pistera</label><br />
-					</form>	   				    								
-				</div>
-						
-				<div class="column2">			    
-					<form id="aleacion" action="" method="post">
+				<div id="aleacion" class="column">			    
 					    <br>Aleaci&#243;n<br/> 
-						<input type="radio" name="action" id="aluminio" value="aluminio" checked /><label for="aluminio">Aluminio</label><br />
-						<input type="radio" name="action" id="fibra" value="fibra"/><label for="fibra">Fibra de Carbon</label><br />
-					</form>	   				    								
-				</div>		
-									
-				<div class="column1">					     
-				    <form id="rines" action="" method="post">
-				    	<br>Rines<br/>
-					    <input type="radio" name="action" id="radial" value="radial" checked /><label for="radial">Radiales</label><br />
-					    <input type="radio" name="action" id="doblePared" value="doblePared"/><label for="doblePared">Dobre Pared</label><br />
-					    <input type="radio" name="action" id="selloMatic" value="selloMatic"/><label for="selloMatic">Sellomatic</label><br />
-					</form>	   				    								
-				</div>				
+						<input type="radio" name="aleacion" id="aluminio" value="aluminio" checked /><label for="aluminio">Aluminio</label><br />
+						<input type="radio" name="aleacion" id="fibra" value="fibra"/><label for="fibra">Fibra de Carbon</label><br /> 				    								
+				</div>	
+					
+				<div id="rines" class="column">					     
+				    <br>Rines<br/>
+					<input type="radio" name="rines" id="radial" value="radial" checked /><label for="radial">Radiales</label><br />
+					<input type="radio" name="rines" id="doblePared" value="doblePared"/><label for="doblePared">Dobre Pared</label><br />
+					<input type="radio" name="rines" id="selloMatic" value="selloMatic"/><label for="selloMatic">Sellomatic</label><br /> 				    								
+				</div>
 				
-				<div class="column2">				     
-				    <form id="Bielas" action="" method="post">
-				    	<br>Bielas<br/>
-					    <input type="radio" name="action" id="2disco" value="2disco"/><label for="2disco">2 Discos</label><br />
-					    <input type="radio" name="action" id="3disco" value="3disco" checked/><label for="3disco">3 Discos</label><br />
-					</form>	   				    								
+				<div id="bielas" class="column">				     
+				    <br>Bielas<br/>
+				    <input type="radio" name="bielas" id="1disco" value="1disco" checked/><label for="1disco">1 Disco</label><br />
+					<input type="radio" name="bielas" id="2disco" value="2disco"/><label for="2disco">2 Discos</label><br />
+					<input type="radio" name="bielas" id="3disco" value="3disco"/><label for="3disco">3 Discos</label><br />   				    								
 				</div>	
 				
-				<div class="form-group">
-				    <legend>Accesorios</legend>				
-					<form action="" method="post">
-					  <input type="checkbox" name="tip1" value="1" /> Luz Delantera
-					  <input type="checkbox" name="tip2" value="2" /> Luz de Stop 
-					  <input type="checkbox" name="tip2" value="2" /> Juego de Guardabarros					
-					</form>			
-				</div>	
+				<div id="tipoMarco" class="column">
+					<br>Marco<br/> 
+					<input type="radio" name="tipoMarco" id="rigido" value="rigido" checked /><label for="rigido">Tijera Rigida</label><br />					
+					<input type="radio" name="tipoMarco" id="susp" value="susp"  /><label for="susp">Suspensi&#243;n</label><br />					
+				</div>
 				
-				<div class="form-group">
-		           <div class="col-sm-offset-2 col-sm-10">
-		              <input type="submit" value="Crear y Enviar" class="btn btn-default">
+				<div id="tenedor" class="column">	     
+				    <br>Tenedor<br/>
+					<input type="radio" name="tenedor" id="tenedorRigido" value="tenedorRigido" checked /><label for="tenedorRigido">Rigido</label><br />
+					<input type="radio" name="tenedor" id="tenedorSuspension" value="tenedorSuspension"/><label for="tenedorSuspension">Suspensi&#243;n</label><br />
+				</div> 	
+				
+				<div id="tipoLlanta" class="column">		     
+					 <br>Tipo Llanta<br/>
+					 <input type="radio" name="tipoLlanta" id="grabado" value="grabado" checked /><label for="grabado">Grabado</label><br />
+					 <input type="radio" name="tipoLlanta" id="pistera" value="pistera"/><label for="pistera">Pistera</label><br />  				    								
+				</div>	
+        
+				   <div class="form-group"></div>
+						
+				   <div id="accesorios" class="form-group">	
+				   		<label class="control-label col-sm-2" for="pwd">Accesorios</label>
+			   	   		<div class="col-sm-offset-2 col-sm-10">	           									
+							<input type="checkbox" name="accesorio1" value="luzDelantera" /> Luz Delantera
+						</div>					
+						<div class="col-sm-offset-2 col-sm-10">		
+							<input type="checkbox" name="accesorio2" value="luzStop" /> Luz de Stop
+						</div>					
+						<div class="col-sm-offset-2 col-sm-10">	
+							<input type="checkbox" name="accesorio3" value="guardaBarros" /> Juego de Guardabarros	
+						</div>	
+				   </div>								
+					
+		           <div class="form-group">
+		               <label class="control-label col-sm-2" for="pwd">Nombre Personalizado</label>
+		               <div class="col-sm-10">
+		                   <input id="nombrePersonalizado" 
+		                   name="nombrePersonalizado" 
+		                   class="form-control" 
+		                   placeholder="Nombre Personalizado para su Bicicleta" required>
+		               </div>
 		           </div>
-		        </div> 	           
-            </body>   
+		               
+	               <div class="form-group">
+				        <div class="col-sm-offset-2 col-sm-10">
+				            <input type="submit" value="Crear y Enviar" class="btn btn-default">
+				        </div>
+				    </div> 											
+										
+		    </form>
+
+	
     </div>        
 }
