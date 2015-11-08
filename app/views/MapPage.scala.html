@@ -227,9 +227,10 @@
 		    	zoom: 12
 		  	});
 		  	var infoWindow = new google.maps.InfoWindow({map: map});
+		  	alquileres();
 		  	// GPS
 			if (navigator.geolocation) {
-			    navigator.geolocation.getCurrentPosition(function(position) {
+				navigator.geolocation.getCurrentPosition(function(position) {
 				    var pos =
 				    {
 			        	lat: position.coords.latitude,
@@ -408,7 +409,7 @@
     	});
 	    
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWH8xrMZewAIVlQwc5bCkUxX-Y6bQ9uV0&signed_in=true&callback=initMap" async defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWH8xrMZewAIVlQwc5bCkUxX-Y6bQ9uV0&signed_in=true&callback=initMap" async defer></script>
 
 
 }
