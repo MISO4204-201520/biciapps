@@ -96,6 +96,7 @@
     outline: none;
     border-color: #0089cb;
     }
+
     </style>
     <div class="jumbotron">
         <div class="container">
@@ -201,8 +202,11 @@
 	    	Guardar ruta
             @if(usuario.getProveedor() != null && usuario.getProveedor().equalsIgnoreCase("twitter")) {
                 <button id = "tweetButton" class="twitter-share-button" data-via="biciapps" onclick="abrirModal();" data-toggle="modal" data-target="#myModalTweet">Tweet</button>
-            } else {
-				<button id = "fbButton" class="twitter-share-button" data-via="biciapps" onclick="abrirModal();" data-toggle="modal" data-target="#myModalTweet">Facebook</button>
+            }
+			@if(usuario.getProveedor() != null && usuario.getProveedor().equalsIgnoreCase("facebook")){
+				<button id = "fbButton" style="border: 0; background: transparent" data-via="biciapps" onclick="abrirModal();" data-toggle="modal" data-target="#myModalTweet">
+					<img style="cursor : pointer" src="@routes.Assets.versioned("images/compartirfacebook.png")" alt="Facebook" title="Facebook" width="90" height="30">
+				</button>
             }
 	    </div>
     </div>
