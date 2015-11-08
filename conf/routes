@@ -82,6 +82,7 @@ GET     /assets/*file                       controllers.Assets.versioned(path="/
 
 POST    /ruta/crearRecorrido                controllers.RutaController.crearRecorrido()
 POST    /ruta/crearRuta		                controllers.RutaController.crearRuta()
+POST	/viaje								controllers.RutaController.crearViaje()
 POST    /ruta/tweet                         controllers.RutaController.tweet()
 
 #------------------------------------------
@@ -93,7 +94,8 @@ GET    /reports                             controllers.Reports.reportsPage()
 #My
 #------------------------------------------
 GET    /misRecorridos		                   controllers.RutaController.verRecorridos()
-GET    /misRutas			                   controllers.RutaController.verRutas()
+GET    /misRutas			                controllers.RutaController.verRutas()
+GET    /viaje			                    controllers.RutaController.verViajes()
 GET    /verRuta/:id		               		controllers.RutaController.verDetalleRuta(id: String)
 #------------------------------------------
 # Autenticacion Redes Sociales

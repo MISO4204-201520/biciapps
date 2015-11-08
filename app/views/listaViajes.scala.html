@@ -1,0 +1,66 @@
+@import models.entities.Viaje
+@(viajes : List[Viaje])
+
+@import navbar._
+
+@basicEmptyBootstrap{
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BiciApps</title>
+
+} {
+
+	@clientLoggedInNavbar()
+
+	<style>
+		td {
+			font-size: 10px;
+		}
+		th {
+			font-size: 12px;
+		}
+		td, th {
+			text-align: center;
+		}
+		li {
+			display: flex;
+		}
+	</style>
+    <div class="jumbotron">
+        <div class="container">
+            <h2>Mis Viajes</h2>
+        </div>
+    </div>
+    <div id="container">
+	    <table class="table"> 
+	    	<tr>
+		  		<th>Nombre de recorrido</th>
+		  		<th>Duración empleada / estimada</th>
+		  		<th>Distancia</th>
+		  		<th>Fecha</th>
+		  		<th>Asistentes</th>
+		  		<th>-</th>
+		  	</tr>
+			@for(viaje <- viajes) {
+			  	<tr>
+			  		<td>@viaje.recorrido.nombre</td>
+			  		<td>@viaje.recorrido.tiempo / @viaje.recorrido.tiempo</td>
+			  		<td>@viaje.recorrido.distancia</td>
+			  		<td>@viaje.fecha</td>
+			  		<td>
+			  			<ul>
+			  			@for(usuario <- viaje.recorrido.usuarios) {
+			  				<li>
+			  					@usuario.getNombres()
+			  				</li>
+			  			}
+			  			</ul>
+			  		</td>
+			  		<td><a href='@routes.RutaController.verDetalleRuta(viaje.recorrido.id.toString())'>Ver Ruta<a></td>
+			  	</tr>
+			} 
+		</table>
+	</div>
+
+}

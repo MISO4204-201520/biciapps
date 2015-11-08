@@ -14,6 +14,8 @@ import models.entities.Ruta;
 import models.business.RutaBusiness;
 import models.entities.Recorrido;
 import models.business.RecorridoBusiness;
+import models.entities.Viaje;
+import models.business.ViajeBusiness;
 import org.bson.types.ObjectId;
 
 import java.util.ArrayList;
@@ -91,6 +93,25 @@ public class RutaController extends Controller {
         }
         return ok("Debes especificar el ID de la ruta");
 
+    }
+    public Result verViajes(){
+        String emailUsuarioLogueado = session(MySecureAuth.SESSION_ID);
+        User usuarioLogueado = UserBusiness.findByEmail(emailUsuarioLogueado);
+
+        Iterable<Viaje> viajesIterable = ViajeBusiness.findByUser(usuarioLogueado);
+        List<Viaje> viajes = Lists.newArrayList(viajesIterable);
+        return ok(views.html.listaViajes.render(viajes));
+    }
+    public Result crearViaje() {
+        DynamicForm f = Form.form().bindFromRequest();
+        Viaje viaje = new Viaje();
+        ObjectId idObj = new ObjectId(f.get("recorridoid"));
+        viaje.recorrido = RecorridoBusiness.findById(idObj);
+        viaje.fecha = f.get("fecha");
+        viaje.tiempo =  viaje.recorrido.tiempo;
+        viaje.distancia = viaje.recorrido.distancia;
+        ViajeBusiness.insert(viaje);
+        return ok("Ok");
     }
 
     public Result crearRecorrido() {
