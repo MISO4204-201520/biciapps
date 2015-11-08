@@ -149,12 +149,15 @@ public class RutaController extends Controller {
         recorrido.creador = usuarioLogueado;
 
         String amigosIds = f.get("amigos");
-        String[] amigosIdList = amigosIds.split(",");
-        for (int i = 0; i < amigosIdList.length; i++) {
-            ObjectId idObj = new ObjectId(amigosIdList[i]);
-            User amigoEncontrado = UserBusiness.findById(idObj);
-            usuarios.add(amigoEncontrado);
+        if (amigosIds != ""){
+            String[] amigosIdList = amigosIds.split(",");
+            for (int i = 0; i < amigosIdList.length; i++) {
+                ObjectId idObj = new ObjectId(amigosIdList[i]);
+                User amigoEncontrado = UserBusiness.findById(idObj);
+                usuarios.add(amigoEncontrado);
+            }
         }
+        
 
         recorrido.usuarios = usuarios;
 
