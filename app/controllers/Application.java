@@ -4,6 +4,7 @@ import models.business.UserBusiness;
 import models.entities.User;
 import play.*;
 import play.mvc.*;
+import procesador.Procesador;
 import views.html.*;
 import models.entities.Amigo;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Application extends Controller {
 
     @Security.Authenticated(MySecureAuth.class)
     public Result userPage() {
-
+    		Procesador.cargarConfiguracion();
             String email = session(MySecureAuth.SESSION_ID);
             User usuario = UserBusiness.findByEmail(email);
             return ok(views.html.userPage.render(usuario));
