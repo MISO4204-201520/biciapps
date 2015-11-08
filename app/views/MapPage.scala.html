@@ -15,6 +15,17 @@
 	@clientLoggedInNavbar()
 
     <style>
+	.labels {
+	color: red;
+	background-color: white;
+	font-family: "Lucida Grande", "Arial", sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+	width: 40px;
+	border: 2px solid black;
+	white-space: nowrap;
+	}
     .ger-img-container img {
 	    min-width : 30 % ;
 	    width : 800 px ;
@@ -96,6 +107,8 @@
     outline: none;
     border-color: #0089cb;
     }
+
+
 
     </style>
     <div class="jumbotron">
@@ -375,6 +388,7 @@
 			nombres[5]="Tomacorriente";
 			puntos[5]={lat: 4.666381, lng: -74.054139};
 
+			var img="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAADT0lEQVRIS82USUwTYRTH/286ZapSJCYuQQJDgwjBpTEeXGLEqHE5aEmIFw8WD0ZFoS4Hl0SLJuhBbaOhXoxAjNGDJjUuBw/SENeDAY0rCI5ED3jQSmtt63Se+YCqZZPUmPgdZ977/773f+97hH986B/r4/8F8BI4YTHXIPrdDkVmzMrdTV7NO9iRtCrgJWgEsClFzGrR6VbU/NcA1dfryOvVim/eWpSfyeGtfYLLS4FP4RCdfpeVNkD1cDYyQh4icgoRA3ijPSluwuzcHbBNjoLgpDU3AmkB1PqwHeAGItiFAAN908FMlVpVprBrxPPHHqj1YSdgiJtnJ1WYASIB4CDi1gJtFwVHIowKUM+GyojRnJrMX5jIAYNUIm5gwA+QH7EJ14YDjQ7whV0E9vy6OT9C3Lo6KaTWh9xE7AJo4oB1AZBcqW0bpyVzRgd4OJuV8DMJmC58h7BEonJtmzWlmQM9cgCwI57p/L2SP/ZA6Io+EAw3iPL7b8rl2vYs/1jWTArA4dqnjjdlnDcYcyWCBKA1kohv9nuPa/1jGm4kwnpm1GpVVreINyXIY5JNCwQsoSceJky8S8QPsUgEW8jcbi8pMufmTOv739X9Hs87OuMx1mf2QXyhAAFLRQX29ro2kyG1EnPtqrKF+cxEt1seBMHs0k1sT0J+VrBx7+Hm2UWFZcWFtpTKn75qx+suLXDxRO2ynwDCsvkvj7nAHLhy5pj3WvO9w4YBKl++2F1RfcAtenHldJ3oya9tuqHmYLRi7Uolw2xGT89HRGNR5OflIRyJ4Madls+XTx2dVODrDYqJYZIL5r840qabFNXvdQdPnLtwKRL5ZjlUvaW83zYpcPVMnToi4F13NyyKBVOnThkECDHAX95uz8qu2Lk/KADOdSuqO7u0SouiGDk5ORearl9vHBYgLJppU8vmFBeNYlGvA0RBMaYV1Qf8JYW2RfNKS3zCGpHkv3P30ONnr3a8fNN1f4hFojSF5I7SGYWyLW/6QJM/4Hl7x/cYEkW/T4b4KeJlQ3oK4KQuGU3im2xIYoXv0SVjzpAmJ5MmyEpDwjDmEkiSJGr9qscqB4snSxyAeJn7lyAR2nTJcA07pmN5NOnEjOklpyM8pl30N8LJ3B9XDX0opbhKCQAAAABJRU5ErkJggg==";
 
 			for (i=0; i<=puntos.length;i++)
 			{
@@ -383,12 +397,14 @@
 				{
 					position: puntos[i],
 					map: map,
-					title: nombres[i]
+					title: nombres[i],
+					icon:img
   				});
 
 			}
-
 		}
+
+
 
 		// Handles click events on a map, and adds a new point to the Polyline.
 		function mapClicked(event) {
