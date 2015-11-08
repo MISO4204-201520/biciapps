@@ -297,9 +297,9 @@
 		    	zoom: 12
 		  	});
 		  	var infoWindow = new google.maps.InfoWindow({map: map});
-		  	alquileres();
 		  	// GPS
 			if (navigator.geolocation) {
+				console.log('entro al gps');
 				navigator.geolocation.getCurrentPosition(function(position) {
 				    var pos =
 				    {
@@ -318,6 +318,10 @@
                 // Browser doesn't support Geolocation
                 handleLocationError(false, infoWindow, map.getCenter());
 		    }
+
+		    alquiler();
+		    lugares();
+
 
 		  directionsService = new google.maps.DirectionsService;
   			directionsDisplay = new google.maps.DirectionsRenderer;
@@ -339,6 +343,51 @@
 		  	infoWindow.setContent(browserHasGeolocation ?
 		                        'Error: The Geolocation service failed.' :
 		                        'Error: Your browser doesn\'t support geolocation.');
+		}
+
+		//Sitios de Alquiler
+		function alquiler()
+		{
+			var nombre= 'Rueda Libre Bogota';
+			var punto={lat: 4.721107, lng: -74.040297};
+			var mark = new google.maps.Marker(
+				{
+					position: punto,
+					map: map,
+					title: nombre
+  				});
+		}
+
+		function lugares()
+		{
+			var puntos = [];
+			var nombres=[];
+			nombres[0]='Bicicleteria';
+			puntos[0]={lat: 4.670435, lng: -74.099939};
+			nombres[1]="Cornerlia Bicis";
+			puntos[1]={lat: 4.639926, lng: -74.062577};
+			nombres[2]='Bicicletas LG';
+			puntos[2]={lat: 4.605204, lng: -74.081946};
+			nombres[3]="Bicicletas Erox Bike";
+			puntos[3]={lat: 4.609533 , lng: -74.086347};
+			nombres[4]='Bicicletas Bernalli';
+			puntos[4]={lat: 4.618858, lng:  -74.082442};
+			nombres[5]="Tomacorriente";
+			puntos[5]={lat: 4.666381, lng: -74.054139};
+
+
+			for (i=0; i<=puntos.length;i++)
+			{
+				console.log(puntos[i]);
+				var mark = new google.maps.Marker(
+				{
+					position: puntos[i],
+					map: map,
+					title: nombres[i]
+  				});
+
+			}
+
 		}
 
 		// Handles click events on a map, and adds a new point to the Polyline.
