@@ -17,6 +17,7 @@ import models.entities.Viaje;
 import org.jongo.MongoCollection;
 
 import models.entities.User;
+import models.form.reports.ReporteHistorialViajeV;
 import models.form.reports.ReporteMetricasV;
 
 /**
@@ -93,4 +94,30 @@ public class ViajeBusiness {
         return reporte;
     }
 
+    public static ReporteHistorialViajeV getReporteViajes(String userEmail){
+    	Iterable<Viaje> iter = viajes().find("{recorrido.usuarios.email: #}", userEmail)
+    			.as(Viaje.class);
+    	ReporteHistorialViajeV reporte = new ReporteHistorialViajeV();
+    	
+    	int numeroDeViajes = 0;
+    	int numeroDeViajesGrupales = 0;
+    	int numeroDeViajesIndividuales = 0;
+    	
+    	for(Viaje v: iter){
+    		numeroDeViajes++;
+    		if(v.recorrido.usuarios.size() == 1){
+    			numeroDeViajesIndividuales++;
+    		}
+    		else{
+    			numeroDeViajesGrupales++;
+    		}
+    	}
+    	reporte.setNumeroDeViajes(numeroDeViajes);
+    	reporte.setNumeroDeViajesGrupales(numeroDeViajesGrupales);
+    	reporte.setNumeroDeViajesIndividuales(numeroDeViajesIndividuales);
+    	
+    	return reporte;
+    }
+
+    
 }

@@ -22,10 +22,12 @@ public class Reports extends Controller{
 		ReporteRutaV reporteRuta = new ReporteRutaV();
 		reporteRuta.setNumeroDeRutasGuardadas(20);
 		
-		ReporteHistorialViajeV reporteHistorial = new ReporteHistorialViajeV();
-		reporteHistorial.setNumeroDeViajes(10);
-		reporteHistorial.setNumeroDeViajesGrupales(8);
-		reporteHistorial.setNumeroDeViajesIndividuales(2);
+		
+		ReporteHistorialViajeV reporteHistorial = ViajeBusiness.getReporteViajes(email);
+//		ReporteHistorialViajeV reporteHistorial = new ReporteHistorialViajeV();
+//		reporteHistorial.setNumeroDeViajes(10);
+//		reporteHistorial.setNumeroDeViajesGrupales(8);
+//		reporteHistorial.setNumeroDeViajesIndividuales(2);
 		
         //return ok(views.html.ReportsPage.render(null, reporteRuta, reporteHistorial));
         return ok(views.html.ReportsPage.render(reporteMetricas,reporteRuta ,reporteHistorial));
