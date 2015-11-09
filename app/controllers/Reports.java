@@ -1,5 +1,6 @@
 package controllers;
 
+import models.business.RutaBusiness;
 import models.business.ViajeBusiness;
 import models.form.reports.ReporteHistorialViajeV;
 import models.form.reports.ReporteMetricasV;
@@ -19,9 +20,10 @@ public class Reports extends Controller{
 		String email = Account.getLoggedInEmail();
 		ReporteMetricasV reporteMetricas = ViajeBusiness.getReporteMetricas(email);
 		
-		ReporteRutaV reporteRuta = new ReporteRutaV();
-		reporteRuta.setNumeroDeRutasGuardadas(20);
+//		ReporteRutaV reporteRuta = new ReporteRutaV();
+//		reporteRuta.setNumeroDeRutasGuardadas(20);
 		
+		ReporteRutaV reporteRuta = RutaBusiness.getReporteRuta(email);
 		
 		ReporteHistorialViajeV reporteHistorial = ViajeBusiness.getReporteViajes(email);
 //		ReporteHistorialViajeV reporteHistorial = new ReporteHistorialViajeV();
