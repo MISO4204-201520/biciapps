@@ -111,11 +111,31 @@ public class ConfBicicleta {
 	}
 	@Override
 	public String toString() {
-		return "ConfBicicleta [tienda=" + tienda.getNombre() + ", nombrePersonalizado="
-				+ nombrePersonalizado + ", tipoBicicleta=" + tipoBicicleta + ", aleacion=" + aleacion + ", rines="
-				+ rines + ", bielas=" + bielas + ", tipoMarco=" + tipoMarco + ", tenedor=" + tenedor + ", tipoLlanta="
-				+ tipoLlanta + ", accesorio1=" + accesorio1 + ", accesorio2=" + accesorio2 + ", accesorio3="
-				+ accesorio3 + "]";
+		return "ConfBicicleta [" 
+				+ (tienda.getNombre() != null && !tienda.getNombre().isEmpty() ? 
+						"tienda=" + tienda.getNombre():"")
+				+ (nombrePersonalizado != null && !nombrePersonalizado.isEmpty() ?
+						", nombrePersonalizado=" + nombrePersonalizado:"")
+				+ (tipoBicicleta != null && !tipoBicicleta.isEmpty() ?
+						", tipoBicicleta=" + tipoBicicleta:"")
+				+ (aleacion != null && !aleacion.isEmpty() ?
+						", aleacion=" + aleacion:"")
+				+ (rines != null && !rines.isEmpty() ?
+						", rines=" + rines:"")
+				+ (bielas != null && !bielas.isEmpty() ?
+						", bielas=" + bielas:"")
+				+ (tipoMarco != null && !tipoMarco.isEmpty() ?
+						", tipoMarco=" + tipoMarco:"")
+				+ (tenedor != null && !tenedor.isEmpty() ?
+						", tenedor=" + tenedor:"")
+				+ (tipoLlanta != null && !tipoLlanta.isEmpty() ?
+						", tipoLlanta=" + tipoLlanta:"")		
+				+ (accesorio1 != null && !accesorio1.isEmpty() ?
+						", accesorio1=" + accesorio1:"")			
+				+ (accesorio2 != null && !accesorio2.isEmpty() ?
+						", accesorio2=" + accesorio2:"")				
+				+ (accesorio3 != null && !accesorio3.isEmpty() ?
+						", accesorio3=" + accesorio3:"")
+				+ "]";
 	}
-	
 }

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import constantes.ConstantesConfBicicleta;
 import models.business.ConfBicicletasBusiness;
 import models.entities.ConfBicicleta;
 import models.entities.Tienda;
@@ -12,31 +13,17 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utils.Mail;
 
 /**
  * Created by Jhon Gutierrez
- * Modulo Configuracin de Bicicletas
+ * Modulo Configuracion de Bicicletas
  */
 public class ConfBicicletasController extends Controller {
-	public Tienda tiendaSeleccionada;
-	public List<Tienda> listaTiendas;
-	
+	public List<Tienda> listaTiendas;	
 	
 	public Result inicializar(){
-		listaTiendas  = new ArrayList<Tienda>();
-		
-		//TODO
-		Tienda tienda1 = new Tienda();
-		tienda1.setNombre("Cannondale");
-		
-		Tienda tienda2 = new Tienda();
-		tienda2.setNombre("Bike House Bogota");
-		
-		listaTiendas.add(tienda1);
-		listaTiendas.add(tienda2);
-		
-		tiendaSeleccionada = tienda2;
-		
+		listaTiendas  = new ArrayList<Tienda>();		
 		return ok(views.html.confBicicletasPage.render(""));
 	}
 	
@@ -44,47 +31,17 @@ public class ConfBicicletasController extends Controller {
 
         DynamicForm df = Form.form().bindFromRequest();
         String resultado ="";
-    
-        if (validarConfBicicleta()){
-        	
-          	 Map<String, Object> map = leerAtributos(df);
-        	
-        	 ConfBicicleta confBicicleta = new ConfBicicleta();
-             confBicicleta.setTienda(tiendaSeleccionada);   
-             confBicicleta.setNombrePersonalizado(map.get("nombrePersonalizado").toString());
-             confBicicleta.setTipoBicicleta(map.get("tipoBicicleta").toString());
-             confBicicleta.setAleacion(map.get("aleacion").toString());
-    
-             confBicicleta.setRines(map.get("rines").toString());
-             confBicicleta.setBielas(map.get("bielas").toString());
-             confBicicleta.setTipoMarco(map.get("tipoMarco").toString());
-             confBicicleta.setTenedor(map.get("tenedor").toString());
-             
-             confBicicleta.setTipoLlanta(map.get("tipoLlanta").toString());
-             confBicicleta.setAccesorio1(map.get("luzDelantera").toString());
-             confBicicleta.setAccesorio2(map.get("luzStop").toString());
-             confBicicleta.setAccesorio3(map.get("guardaBarros").toString());
-             
-             if(ConfBicicletasBusiness.buscarPorNombrePersonalizado(
-             		confBicicleta.getNombrePersonalizado()) == null){
-             	ConfBicicletasBusiness.insert(confBicicleta);
-             	resultado = "Registro insertado" + confBicicleta.toString();
-             }else{
-             	resultado = "Existe un registro con el mismo nombre" + confBicicleta.toString();
-             }
-        }else{
-        	resultado = "Error validando datos obligatorios";
-        }  
+    	
+        ConfBicicleta confBicicleta = leerConfiguracion(df);
+        
+        String[] to = {"biciapps@gmail.com"};
+        String subject = confBicicleta.getNombrePersonalizado();
+        String body = confBicicleta.toString();
+
+        Mail.sendMailAdmin(to, subject, body);     
+        resultado = "Configuración enviada correctamente " + confBicicleta.toString();
+        
         return ok(resultado);
-    } 
-    
-    /**
-     * 
-     * @return
-     */
-    private boolean validarConfBicicleta(){
-    	//TODO
-    	return true;
     } 
     
     /**
@@ -92,21 +49,47 @@ public class ConfBicicletasController extends Controller {
      * @param df
      * @return
      */
-    private Map<String, Object> leerAtributos(DynamicForm df){ 	
-    	Map<String, Object> map = new HashMap<String, Object>();
+    private ConfBicicleta leerConfiguracion(DynamicForm df){ 	
+        ConfBicicleta conf = new ConfBicicleta();
+
+        Tienda tiendaSeleccionada = new Tienda();
+        tiendaSeleccionada.setNombre(df.get("tienda").toString());
+        
+        conf.setTienda(tiendaSeleccionada);   
+        conf.setNombrePersonalizado(df.get("nombrePersonalizado").toString());      
+        conf.setTipoBicicleta(df.get("tipoBicicleta").toString());     
+        conf.setAleacion(df.get("aleacion").toString());     
+        conf.setRines(df.get("rines").toString());
+        
+        if (conf.getTipoBicicleta().equals(ConstantesConfBicicleta.MONTANA)){
+            conf.setTipoMarco(df.get("tipoMarco").toString());
+            conf.setTenedor(df.get("tenedor").toString());
+            conf.setTipoLlanta(df.get("tipoLlanta").toString());
+            conf.setBielas(df.get("bielas").toString());
+        }
+        else if (conf.getTipoBicicleta().equals(ConstantesConfBicicleta.RUTA)){
+            conf.setTipoMarco(ConstantesConfBicicleta.RIGIDO);
+            conf.setTenedor(ConstantesConfBicicleta.TENEDOR_RIGIDO);
+            conf.setTipoLlanta(ConstantesConfBicicleta.PISTERA);
+            
+            if (df.get("bielas").equals(ConstantesConfBicicleta.DISCO3)){
+            	conf.setBielas(ConstantesConfBicicleta.DISCO1);
+            }
+            else{
+            	conf.setBielas(df.get("bielas").toString());
+            }    
+        }
+        else if (conf.getTipoBicicleta().equals(ConstantesConfBicicleta.CROSS)){
+            conf.setTipoMarco(ConstantesConfBicicleta.RIGIDO);
+            conf.setTenedor(df.get("tenedor").toString());
+            conf.setTipoLlanta(df.get("tipoLlanta").toString());
+            conf.setBielas(ConstantesConfBicicleta.DISCO1);
+        }
+
+        conf.setAccesorio1(df.get("accesorio1"));
+        conf.setAccesorio2(df.get("accesorio2"));
+        conf.setAccesorio3(df.get("accesorio3"));
     	
-    	map.put("nombrePersonalizado",df.get("nombrePersonalizado"));
-    	map.put("tipoBicicleta",df.get("tipoBicicleta"));
-    	map.put("aleacion",df.get("aleacion"));
-    	map.put("rines",df.get("rines"));
-    	map.put("bielas",df.get("bielas"));
-    	map.put("tipoMarco",df.get("tipoMarco"));
-    	map.put("tenedor",df.get("tenedor"));
-    	map.put("tipoLlanta",df.get("tipoLlanta"));
-    	map.put("luzDelantera",df.get("accesorio1"));
-    	map.put("luzStop",df.get("accesorio2"));
-    	map.put("guardaBarros",df.get("accesorio3"));
-    	
-    	return map;  	
+    	return conf;  	
     }
 }
