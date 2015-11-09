@@ -1,5 +1,6 @@
 package controllers;
 
+import models.business.ViajeBusiness;
 import models.form.reports.ReporteHistorialViajeV;
 import models.form.reports.ReporteMetricasV;
 import models.form.reports.ReporteRutaV;
@@ -12,9 +13,11 @@ public class Reports extends Controller{
 	@Security.Authenticated(MySecureAuth.class)
 	public Result reportsPage() {
 		
-		ReporteMetricasV reporteMetricas = new ReporteMetricasV();
-		reporteMetricas.setDistanciaTotal(120);
-		reporteMetricas.setTiempoTotal(300);
+//		ReporteMetricasV reporteMetricas = new ReporteMetricasV();
+//		reporteMetricas.setDistanciaTotal(120);
+//		reporteMetricas.setTiempoTotal(300);
+		String email = Account.getLoggedInEmail();
+		ReporteMetricasV reporteMetricas = ViajeBusiness.getReporteMetricas(email);
 		
 		ReporteRutaV reporteRuta = new ReporteRutaV();
 		reporteRuta.setNumeroDeRutasGuardadas(20);

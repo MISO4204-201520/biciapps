@@ -160,6 +160,10 @@ public class Account extends Controller {
         return (email != null) ? true : false;
     }
 
+    public static String getLoggedInEmail(){
+    	return session(MySecureAuth.SESSION_ID);
+    }
+    
     @Security.Authenticated(MySecureAuth.class)
     public Result editarPerfilPage() {
         String email = session(MySecureAuth.SESSION_ID);

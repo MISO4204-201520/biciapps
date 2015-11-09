@@ -2,26 +2,26 @@ package models.form.reports;
 
 public class ReporteMetricasV {
 	
-	private long distanciaTotal;
-	private long tiempoTotal;
+	private double distanciaTotal;
+	private double tiempoTotal;
 	
 	public ReporteMetricasV(){
 		
 	}
 
-	public long getDistanciaTotal() {
+	public double getDistanciaTotal() {
 		return distanciaTotal;
 	}
 
-	public void setDistanciaTotal(long distanciaTotal) {
+	public void setDistanciaTotal(double distanciaTotal) {
 		this.distanciaTotal = distanciaTotal;
 	}
 
-	public long getTiempoTotal() {
+	public double getTiempoTotal() {
 		return tiempoTotal;
 	}
 
-	public void setTiempoTotal(long tiempoTotal) {
+	public void setTiempoTotal(double tiempoTotal) {
 		this.tiempoTotal = tiempoTotal;
 	}
 	
