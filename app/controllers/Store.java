@@ -112,6 +112,14 @@ public class Store extends Controller {
 //POST    
 //    @BodyParser.Of(BodyParser.Json.class)
     public Result darPromociones() {
+    	
+    	
+    	String conf = Play.application().configuration().getString("promociones.enabled");
+    	boolean enabled = (conf != null)? conf.equals("TRUE"): false;
+    	if(!enabled){
+    		return notFound("Module not enabled");
+    	}
+    	
     	Map<String, String[]> queryString = request().queryString();
     	String jString = queryString.keySet().iterator().next();
     	

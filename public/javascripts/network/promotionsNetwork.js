@@ -4,7 +4,11 @@
 
 define ({
 
-	queryPromotions: function (data, successCall){
+	queryPromotions: function (data, successCall, notEnabledCall){
+            notEnabledCall = (typeof notEnabledCall !== 'undefined')? notEnabledCall: function(data){
+                console.log("Module not enalbed");
+                }; 
+
 	    var url = "/contexto/promocion";
 	    $.ajax({
 		  type: "GET",
@@ -18,8 +22,9 @@ define ({
 			},
 		  statusCode: {
 			400: function(data){
-					console.log("Bad request " + data);
-				} 
+				    console.log("Bad request " + data);
+				},
+                        404: notEnabledCall 
 
 		    },
 		});

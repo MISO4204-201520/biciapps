@@ -13,7 +13,7 @@
     @clientLoggedInNavbar()
 
     <div class="container">
-        <div class="row">
+        <div id="promotionsRow" class="row">
             <h1>Promociones</h1>
             <p id="idUsuario"></p>
             @**routes.Store.getPromotion()*@
@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="maxDistancia">Distancia maxima: </label>
                     <div class="col-md-4">
-                        <input id="maxDistancia" type="text" name="lat" class="form-control">
+                        <input id="maxDistancia" type="text" name="lat" value="100" class="form-control">
                     </div>
                 </div>
             </form>
