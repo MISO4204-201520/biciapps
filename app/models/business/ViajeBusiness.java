@@ -16,6 +16,7 @@ import models.entities.Viaje;
 
 import org.jongo.MongoCollection;
 
+import play.Play;
 import models.entities.User;
 import models.form.reports.ReporteHistorialViajeV;
 import models.form.reports.ReporteMetricasV;
@@ -48,6 +49,15 @@ public class ViajeBusiness {
     
     //Reportes
     public static ReporteMetricasV getReporteMetricas(String userEmail){
+    	
+    	boolean enabled = Play.application().configuration()
+				.getString("reportes.metricas") != null &&
+			 Play.application().configuration()
+			.getString("reportes.metricas").equals("TRUE");
+    	if(!enabled){
+    		return null;
+    	}
+    	
     	Iterable<Viaje> iter = viajes().find("{recorrido.usuarios.email: #}", userEmail)
     			.as(Viaje.class);
     	ReporteMetricasV reporte = new ReporteMetricasV();
@@ -95,6 +105,15 @@ public class ViajeBusiness {
     }
 
     public static ReporteHistorialViajeV getReporteViajes(String userEmail){
+    	
+    	boolean enabled = Play.application().configuration()
+    				.getString("reportes.historialviaje") != null &&
+				 Play.application().configuration()
+				.getString("reportes.historialviaje").equals("TRUE");
+    	if(!enabled){
+    		return null;
+    	}
+    	
     	Iterable<Viaje> iter = viajes().find("{recorrido.usuarios.email: #}", userEmail)
     			.as(Viaje.class);
     	ReporteHistorialViajeV reporte = new ReporteHistorialViajeV();
