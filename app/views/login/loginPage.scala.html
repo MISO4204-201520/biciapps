@@ -45,23 +45,30 @@
                     </div>
                     <br/>
                     <div class="row">
-                    @forProviders() { p =>
-                        @if(p.getKey().equalsIgnoreCase("facebook") &&
-                                Boolean.parseBoolean(Play.application().configuration().getString("redessociales.facebook"))) {
-                            <div class="col-md-6" align="center">
-                                <a href="@p.getUrl()">
-                                    <img style="cursor : pointer" src="@routes.Assets.versioned("images/FB_100.png")" alt="Facebook" title="Facebook" width="42" height="42">
-                                </a>
-
-                            </div>
-                        } else {
-                            @if(p.getKey().equalsIgnoreCase("twitter") &&
-                                    Boolean.parseBoolean(Play.application().configuration().getString("redessociales.twitter"))) {
+                    @if(!Boolean.parseBoolean(Play.application().configuration().getString("redessociales.facebook")) &&
+                            !Boolean.parseBoolean(Play.application().configuration().getString("redessociales.twitter"))) {
+                        <div class="row" align="center">
+                            <h5 style="color: red;">Configuraci&#243;n no v&#225;lida para autenticarse con redes sociales</h5>
+                        </div>
+                    } else {
+                        @forProviders() { p =>
+                            @if(p.getKey().equalsIgnoreCase("facebook") &&
+                                    Boolean.parseBoolean(Play.application().configuration().getString("redessociales.facebook"))) {
                                 <div class="col-md-6" align="center">
                                     <a href="@p.getUrl()">
-                                        <img style="cursor : pointer" src="@routes.Assets.versioned("images/TwitterLogo.png")" alt="Twitter" title="Twitter" width="42" height="42">
+                                        <img style="cursor : pointer" src="@routes.Assets.versioned("images/FB_100.png")" alt="Facebook" title="Facebook" width="42" height="42">
                                     </a>
+
                                 </div>
+                            } else {
+                                @if(p.getKey().equalsIgnoreCase("twitter") &&
+                                        Boolean.parseBoolean(Play.application().configuration().getString("redessociales.twitter"))) {
+                                    <div class="col-md-6" align="center">
+                                        <a href="@p.getUrl()">
+                                            <img style="cursor : pointer" src="@routes.Assets.versioned("images/TwitterLogo.png")" alt="Twitter" title="Twitter" width="42" height="42">
+                                        </a>
+                                    </div>
+                                }
                             }
                         }
                     }

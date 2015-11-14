@@ -1,4 +1,4 @@
-package utils;
+package utils.compartirredessociales;
 
 import play.Configuration;
 import play.Play;
@@ -11,7 +11,7 @@ import twitter4j.Query;
 /**
  * Created by Omar on 07/11/2015.
  */
-public class Twitter {
+public class Twitter implements ICompartirRedSocial {
     public static final String ACCESS_TOKEN = "twitter.access-token";
     public static final String ACCESS_SECRET = "twitter.access-secret";
     public static final String CONSUMER_KEY = "twitter.consumer-key";
@@ -24,9 +24,9 @@ public class Twitter {
     private static String consumerSecret;
     private static long refreshInterval;
 
-    public static Status tweet(String mensaje) {
+    public String publicarMensaje(String mensaje, String usuarioToken) {
 
-        Status resultado = null;
+        String resultado = null;
 
         try {
             Configuration configuration = Play.application().configuration();
@@ -51,7 +51,10 @@ public class Twitter {
             QueryResult res = twitter.search(q);
 
             if(res.getTweets().size() == 0) {
-                resultado = twitter.updateStatus(mensaje);
+                Status resultadoUpdate = twitter.updateStatus(mensaje);
+                if(resultadoUpdate != null) {
+                    resultado = "Tweet publicado";
+                }
             }
 
         } catch (Exception exp) {

@@ -1,4 +1,4 @@
-package utils;
+package utils.compartirredessociales;
 
 import facebook4j.FacebookFactory;
 import facebook4j.conf.ConfigurationBuilder;
@@ -9,7 +9,7 @@ import play.Play;
 /**
  * Created by Omar on 07/11/2015.
  */
-public class Facebook {
+public class Facebook implements ICompartirRedSocial {
     public static final String ACCESS_TOKEN = "facebook.access-token";
     public static final String CONSUMER_KEY = "facebook.consumer-key";
     public static final String CONSUMER_SECRET = "facebook.consumer-secret";
@@ -19,14 +19,14 @@ public class Facebook {
     private static String consumerKey;
     private static String consumerSecret;
 
-    public static String post(String mensaje, String token) {
+    public String publicarMensaje(String mensaje, String usuarioToken) {
 
         String resultado = null;
 
         try {
             Configuration configuration = Play.application().configuration();
-            if(token != null) {
-                accessToken = token;
+            if(usuarioToken != null && !usuarioToken.isEmpty()) {
+                accessToken = usuarioToken;
             }
             else {
                 accessToken = configuration.getString(ACCESS_TOKEN);

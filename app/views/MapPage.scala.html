@@ -1,8 +1,11 @@
 @import models.entities.User
 @import models.entities.Amigo
+@import navbar._
+@import play.Play
+
 @(usuario : User, amigos : List[User])
 
-@import navbar._
+
 
 @basicEmptyBootstrap{
 
@@ -213,13 +216,15 @@
 	    		<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 	    	</button>
 	    	Guardar ruta
-            @if(usuario.getProveedor() != null && usuario.getProveedor().equalsIgnoreCase("twitter")) {
-                <button id = "tweetButton" class="twitter-share-button" data-via="biciapps" onclick="abrirModal();" data-toggle="modal" data-target="#myModalTweet">Tweet</button>
-            }
-			@if(usuario.getProveedor() != null && usuario.getProveedor().equalsIgnoreCase("facebook")){
-				<button id = "fbButton" style="border: 0; background: transparent" data-via="biciapps" onclick="abrirModal();" data-toggle="modal" data-target="#myModalTweet">
-					<img style="cursor : pointer" src="@routes.Assets.versioned("images/compartirfacebook.png")" alt="Facebook" title="Facebook" width="90" height="30">
-				</button>
+            @if(Boolean.parseBoolean(Play.application().configuration().getString("comunicacion.compartirredessociales"))) {
+                @if(usuario.getProveedor() != null && usuario.getProveedor().equalsIgnoreCase("twitter")) {
+                    <button id = "tweetButton" class="twitter-share-button" data-via="biciapps" onclick="abrirModal();" data-toggle="modal" data-target="#myModalTweet">Tweet</button>
+                }
+                @if(usuario.getProveedor() != null && usuario.getProveedor().equalsIgnoreCase("facebook")){
+                    <button id = "fbButton" style="border: 0; background: transparent" data-via="biciapps" onclick="abrirModal();" data-toggle="modal" data-target="#myModalTweet">
+                        <img style="cursor : pointer" src="@routes.Assets.versioned("images/compartirfacebook.png")" alt="Facebook" title="Facebook" width="90" height="30">
+                    </button>
+                }
             }
 	    </div>
     </div>
