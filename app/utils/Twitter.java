@@ -2,9 +2,11 @@ package utils;
 
 import play.Configuration;
 import play.Play;
+import twitter4j.QueryResult;
 import twitter4j.Status;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
+import twitter4j.Query;
 
 /**
  * Created by Omar on 07/11/2015.
@@ -43,7 +45,14 @@ public class Twitter {
                     .setOAuthAccessTokenSecret(accessSecret);
             twitter = new TwitterFactory(cb.build()).getInstance();
 
-            resultado = (Status) twitter.updateStatus(mensaje);
+            Query q = new Query(mensaje); // Search for tweets that contains this term
+            q.setCount(1); // How many tweets, max, to retrieve
+            q.resultType(Query.ResultType.recent); // Get all tweets
+            QueryResult res = twitter.search(q);
+
+            if(res.getTweets().size() == 0) {
+                resultado = twitter.updateStatus(mensaje);
+            }
 
         } catch (Exception exp) {
             exp.printStackTrace();
