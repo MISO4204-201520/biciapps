@@ -2,8 +2,9 @@
 @(usuario: User)
 
 @import navbar._
+@import play.Play
 
-@basicEmptyBootstrap{
+@basicEmptyBootstrap {
 
     <meta name="description" content="">
     <meta name="author" content="">
@@ -14,7 +15,7 @@
     <style>
     .ger-img-container img {
     min-width : 30 % ;
-    width : 800 px ;
+    width : 800px ;
     max-width : 90 % ;
     }
     .ger-img-container {
@@ -22,9 +23,9 @@
     text-align : center ;
     }
     .gerfer-static-label {
-    border: none;
-    padding-top: 7px;
-    color: gray;
+    border : none ;
+    padding-top : 7px ;
+    color : gray ;
     }
     .gerfer-btn-success {
     margin : 10px ;
@@ -42,7 +43,7 @@
     <div class="container" align="center">
         <div class="col-md-2">
             <div >
-                <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQeYaJ6dkE1JwC6JRLBo0Rpu_MC4wCdT8EjT1vz0dAOVQsrJ6fO" style="margin: auto; width: 100px ;">
+                <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQeYaJ6dkE1JwC6JRLBo0Rpu_MC4wCdT8EjT1vz0dAOVQsrJ6fO" style="margin : auto ; width : 100px ;">
             </div>
         </div>
 
@@ -71,30 +72,34 @@
                         <input type="text" class="gerfer-static-label" id="rf" name="rf" disabled value="Ruta Favorita">
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="gerfer-submit-btn col-sm-12" align="center">
-                        <a href="@routes.Account.editarPerfilPage()" class="btn btn-default">Editar Cuenta</a>
+                @if(Boolean.parseBoolean(Play.application().configuration().getString("gestionusuario.manejoperfiles"))) {
+                    <div class="form-group">
+                        <div class="gerfer-submit-btn col-sm-12" align="center">
+                            <a href="@routes.Account.editarPerfilPage()" class="btn btn-default">Editar Cuenta</a>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
         </div>
 
         <div class="col-md-3">
             <div class="form-horizontal">
-                 <a href="@routes.Account.getAmigos()" class="btn btn-success gerfer-btn-success">Mis Amigos</a>
-                 <a href="@routes.Application.mapPage()" class="btn btn-success gerfer-btn-success">Mapa</a>
-                 <a href="@routes.RutaController.verRutas()"  class="btn btn-success gerfer-btn-success">Mis Rutas</a>                 
-                 <a href="@routes.MensajesController.inicializar()" class="btn btn-success gerfer-btn-success">Mis Mensajes</a>
-                 <a href="@routes.RutaController.verRecorridos()" class="btn btn-success gerfer-btn-success">Mis Recorridos</a>
-                 <a href="@routes.RutaController.verViajes()" class="btn btn-success gerfer-btn-success">Mis Viajes</a>
-                 <a href="@routes.Reports.reportsPage()" class="btn btn-success gerfer-btn-success">Mis Reportes</a>
-                 <a href="@routes.Store.contextTestPage()" class="btn btn-success gerfer-btn-success">Mis Promociones</a>
+                @if(Boolean.parseBoolean(Play.application().configuration().getString("comunicacion.gestionamigos"))) {
+                    <a href="@routes.Account.getAmigos()" class="btn btn-success gerfer-btn-success">Mis Amigos</a>
+                }
+                <a href="@routes.Application.mapPage()" class="btn btn-success gerfer-btn-success">Mapa</a>
+                <a href="@routes.RutaController.verRutas()" class="btn btn-success gerfer-btn-success">Mis Rutas</a>
+                <a href="@routes.MensajesController.inicializar()" class="btn btn-success gerfer-btn-success">
+                    Mis Mensajes</a>
+                <a href="@routes.RutaController.verRecorridos()" class="btn btn-success gerfer-btn-success">
+                    Mis Recorridos</a>
+                <a href="@routes.RutaController.verViajes()" class="btn btn-success gerfer-btn-success">Mis Viajes</a>
+                <a href="@routes.Reports.reportsPage()" class="btn btn-success gerfer-btn-success">Mis Reportes</a>
+                <a href="@routes.Store.contextTestPage()" class="btn btn-success gerfer-btn-success">Mis Promociones</a>
             </div>
 
-            </div>
         </div>
     </div>
 
-    
 
 }
