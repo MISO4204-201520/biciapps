@@ -13,7 +13,7 @@ import models.form.reports.ReporteRutaV;
 
 import org.jongo.MongoCollection;
 
-import play.Play;
+import utils.EnvHelper;
 import static org.jongo.Oid.withOid;
 /**
  * Created by Fer Y german on 16/10/2015.
@@ -51,10 +51,7 @@ public class RutaBusiness {
     private static final int MAX_RUTAS = 5;
     
     public static ReporteRutaV getReporteRuta(String userEmail){
-    	boolean enabled = Play.application().configuration()
-						.getString("reportes.rutas") != null &&
-					 Play.application().configuration()
-					 	.getString("reportes.rutas").equals("TRUE");
+    	boolean enabled = EnvHelper.reporteRutasEnabled();
 		if(!enabled){
 			return null;
 		}

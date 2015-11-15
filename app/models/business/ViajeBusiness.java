@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import utils.EnvHelper;
 import utils.Mail;
 import utils.Utilities;
 import models.dao.MongoManager;
@@ -16,7 +17,6 @@ import models.entities.Viaje;
 
 import org.jongo.MongoCollection;
 
-import play.Play;
 import models.entities.User;
 import models.form.reports.ReporteHistorialViajeV;
 import models.form.reports.ReporteMetricasV;
@@ -50,10 +50,7 @@ public class ViajeBusiness {
     //Reportes
     public static ReporteMetricasV getReporteMetricas(String userEmail){
     	
-    	boolean enabled = Play.application().configuration()
-				.getString("reportes.metricas") != null &&
-			 Play.application().configuration()
-			.getString("reportes.metricas").equals("TRUE");
+    	boolean enabled = EnvHelper.reporteMetricasEnabled();
     	if(!enabled){
     		return null;
     	}
@@ -104,12 +101,9 @@ public class ViajeBusiness {
         return reporte;
     }
 
-    public static ReporteHistorialViajeV getReporteViajes(String userEmail){
+	public static ReporteHistorialViajeV getReporteViajes(String userEmail){
     	
-    	boolean enabled = Play.application().configuration()
-    				.getString("reportes.historialviaje") != null &&
-				 Play.application().configuration()
-				.getString("reportes.historialviaje").equals("TRUE");
+    	boolean enabled = EnvHelper.reporteViajesEnabled();
     	if(!enabled){
     		return null;
     	}

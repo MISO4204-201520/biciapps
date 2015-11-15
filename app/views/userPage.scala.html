@@ -1,5 +1,5 @@
 @import models.entities.User
-@(usuario: User)
+@(usuario: User, reportesEnabled: Boolean)
 
 @import navbar._
 @import play.Play
@@ -94,7 +94,10 @@
                 <a href="@routes.RutaController.verRecorridos()" class="btn btn-success gerfer-btn-success">
                     Mis Recorridos</a>
                 <a href="@routes.RutaController.verViajes()" class="btn btn-success gerfer-btn-success">Mis Viajes</a>
+
+                @if(reportesEnabled){
                 <a href="@routes.Reports.reportsPage()" class="btn btn-success gerfer-btn-success">Mis Reportes</a>
+                }
                 <a href="@routes.Store.contextTestPage()" class="btn btn-success gerfer-btn-success">Mis Promociones</a>
             </div>
 
