@@ -1,4 +1,7 @@
+@import play.Play
+
 @(navbarBrand: Html)(logoutUrl: String)
+
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -11,17 +14,20 @@
 
             </button>
             @navbarBrand
-        </div>
+            </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Home <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="@routes.Application.mapPage()">Mapa</a></li>
                         <li><a href="@routes.RutaController.verRutas()">Mis Rutas</a></li>
                         <li><a href="@routes.RutaController.verRecorridos()">Mis Recorridos</a></li>
                         <li><a href="@routes.RutaController.verViajes()">Mis Viajes</a></li>
-                        <li><a href="@routes.Account.getAmigos()">Mis Amigos</a></li>
+                        @if(Boolean.parseBoolean(Play.application().configuration().getString("comunicacion.gestionamigos"))) {
+                            <li><a href="@routes.Account.getAmigos()">Mis Amigos</a></li>
+                        }
                         <li><a href="@routes.ConfBicicletasController.inicializar()">Configurar Bicicleta</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="@routes.Application.userPage()">Mi Cuenta</a></li>
