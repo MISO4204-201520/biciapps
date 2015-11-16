@@ -9,6 +9,7 @@ import constantes.ConstantesConfBicicleta;
 import models.business.ConfBicicletasBusiness;
 import models.entities.ConfBicicleta;
 import models.entities.Tienda;
+import play.Play;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
@@ -23,6 +24,13 @@ public class ConfBicicletasController extends Controller {
 	public List<Tienda> listaTiendas;	
 	
 	public Result inicializar(){
+		
+    	String conf = Play.application().configuration().getString("configuracionBicicleta");
+    	boolean enabled = (conf != null)? conf.equals("TRUE"): false;
+    	if(!enabled){
+    		return notFound("Module not enabled");
+    	}
+		
 		listaTiendas  = new ArrayList<Tienda>();		
 		return ok(views.html.confBicicletasPage.render(""));
 	}

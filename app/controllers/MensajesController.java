@@ -13,6 +13,7 @@ import models.entities.ConfBicicleta;
 import models.entities.Tienda;
 import models.entities.User;
 import models.entities.Mensaje;
+import play.Play;
 import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
@@ -84,11 +85,16 @@ public class MensajesController extends Controller {
         	 
         	 MensajesBusiness.insert(mensaje);
         	 
-             String[] to = {mensaje.getDestinatario()};
-             String subject = mensaje.getAsunto();
-             String body = mensaje.getContenido();
+         	 String conf = Play.application().configuration().getString("comunicacion.notificaciones");
+        	 boolean enabled = (conf != null)? conf.equals("TRUE"): false;
+        	 if(enabled){
+        		 String[] to = {mensaje.getDestinatario()};
+                 String subject = mensaje.getAsunto();
+                 String body = mensaje.getContenido();
 
-             mail.sendMailUser(to, usuarioLogueado, subject, body);  
+                mail.sendMailUser(to, usuarioLogueado, subject, body); 
+                return ok("Mensaje Enviado exitosamente y Notificado en Correo");
+        	 }
              salida = "Mensaje Enviado exitosamente";
         }else{
         	salida = "Error en envío del mensaje";

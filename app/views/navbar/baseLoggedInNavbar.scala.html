@@ -28,7 +28,9 @@
                         @if(Boolean.parseBoolean(Play.application().configuration().getString("comunicacion.gestionamigos"))) {
                             <li><a href="@routes.Account.getAmigos()">Mis Amigos</a></li>
                         }
-                        <li><a href="@routes.ConfBicicletasController.inicializar()">Configurar Bicicleta</a></li>
+                        @if(Boolean.parseBoolean(Play.application().configuration().getString("configuracionBicicleta"))) {
+                        	<li><a href="@routes.ConfBicicletasController.inicializar()">Configurar Bicicleta</a></li>
+                       	}
                         <li role="separator" class="divider"></li>
                         <li><a href="@routes.Application.userPage()">Mi Cuenta</a></li>
                     </ul>
