@@ -90,8 +90,9 @@
                     Mis Mensajes</a>
                 <a href="@routes.RutaController.verRecorridos()" class="btn btn-success gerfer-btn-success">
                     Mis Recorridos</a>
-                <a href="@routes.RutaController.verViajes()" class="btn btn-success gerfer-btn-success">Mis Viajes</a>
-
+                @if(Boolean.parseBoolean(Play.application().configuration().getString("historialViajes"))) {
+                    <a href="@routes.RutaController.verViajes()" class="btn btn-success gerfer-btn-success">Mis Viajes</a>
+                }
 				<a href="@routes.Store.contextTestPage()" class="btn btn-success gerfer-btn-success">Mis Promociones</a>
 
                 @if(Boolean.parseBoolean(Play.application().configuration().getString("comunicacion.gestionamigos"))) {

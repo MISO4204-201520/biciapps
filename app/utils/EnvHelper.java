@@ -39,4 +39,8 @@ public class EnvHelper {
 		return Play.application().configuration().getString("mapa.metricas") != null &&
 				Play.application().configuration().getString("mapa.metricas").equals("TRUE");
 	}
+	public static boolean historialViajesEnabled() {
+		return Play.application().configuration().getString("historialViajes") != null &&
+				Play.application().configuration().getString("historialViajes").equals("TRUE");
+	} 
 }
