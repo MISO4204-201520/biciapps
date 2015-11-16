@@ -1,5 +1,5 @@
 @import models.entities.Recorrido
-@(recorridos : List[Recorrido])
+@(recorridos : List[Recorrido], grupalEnabled: Boolean)
 
 @import navbar._
 
@@ -41,7 +41,9 @@
 		  		<th>Destino</th>
 		  		<th>Tiempo</th>
 		  		<th>Distancia</th>
-		  		<th>Invitados</th>
+		  		@if(grupalEnabled){
+		  			<th>Invitados</th>
+		  		}
 		  		<th>-</th>
 		  	</tr>
 			@for(recorrido <- recorridos) {
@@ -53,15 +55,17 @@
 			  		<td>@recorrido.ruta.nombreDestino</td>
 			  		<td>@recorrido.tiempo</td>
 			  		<td>@recorrido.distancia</td>
-			  		<td>
-			  			<ul>
-			  			@for(usuario <- recorrido.usuarios) {
-			  				<li>
-			  					@usuario.getNombres()
-			  				</li>
-			  			}
-			  			</ul>
-			  		</td>
+			  		@if(grupalEnabled){
+				  		<td>
+				  			<ul>
+				  			@for(usuario <- recorrido.usuarios) {
+				  				<li>
+				  					@usuario.getNombres()
+				  				</li>
+				  			}
+				  			</ul>
+				  		</td>
+			  		}
 			  		<td><a href='@routes.RutaController.verDetalleRuta(recorrido.id.toString())'>Ver Ruta<a></td>
 			  	</tr>
 			} 

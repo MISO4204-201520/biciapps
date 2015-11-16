@@ -52,7 +52,7 @@ public class Application extends Controller {
         }
 
 
-        return ok(views.html.MapPage.render(usuario, amigosData));
+        return ok(views.html.MapPage.render(usuario, amigosData, EnvHelper.grupalEnabled()));
 
 
     }

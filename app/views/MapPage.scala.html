@@ -3,7 +3,7 @@
 @import navbar._
 @import play.Play
 
-@(usuario : User, amigos : List[User])
+@(usuario : User, amigos : List[User], grupalEnabled: Boolean)
 
 
 
@@ -77,10 +77,11 @@
 	    font-size: 25px;
 	    text-align: right;
 	}
-	#amigos-info {
-	    margin-top: 7px;
+	@if(grupalEnabled){
+		#amigos-info {
+		    margin-top: 7px;
+		}
 	}
-
     .twitter-share-button,
     .twitter-mention-button,
     .twitter-hashtag-button {
@@ -127,6 +128,8 @@
 	                @if(flash.containsKey("error")) {
 	                    <div class="alert alert-danger" role="alert">@flash.get("error")</div>
 	                }
+	                
+
 	            <div class="form-group">
 	                <label class="control-label col-sm-6" for="nombre">Nombre del recorrido</label>
 	                <div class="col-md-6">
@@ -139,20 +142,21 @@
 	                    <input type="date" class="form-control" id="salida" name="salida" placeholder="" required>
 	                </div>
 	            </div>
+	            @if(grupalEnabled){
+		            <div class="form-group">
+		                <label class="control-label col-sm-6" for="grupo">Grupo</label>
+		                <div class="col-md-1">
 
-	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="grupo">Grupo</label>
-	                <div class="col-md-1">
+		                    <button id="ger-addPerson" type="button" data-toggle="modal" data-target="#myModal">
 
-	                    <button id="ger-addPerson" type="button" data-toggle="modal" data-target="#myModal">
-
-					    	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					    </button>
-					</div>
-	                <div class="col-md-5">
-	                    <label id="amigos-info"><span id="amigos-num">0</span><span> Amigos agregados</span></label>
-	                </div>
-	            </div>
+						    	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						    </button>
+						</div>
+		                <div class="col-md-5">
+		                    <label id="amigos-info"><span id="amigos-num">0</span><span> Amigos agregados</span></label>
+		                </div>
+		            </div>
+	        	}
 	            <div class="form-group">
 	                <label class="control-label col-sm-6" for="pinicioText">Punto de salida</label>
 	                <div class="col-md-1">
@@ -197,7 +201,9 @@
 	                    <input id="form-recorridos-sub" type="submit" value="Crear Eventos" class="btn btn-success">
 	                </div>
 	            </div>
-	            <input id="amigos" type="hidden" name="amigos" value="">
+	            @if(grupalEnabled){
+	            	<input id="amigos" type="hidden" name="amigos" value="">
+	        	}
 	            <input id="pinicio" type="hidden" name="pinicio" value="">
 	            <input id="pfinal" type="hidden" name="pfinal" value="">
 	            <input id="distancia" type="hidden" name="distancia" value="">
@@ -228,7 +234,8 @@
             }
 	    </div>
     </div>
-    <!-- Modal -->
+    @if(grupalEnabled){
+    	<!-- Modal -->
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
 
@@ -269,7 +276,7 @@
 
             </div>
         </div>
-
+    }
     <!-- Modal -->
     <div id="myModalTweet" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -513,31 +520,33 @@
 		}
 
     </script>
+    
     <script>
     	var amigosStr = "";
     	var amigos = [];
     	$(document).ready(function(){
-
-    		$(".ger-agregar-amigo").on("click", function(e){
-	    		var amigoid = $(this).attr("amigoid");
-	    		if (amigos.indexOf(amigoid) == -1) {
-	    			if (amigosStr != "") {
-	    				amigosStr += ",";
-	    			}
-	    			amigosStr += amigoid;
-			    	amigos.push(amigoid);
-			    	$("#amigos").val(amigosStr);
-			    	$("#amigos-num").text(amigos.length);
-	    		}
-	    		$(this).prop('disabled', true);
-	    		$(this).css('color', "#AAA");
-	    	});
-
+    		@if(grupalEnabled){
+	    		$(".ger-agregar-amigo").on("click", function(e){
+		    		var amigoid = $(this).attr("amigoid");
+		    		if (amigos.indexOf(amigoid) == -1) {
+		    			if (amigosStr != "") {
+		    				amigosStr += ",";
+		    			}
+		    			amigosStr += amigoid;
+				    	amigos.push(amigoid);
+				    	$("#amigos").val(amigosStr);
+				    	$("#amigos-num").text(amigos.length);
+		    		}
+		    		$(this).prop('disabled', true);
+		    		$(this).css('color', "#AAA");
+		    	});
+    		}
             $("#resOk").hide();
             $("#resError").hide();
     	});
     	
     </script>
+	
     <script>
     	//Select as the favorite route if exists
     	$("#ger-favoriteRoute").on("click", function(e){

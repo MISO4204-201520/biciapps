@@ -11,6 +11,7 @@ import play.data.Form;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utils.EnvHelper;
 import models.entities.Ruta;
 import models.business.RutaBusiness;
 import models.entities.Recorrido;
@@ -74,7 +75,7 @@ public class RutaController extends Controller {
         Iterable<Recorrido> recorridosIterable = RecorridoBusiness.findByUser(usuarioLogueado);
         List<Recorrido> recorridos = Lists.newArrayList(recorridosIterable);
 
-        return ok(views.html.ListaRecorridos.render(recorridos));
+        return ok(views.html.ListaRecorridos.render(recorridos, EnvHelper.grupalEnabled()));
 
     }
 
@@ -106,7 +107,7 @@ public class RutaController extends Controller {
 
         Iterable<Viaje> viajesIterable = ViajeBusiness.findByUser(usuarioLogueado);
         List<Viaje> viajes = Lists.newArrayList(viajesIterable);
-        return ok(views.html.listaViajes.render(viajes));
+        return ok(views.html.listaViajes.render(viajes, EnvHelper.grupalEnabled()));
     }
 
     public Result crearViaje() {

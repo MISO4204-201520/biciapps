@@ -31,4 +31,8 @@ public class EnvHelper {
 			.getString("reportes.metricas").equals("TRUE");
 	}
 
+	public static boolean grupalEnabled() {
+		return Play.application().configuration().getString("mapa.desplazamientoGrupal") != null &&
+				Play.application().configuration().getString("mapa.desplazamientoGrupal").equals("TRUE");
+	}
 }
