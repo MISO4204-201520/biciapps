@@ -3,7 +3,7 @@
 @import navbar._
 @import play.Play
 
-@(usuario : User, amigos : List[User], grupalEnabled: Boolean)
+@(usuario : User, amigos : List[User], grupalEnabled: Boolean, metricasEnabled: Boolean)
 
 
 
@@ -179,18 +179,20 @@
 	                    <input type="text" class="gerfer-static-label" id="pfinalText" name="pfinalText" disabled value="" required>
 	                </div>
 	            </div>
-	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="distanciaText">Distancia aproximada</label>
-	                <div class="col-md-6">
-	                    <input type="text" class="gerfer-static-label" id="distanciaText" name="distanciaText" disabled value="" required>
-	                </div>
-	            </div>
-	            <div class="form-group">
-	                <label class="control-label col-sm-6" for="tiempoText">Tiempo aproximado</label>
-	                <div class="col-md-6">
-	                    <input type="text" class="gerfer-static-label" id="tiempoText" name="tiempoText" value="" disabled>
-	                </div>
-	            </div>
+	            @if(metricasEnabled){
+		            <div class="form-group">
+		                <label class="control-label col-sm-6" for="distanciaText">Distancia aproximada</label>
+		                <div class="col-md-6">
+		                    <input type="text" class="gerfer-static-label" id="distanciaText" name="distanciaText" disabled value="" required>
+		                </div>
+		            </div>
+		            <div class="form-group">
+		                <label class="control-label col-sm-6" for="tiempoText">Tiempo aproximado</label>
+		                <div class="col-md-6">
+		                    <input type="text" class="gerfer-static-label" id="tiempoText" name="tiempoText" value="" disabled>
+		                </div>
+		            </div>
+	            }
 	            <div class="form-group">
 	            	<div class="gerfer-submit-btn col-sm-6">
 	                    <!--<button id="ger-favoriteRoute" type="button">
@@ -206,8 +208,10 @@
 	        	}
 	            <input id="pinicio" type="hidden" name="pinicio" value="">
 	            <input id="pfinal" type="hidden" name="pfinal" value="">
-	            <input id="distancia" type="hidden" name="distancia" value="">
-	            <input id="tiempo" type="hidden" name="tiempo" value="">
+	            @if(metricasEnabled){
+		            <input id="distancia" type="hidden" name="distancia" value="">
+		            <input id="tiempo" type="hidden" name="tiempo" value="">
+		        }
 	            <input id="latOrigen" type="hidden" name="latOrigen" value="">
 	            <input id="lngOrigen" type="hidden" name="lngOrigen" value="">
 	            <input id="latDestino" type="hidden" name="latDestino" value="">
@@ -478,14 +482,18 @@
 			    var route = response.routes[0];
 			    $("#pinicio").val(route.legs[0].start_address);
 			    $("#pfinal").val(route.legs[0].end_address);
-		    	$("#distancia").val(route.legs[0].distance.text);
-		    	$("#tiempo").val(route.legs[0].duration.text);
+			    @if(metricasEnabled){
+			    	$("#distancia").val(route.legs[0].distance.text);
+			    	$("#tiempo").val(route.legs[0].duration.text);
+		    	}
 
 		    	$("#pinicioText").val(route.legs[0].start_address);
 			    $("#pfinalText").val(route.legs[0].end_address);
-		    	$("#distanciaText").val(route.legs[0].distance.text);
-				$("#tiempoText").val(route.legs[0].duration.text);
-			    
+			    @if(metricasEnabled){
+			    	$("#distanciaText").val(route.legs[0].distance.text);
+					$("#tiempoText").val(route.legs[0].duration.text);
+			    }
+
 				//console.log(route.bounds);
 			    $("#latOrigen").val(route.bounds.O.O);
 			  	$("#lngOrigen").val(route.bounds.j.O);
@@ -589,9 +597,14 @@
 	     function abrirModal() {
             var pInicio = $("#pinicioText").val();
 			var pFinal = $("#pfinalText").val();
-		    var pDistancia = $("#distanciaText").val();
-			var tiempo = $("#tiempoText").val();
-			var texto = "Ruta: O:" + pInicio + ",D:" + pFinal +",DIS:" + pDistancia +",T:" + tiempo;
+			@if(metricasEnabled){
+			    var pDistancia = $("#distanciaText").val();
+				var tiempo = $("#tiempoText").val();
+				var texto = "Ruta: O:" + pInicio + ",D:" + pFinal +",DIS:" + pDistancia +",T:" + tiempo;
+			}else{
+				var texto = "Ruta: O:" + pInicio + ",D:" + pFinal;
+			}
+			
 
 			$("#tweetContent").val(texto);
 			$("#tweetContent").text(texto);

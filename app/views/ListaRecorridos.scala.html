@@ -1,5 +1,5 @@
 @import models.entities.Recorrido
-@(recorridos : List[Recorrido], grupalEnabled: Boolean)
+@(recorridos : List[Recorrido], grupalEnabled: Boolean, metricasEnabled: Boolean)
 
 @import navbar._
 
@@ -39,8 +39,10 @@
 		  		<th>Fecha</th>
 		  		<th>Origen</th>
 		  		<th>Destino</th>
-		  		<th>Tiempo</th>
-		  		<th>Distancia</th>
+		  		@if(metricasEnabled){
+			  		<th>Tiempo</th>
+			  		<th>Distancia</th>
+			  	}
 		  		@if(grupalEnabled){
 		  			<th>Invitados</th>
 		  		}
@@ -53,8 +55,10 @@
 			  		<td>@recorrido.fecha</td>
 			  		<td>@recorrido.ruta.nombreOrigen</td>
 			  		<td>@recorrido.ruta.nombreDestino</td>
-			  		<td>@recorrido.tiempo</td>
-			  		<td>@recorrido.distancia</td>
+			  		@if(metricasEnabled){
+				  		<td>@recorrido.tiempo</td>
+				  		<td>@recorrido.distancia</td>
+				  	}
 			  		@if(grupalEnabled){
 				  		<td>
 				  			<ul>

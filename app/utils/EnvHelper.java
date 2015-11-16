@@ -35,4 +35,8 @@ public class EnvHelper {
 		return Play.application().configuration().getString("mapa.desplazamientoGrupal") != null &&
 				Play.application().configuration().getString("mapa.desplazamientoGrupal").equals("TRUE");
 	}
+	public static boolean metricasEnabled() {
+		return Play.application().configuration().getString("mapa.metricas") != null &&
+				Play.application().configuration().getString("mapa.metricas").equals("TRUE");
+	}
 }

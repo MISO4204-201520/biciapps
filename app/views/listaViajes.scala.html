@@ -1,5 +1,5 @@
 @import models.entities.Viaje
-@(viajes : List[Viaje], grupalEnabled: Boolean)
+@(viajes : List[Viaje], grupalEnabled: Boolean, metricasEnabled: Boolean)
 
 @import navbar._
 
@@ -36,9 +36,12 @@
 	    <table class="table"> 
 	    	<tr>
 		  		<th>Nombre de recorrido</th>
-		  		<th>Duración empleada / estimada</th>
-		  		<th>Distancia</th>
-		  		<th>Fecha</th>
+		  		
+		  		@if(metricasEnabled){
+		  			<th>Duración empleada / estimada</th>
+			  		<th>Distancia</th>
+			  	}
+			  	<th>Fecha</th>
 		  		@if(grupalEnabled){
 			  		<th>Asistentes</th>
 			  	}
@@ -47,8 +50,10 @@
 			@for(viaje <- viajes) {
 			  	<tr>
 			  		<td>@viaje.recorrido.nombre</td>
-			  		<td>@viaje.recorrido.tiempo / @viaje.recorrido.tiempo</td>
-			  		<td>@viaje.recorrido.distancia</td>
+			  		@if(metricasEnabled){
+				  		<td>@viaje.recorrido.tiempo / @viaje.recorrido.tiempo</td>
+				  		<td>@viaje.recorrido.distancia</td>
+				  	}
 			  		<td>@viaje.fecha</td>
 			  		@if(grupalEnabled){
 				  		<td>

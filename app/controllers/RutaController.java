@@ -75,7 +75,7 @@ public class RutaController extends Controller {
         Iterable<Recorrido> recorridosIterable = RecorridoBusiness.findByUser(usuarioLogueado);
         List<Recorrido> recorridos = Lists.newArrayList(recorridosIterable);
 
-        return ok(views.html.ListaRecorridos.render(recorridos, EnvHelper.grupalEnabled()));
+        return ok(views.html.ListaRecorridos.render(recorridos, EnvHelper.grupalEnabled(), EnvHelper.metricasEnabled()));
 
     }
 
@@ -107,7 +107,7 @@ public class RutaController extends Controller {
 
         Iterable<Viaje> viajesIterable = ViajeBusiness.findByUser(usuarioLogueado);
         List<Viaje> viajes = Lists.newArrayList(viajesIterable);
-        return ok(views.html.listaViajes.render(viajes, EnvHelper.grupalEnabled()));
+        return ok(views.html.listaViajes.render(viajes, EnvHelper.grupalEnabled(), EnvHelper.metricasEnabled()));
     }
 
     public Result crearViaje() {
