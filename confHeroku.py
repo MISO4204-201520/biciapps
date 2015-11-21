@@ -28,7 +28,7 @@ featureVars = {
 
 enabledfeatures = {key: False for key in featureVars.keys()}   
 
-infile = open("features.txt", "r") 
+infile = open("default.config", "r") 
 
 for line in infile:
     if line.strip() in enabledfeatures:
