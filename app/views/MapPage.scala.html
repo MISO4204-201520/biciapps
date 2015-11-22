@@ -3,7 +3,7 @@
 @import navbar._
 @import play.Play
 
-@(usuario : User, amigos : List[User], grupalEnabled: Boolean, metricasEnabled: Boolean)
+@(usuario : User, amigos : List[User], grupalEnabled: Boolean, metricasEnabled: Boolean, sitiosEnabled: Boolean)
 
 
 
@@ -347,11 +347,6 @@
                 // Browser doesn't support Geolocation
                 handleLocationError(false, infoWindow, map.getCenter());
 		    }
-
-		    alquiler();
-		    lugares();
-
-
 		  directionsService = new google.maps.DirectionsService;
   			directionsDisplay = new google.maps.DirectionsRenderer;
   			directionsDisplay.setMap(map);
@@ -362,10 +357,16 @@
 			});
 			poly.setMap(map);
 
+
 			// Add a listener for the click event
 			map.addListener('click', mapClicked);
 			$("#ger-originSelect").click(originSelection);
 			$("#ger-destinySelect").click(destinySelection);
+
+			 @if(sitiosEnabled){
+			    alquiler();
+		    	lugares();;
+		    }
 		}
 		function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 		 	infoWindow.setPosition(pos);

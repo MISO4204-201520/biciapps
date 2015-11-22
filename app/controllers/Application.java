@@ -50,9 +50,9 @@ public class Application extends Controller {
                 amigosData.add(amigoData);
             }
         }
+        Boolean sitiosEnabled= Boolean.parseBoolean(Play.application().configuration().getString("mapa.sitios"));
 
-
-        return ok(views.html.MapPage.render(usuario, amigosData, EnvHelper.grupalEnabled(), EnvHelper.metricasEnabled()));
+        return ok(views.html.MapPage.render(usuario, amigosData, EnvHelper.grupalEnabled(), EnvHelper.metricasEnabled(),sitiosEnabled));
 
 
     }
