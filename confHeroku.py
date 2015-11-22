@@ -43,11 +43,11 @@ for line in infile:
 
 for  k, v in enabledfeatures.iteritems():
     if v == True:
-        print "heroku config:set "+featureVars[k]+"=TRUE"
-#        os.system("heroku config:set "+featureVars[k]+"=TRUE")
+#        print "heroku config:set "+featureVars[k]+"=TRUE"
+        os.system("heroku config:set "+featureVars[k]+"=TRUE")
     else:
-        print "heroku config:set "+featureVars[k]+"=FALSE"
-#        os.system("heroku config:set "+featureVars[k]+"=FALSE")
+#        print "heroku config:set "+featureVars[k]+"=FALSE"
+        os.system("heroku config:set "+featureVars[k]+"=FALSE")
 
 #os.system("heroku config:set REPORTEMETRICAS=TRUE")
 #os.system('heroku config:set REPORTEMETRICAS=FALSE')
@@ -64,7 +64,7 @@ file2path = file1path + '.temp'
 fin = open(file1path,'r')
 fout = open(file2path,'w') 
 
-comment = True
+comment = (enabledfeatures['Notificaciones'] == False) #False
 
 processNext = False
 
@@ -75,7 +75,7 @@ for line in fin:
     elif(processNext==True):
         m = pattern.match(line)
         cleanLine = m.group(1) + m.group(3) + m.group(4)
-        print cleanLine
+        print(str(comment) + ": " + cleanLine)
         if(comment):
             fout.write('//' + cleanLine + '\n')
         else:
