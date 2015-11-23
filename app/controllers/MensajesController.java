@@ -93,7 +93,7 @@ public class MensajesController extends Controller {
                  String body = mensaje.getContenido();
                 
                 //notificaciones=>
-                mail.sendMailUser(to, usuarioLogueado, subject, body); 
+//                mail.sendMailUser(to, usuarioLogueado, subject, body); 
                 return ok("Mensaje Enviado exitosamente y Notificado en Correo");
         	 }
              salida = "Mensaje Enviado exitosamente";
