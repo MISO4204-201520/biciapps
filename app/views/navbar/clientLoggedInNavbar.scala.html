@@ -3,5 +3,5 @@
 @import navbar.baseLoggedInNavbar
 
 @baseLoggedInNavbar{
-<a class="navbar-brand" href="/">Biciapps</a>
+<a class="navbar-brand" href="@routes.Application.userPage()">Biciapps</a>
 }(routes.Authenticate.logout().toString())

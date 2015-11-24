@@ -3,5 +3,5 @@
 @import navbar.baseUnloggedNavbar
 
 @baseUnloggedNavbar{
-    <a class="navbar-brand" href="/">Biciapps</a>
+    <a class="navbar-brand" href="@routes.Application.userPage()">Biciapps</a>
 }(routes.Account.registerPage().toString())(routes.Account.loginPage().toString())
